@@ -989,7 +989,6 @@ export default function Home() {
               </div>
               <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-3 border border-blue-200">
                 <p className="text-sm text-blue-900 text-center"><strong>Lunes a Sábado</strong><br />10:00 - 18:00 hrs</p>
-                </div>
               </div>
             </div>
           </div>
