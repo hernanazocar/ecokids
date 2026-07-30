@@ -10,29 +10,27 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header/Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-100">
+        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-24">
+          {/* Logo y Menu - Izquierda */}
+          <div className="flex items-center gap-8">
             <Image
               src="/logo.png"
               alt="EcoKids"
-              width={48}
-              height={48}
-              className="w-12 h-12"
+              width={120}
+              height={120}
+              className="w-24 h-24 object-contain"
             />
-            <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">EcoKids</span>
+
+            <div className="hidden md:flex items-center gap-6">
+              <a href="#servicios" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Servicios</a>
+              <a href="#como-funciona" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Cómo Funciona</a>
+              <a href="#testimonios" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Testimonios</a>
+              <a href="#contacto" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Contacto</a>
+            </div>
           </div>
 
-          {/* Menu Central */}
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#servicios" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Servicios</a>
-            <a href="#como-funciona" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Cómo Funciona</a>
-            <a href="#testimonios" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Testimonios</a>
-            <a href="#contacto" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Contacto</a>
-          </div>
-
-          {/* Botón Agendar */}
+          {/* Botón Agendar - Derecha */}
           <button className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -43,7 +41,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section - Rediseñado Moderno */}
-      <section className="relative pt-28 pb-16 px-6 overflow-hidden bg-gradient-to-br from-orange-500 via-red-400 to-pink-500">
+      <section className="relative pt-32 pb-16 px-6 overflow-hidden bg-gradient-to-br from-orange-500 via-red-400 to-pink-500">
         {/* Fondo decorativo */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -54,112 +52,113 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-10 items-center">
 
             {/* Columna Izquierda - Contenido */}
-            <div className="space-y-5">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-bold shadow-lg border border-white/30">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <div className="space-y-6">
+              {/* Badge minimalista */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md text-white/90 rounded-full text-xs font-semibold border border-white/20">
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
                 Concón, V Región
               </div>
 
-              {/* Título Principal */}
-              <div>
-                <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
-                  Creatividad que inspira
-                  <span className="block text-white/90">
-                    sin pantallas
-                  </span>
+              {/* Título Principal - Más limpio */}
+              <div className="space-y-4">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
+                  Creatividad que inspira sin pantallas
                 </h1>
-                <p className="text-xl text-white/90 leading-relaxed">
+                <p className="text-xl text-white/80 leading-relaxed max-w-xl font-light">
                   Talleres donde los niños exploran, crean y descubren todo su potencial a través del juego y el arte.
                 </p>
               </div>
 
-              {/* Stats destacados - 2 columnas simplificadas */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-3 text-center shadow-lg">
-                  <div className="w-10 h-10 bg-white/30 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md border border-white/40">
-                    <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                  </div>
-                  <div className="text-2xl font-bold text-white">2000+</div>
-                  <div className="text-sm text-white/90">Niños felices</div>
+              {/* Stats compactos en línea */}
+              <div className="flex gap-6 pt-2">
+                <div className="flex items-center gap-2">
+                  <div className="text-3xl font-bold text-white">2000+</div>
+                  <div className="text-sm text-white/70">Niños<br/>felices</div>
                 </div>
-
-                <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-3 text-center shadow-lg">
-                  <div className="w-10 h-10 bg-white/30 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md border border-white/40">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  </div>
-                  <div className="text-2xl font-bold text-white">5.0</div>
-                  <div className="text-sm text-white/90">Rating</div>
+                <div className="w-px h-12 bg-white/20"></div>
+                <div className="flex items-center gap-2">
+                  <div className="text-3xl font-bold text-white">5.0</div>
+                  <div className="text-sm text-white/70">Rating<br/>⭐⭐⭐⭐⭐</div>
                 </div>
               </div>
 
-              {/* Beneficios - 2 principales */}
-              <div className="space-y-2.5">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 bg-white/30 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 border border-white/40">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span className="text-white font-medium">Ambiente seguro • Grupos reducidos</span>
+              {/* Beneficios - Lista limpia */}
+              <div className="flex flex-wrap gap-3 pt-2">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-white text-sm font-medium">Grupos reducidos</span>
                 </div>
-                <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 bg-white/30 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 border border-white/40">
-                    <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <span className="text-white font-medium">Todos los materiales incluidos</span>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-white text-sm font-medium">Todo incluido</span>
                 </div>
               </div>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <button className="group px-8 py-4 bg-white text-orange-600 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
-                  <span className="flex items-center gap-2 justify-center">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                    Ver Talleres
-                  </span>
+              {/* CTAs - Botones modernos */}
+              <div className="flex flex-wrap gap-4 pt-4">
+                <button className="px-8 py-4 bg-white text-orange-600 rounded-2xl font-bold text-base shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all">
+                  Ver Talleres →
                 </button>
-                <button className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl hover:bg-white/30 transition-all">
-                  <span className="flex items-center gap-2 justify-center">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    Agendar Ahora
-                  </span>
+                <button className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-2xl font-bold text-base hover:bg-white/10 transition-all">
+                  Agendar Ahora
                 </button>
               </div>
             </div>
 
-            {/* Columna Derecha - Foto */}
-            <div className="relative">
+            {/* Columna Derecha - Foto con Cards Flotantes */}
+            <div className="relative lg:ml-32">
               <div className="absolute -inset-4 bg-white/20 rounded-3xl blur-2xl"></div>
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=800&auto=format&fit=crop"
-                  alt="Niños construyendo y creando en talleres EcoKids"
-                  className="w-full aspect-[4/3] object-cover rounded-3xl shadow-2xl border-4 border-white/30"
+                  src="/foto.png"
+                  alt="Niños haciendo manualidades en talleres EcoKids"
+                  className="w-full aspect-[4/3] object-cover rounded-3xl shadow-2xl border-4 border-white/30 scale-125"
                 />
-                {/* Badge flotante */}
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-2xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center shadow-md">
-                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+
+                {/* Cards Flotantes Dinámicas - Tamaños Consistentes */}
+                {/* Card 1 - Top Right - Horarios */}
+                <div className="absolute -top-3 -right-3 bg-white rounded-xl p-3 shadow-2xl animate-bounce">
+                  <div className="flex items-center gap-2">
+                    <div className="w-9 h-9 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <div>
-                      <div className="text-2xl font-bold text-orange-600">4+ años</div>
-                      <div className="text-sm text-gray-700">De experiencia</div>
+                    <div className="text-left">
+                      <div className="text-sm font-bold text-purple-600">Sábados</div>
+                      <div className="text-xs text-gray-600">10am - 12pm</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2 - Bottom Left - CTA Reserva */}
+                <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl p-3 shadow-2xl hover:scale-105 transition-transform cursor-pointer">
+                  <div className="text-center">
+                    <div className="text-xl font-bold text-white">¡Reserva Ya!</div>
+                    <div className="text-xs text-white/90 mt-1">Cupos limitados</div>
+                    <div className="mt-2 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs text-white font-semibold">
+                      Click aquí →
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3 - Middle Right - Materiales */}
+                <div className="absolute top-1/3 -right-3 bg-white rounded-xl p-3 shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
+                  <div className="flex items-center gap-2">
+                    <div className="w-9 h-9 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 100 4v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a2 2 0 100-4V6z" />
+                      </svg>
+                    </div>
+                    <div className="text-left">
+                      <div className="text-sm font-bold text-green-600">Todo</div>
+                      <div className="text-xs text-gray-600">Incluido</div>
                     </div>
                   </div>
                 </div>
