@@ -43,10 +43,10 @@ export default function Home() {
       </header>
 
       {/* Hero Section - Banner Horizontal Integrado */}
-      <section className="relative overflow-hidden pt-24">
-        <div className="relative flex overflow-hidden" style={{height: '450px'}}>
+      <section className="relative" style={{marginTop: '96px', marginBottom: 0, padding: 0}}>
+        <div className="relative flex" style={{height: '450px', margin: 0, padding: 0}}>
           {/* Mitad Izquierda - Fondo beige con contenido y decoraciones */}
-          <div className="relative w-1/2 h-full bg-[#f5f2ed] flex items-center">
+          <div className="relative w-2/5 h-full bg-[#f5f2ed] flex items-center">
 
             {/* Contenido */}
             <div className="relative z-10 px-12 max-w-2xl space-y-6">
@@ -73,8 +73,14 @@ export default function Home() {
 
           {/* Mitad Derecha - Foto como fondo */}
           <div
-            className="w-1/2 h-full bg-contain bg-no-repeat bg-center relative"
-            style={{backgroundImage: 'url(/hero.png)'}}
+            className="w-3/5 relative"
+            style={{
+              backgroundImage: 'url(/hero.png)',
+              backgroundSize: 'cover',
+              backgroundPosition: '30% center',
+              backgroundRepeat: 'no-repeat',
+              height: '450px'
+            }}
           >
             {/* Gradiente para mezclar con la sección izquierda - sin línea visible */}
             <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#f5f2ed] via-[#f5f2ed]/20 to-transparent w-32"></div>
