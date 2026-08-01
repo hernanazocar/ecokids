@@ -8,163 +8,204 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f5f2ed]">
       {/* Header/Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-100">
-        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-24">
-          {/* Logo y Menu - Izquierda */}
-          <div className="flex items-center gap-8">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+        <nav className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
             <Image
               src="/logo.png"
               alt="EcoKids"
-              width={120}
-              height={120}
-              className="w-24 h-24 object-contain"
+              width={180}
+              height={60}
+              className="h-14 w-auto object-contain"
             />
-
-            <div className="hidden md:flex items-center gap-6">
-              <a href="#servicios" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Servicios</a>
-              <a href="#como-funciona" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Cómo Funciona</a>
-              <a href="#testimonios" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Testimonios</a>
-              <a href="#contacto" className="text-gray-700 hover:text-orange-600 transition-colors font-medium text-sm">Contacto</a>
-            </div>
           </div>
 
-          {/* Botón Agendar - Derecha */}
-          <button className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          {/* Menu Central */}
+          <div className="hidden lg:flex items-center gap-8">
+            <a href="#inicio" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm border-b-2 border-gray-700 pb-1">Inicio</a>
+            <a href="#experiencias" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm">Experiencias</a>
+            <a href="#sobre-nosotros" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm">Sobre nosotros</a>
+            <a href="#galeria" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm">Galería</a>
+            <a href="#contacto" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm">Contacto</a>
+          </div>
+
+          {/* Botón Participar */}
+          <button className="flex items-center gap-2 px-6 py-3 bg-[#6b9b7b] text-white rounded-full font-semibold text-sm hover:bg-[#5a8a6a] transition-all shadow-md">
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
             </svg>
-            Agendar Ahora
+            Quiero participar
           </button>
         </nav>
       </header>
 
-      {/* Hero Section - Rediseñado Moderno */}
-      <section className="relative pt-32 pb-16 px-6 overflow-hidden bg-gradient-to-br from-orange-500 via-red-400 to-pink-500">
-        {/* Fondo decorativo */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+      {/* Hero Section - Banner Horizontal Integrado */}
+      <section className="relative overflow-hidden pt-24">
+        <div className="relative flex overflow-hidden" style={{height: '450px'}}>
+          {/* Mitad Izquierda - Fondo beige con contenido y decoraciones */}
+          <div className="relative w-1/2 h-full bg-[#f5f2ed] flex items-center">
+
+            {/* Contenido */}
+            <div className="relative z-10 px-12 max-w-2xl space-y-6">
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                <span className="text-gray-900">Donde la </span>
+                <span className="text-[#6b9b7b]">creatividad</span>
+                <br />
+                <span className="text-gray-900">no tiene </span>
+                <span className="text-[#5d6b98]">fronteras.</span>
+              </h1>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                Experiencias educativas que inspiran, emocionan y dejan huellas para siempre.
+              </p>
+              <div>
+                <button className="px-8 py-4 bg-[#6b9b7b] text-white rounded-full font-semibold text-base hover:bg-[#5a8a6a] transition-all shadow-lg inline-flex items-center gap-2">
+                  Conoce nuestra historia
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Mitad Derecha - Foto como fondo */}
+          <div
+            className="w-1/2 h-full bg-contain bg-no-repeat bg-center relative"
+            style={{backgroundImage: 'url(/hero.png)'}}
+          >
+            {/* Gradiente para mezclar con la sección izquierda - sin línea visible */}
+            <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-[#f5f2ed] via-[#f5f2ed]/20 to-transparent w-32"></div>
+          </div>
         </div>
+      </section>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
+      {/* Sección Experiencias */}
+      <section id="experiencias" className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          {/* Título con iconos decorativos */}
+          <div className="text-center mb-16 flex items-center justify-center gap-4">
+            <svg className="w-12 h-12 text-[#c8ddb5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
+              Participa en alguna de nuestras <span className="text-[#6b9b7b]">experiencias</span>
+            </h2>
+            <svg className="w-12 h-12 text-[#c8ddb5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
 
-            {/* Columna Izquierda - Contenido */}
-            <div className="space-y-6">
-              {/* Badge minimalista */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 backdrop-blur-md text-white/90 rounded-full text-xs font-semibold border border-white/20">
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                </svg>
-                Concón, V Región
+          {/* Grid de experiencias */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {/* Aventura bajo el mar */}
+            <div className="bg-white border-2 border-[#a8d5e2] rounded-2xl p-6 hover:shadow-xl transition-shadow">
+              <div className="text-center mb-4">
+                <h3 className="text-xl font-bold text-[#4a90a4] mb-2">Aventura</h3>
+                <h4 className="text-lg font-semibold text-[#4a90a4]">bajo el mar</h4>
               </div>
-
-              {/* Título Principal - Más limpio */}
-              <div className="space-y-4">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
-                  Creatividad que inspira sin pantallas
-                </h1>
-                <p className="text-xl text-white/80 leading-relaxed max-w-xl font-light">
-                  Talleres donde los niños exploran, crean y descubren todo su potencial a través del juego y el arte.
-                </p>
-              </div>
-
-              {/* Stats compactos en línea */}
-              <div className="flex gap-6 pt-2">
-                <div className="flex items-center gap-2">
-                  <div className="text-3xl font-bold text-white">2000+</div>
-                  <div className="text-sm text-white/70">Niños<br/>felices</div>
-                </div>
-                <div className="w-px h-12 bg-white/20"></div>
-                <div className="flex items-center gap-2">
-                  <div className="text-3xl font-bold text-white">5.0</div>
-                  <div className="text-sm text-white/70">Rating<br/>⭐⭐⭐⭐⭐</div>
-                </div>
-              </div>
-
-              {/* Beneficios - Lista limpia */}
-              <div className="flex flex-wrap gap-3 pt-2">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-white text-sm font-medium">Grupos reducidos</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-white text-sm font-medium">Todo incluido</span>
-                </div>
-              </div>
-
-              {/* CTAs - Botones modernos */}
-              <div className="flex flex-wrap gap-4 pt-4">
-                <button className="px-8 py-4 bg-white text-orange-600 rounded-2xl font-bold text-base shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all">
-                  Ver Talleres →
-                </button>
-                <button className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-2xl font-bold text-base hover:bg-white/10 transition-all">
-                  Agendar Ahora
-                </button>
-              </div>
-            </div>
-
-            {/* Columna Derecha - Foto con Cards Flotantes */}
-            <div className="relative lg:ml-32">
-              <div className="absolute -inset-4 bg-white/20 rounded-3xl blur-2xl"></div>
-              <div className="relative">
-                <img
-                  src="/foto.png"
-                  alt="Niños haciendo manualidades en talleres EcoKids"
-                  className="w-full aspect-[4/3] object-cover rounded-3xl shadow-2xl border-4 border-white/30 scale-125"
+              <div className="h-48 bg-white rounded-xl flex items-center justify-center mb-4 p-4">
+                <Image
+                  src="/cangrejo1.png"
+                  alt="Cangrejo aventura bajo el mar"
+                  width={200}
+                  height={200}
+                  className="w-full h-full object-contain"
                 />
-
-                {/* Cards Flotantes Dinámicas - Tamaños Consistentes */}
-                {/* Card 1 - Top Right - Horarios */}
-                <div className="absolute -top-3 -right-3 bg-white rounded-xl p-3 shadow-2xl animate-bounce">
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <div className="text-sm font-bold text-purple-600">Sábados</div>
-                      <div className="text-xs text-gray-600">10am - 12pm</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2 - Bottom Left - CTA Reserva */}
-                <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl p-3 shadow-2xl hover:scale-105 transition-transform cursor-pointer">
-                  <div className="text-center">
-                    <div className="text-xl font-bold text-white">¡Reserva Ya!</div>
-                    <div className="text-xs text-white/90 mt-1">Cupos limitados</div>
-                    <div className="mt-2 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs text-white font-semibold">
-                      Click aquí →
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3 - Middle Right - Materiales */}
-                <div className="absolute top-1/3 -right-3 bg-white rounded-xl p-3 shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 100 4v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a2 2 0 100-4V6z" />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <div className="text-sm font-bold text-green-600">Todo</div>
-                      <div className="text-xs text-gray-600">Incluido</div>
-                    </div>
-                  </div>
-                </div>
               </div>
+              <button className="w-full py-3 border-2 border-[#a8d5e2] text-[#4a90a4] rounded-full font-semibold hover:bg-[#a8d5e2]/10 transition-colors flex items-center justify-center gap-2">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                Más información
+              </button>
             </div>
 
+            {/* Aventura jurásica */}
+            <div className="bg-white border-2 border-[#c8ddb5] rounded-2xl p-6 hover:shadow-xl transition-shadow">
+              <div className="text-center mb-4">
+                <h3 className="text-xl font-bold text-[#6b8e5a] mb-2">Aventura</h3>
+                <h4 className="text-lg font-semibold text-[#6b8e5a]">jurásica</h4>
+              </div>
+              <div className="h-48 bg-white rounded-xl flex items-center justify-center mb-4 p-4">
+                <Image
+                  src="/cangrejo2.png"
+                  alt="Cangrejo aventura jurásica"
+                  width={200}
+                  height={200}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <button className="w-full py-3 border-2 border-[#c8ddb5] text-[#6b8e5a] rounded-full font-semibold hover:bg-[#c8ddb5]/10 transition-colors flex items-center justify-center gap-2">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                Más información
+              </button>
+            </div>
+
+            {/* Aventura del espacio */}
+            <div className="bg-white border-2 border-[#9ba3c0] rounded-2xl p-6 hover:shadow-xl transition-shadow">
+              <div className="text-center mb-4">
+                <h3 className="text-xl font-bold text-[#5d6b98] mb-2">Aventura</h3>
+                <h4 className="text-lg font-semibold text-[#5d6b98]">del espacio</h4>
+              </div>
+              <div className="h-48 bg-white rounded-xl flex items-center justify-center mb-4 p-4">
+                <Image
+                  src="/cangrejo3.png"
+                  alt="Cangrejo aventura del espacio"
+                  width={200}
+                  height={200}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <button className="w-full py-3 border-2 border-[#9ba3c0] text-[#5d6b98] rounded-full font-semibold hover:bg-[#9ba3c0]/10 transition-colors flex items-center justify-center gap-2">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                Más información
+              </button>
+            </div>
+
+            {/* Aventura encantada */}
+            <div className="bg-white border-2 border-[#e8b4c8] rounded-2xl p-6 hover:shadow-xl transition-shadow">
+              <div className="text-center mb-4">
+                <h3 className="text-xl font-bold text-[#c25b7d] mb-2">Aventura</h3>
+                <h4 className="text-lg font-semibold text-[#c25b7d]">encantada</h4>
+              </div>
+              <div className="h-48 bg-white rounded-xl flex items-center justify-center mb-4 p-4">
+                <Image
+                  src="/cangrejo4.png"
+                  alt="Cangrejo aventura encantada"
+                  width={200}
+                  height={200}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <button className="w-full py-3 border-2 border-[#e8b4c8] text-[#c25b7d] rounded-full font-semibold hover:bg-[#e8b4c8]/10 transition-colors flex items-center justify-center gap-2">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                Más información
+              </button>
+            </div>
+          </div>
+
+          {/* Banner promocional */}
+          <div className="bg-gradient-to-r from-[#f4c542] to-[#e07856] rounded-2xl p-8 text-center shadow-xl">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+              </svg>
+              <h3 className="text-3xl md:text-4xl font-bold text-white">
+                Junta las 4 experiencias y <span className="text-[#5d6b98]">llévate una sorpresa de Colorín</span>
+              </h3>
+              <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
           </div>
         </div>
       </section>
