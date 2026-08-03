@@ -25,15 +25,15 @@ export default function Home() {
 
           {/* Menu Central */}
           <div className="hidden lg:flex items-center gap-8">
-            <a href="#inicio" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm border-b-2 border-gray-700 pb-1">Inicio</a>
-            <a href="#experiencias" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm">Experiencias</a>
-            <a href="#sobre-nosotros" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm">Sobre nosotros</a>
-            <a href="#galeria" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm">Galería</a>
-            <a href="#contacto" className="text-gray-700 hover:text-[#6b9b7b] transition-colors font-medium text-sm">Contacto</a>
+            <a href="#inicio" className="text-gray-700 hover:text-[#f97316] transition-colors font-medium text-sm border-b-2 border-gray-700 pb-1">Inicio</a>
+            <a href="#experiencias" className="text-gray-700 hover:text-[#f97316] transition-colors font-medium text-sm">Experiencias</a>
+            <a href="#sobre-nosotros" className="text-gray-700 hover:text-[#f97316] transition-colors font-medium text-sm">Sobre nosotros</a>
+            <a href="#galeria" className="text-gray-700 hover:text-[#f97316] transition-colors font-medium text-sm">Galería</a>
+            <a href="#contacto" className="text-gray-700 hover:text-[#f97316] transition-colors font-medium text-sm">Contacto</a>
           </div>
 
           {/* Botón Participar */}
-          <button className="flex items-center gap-2 px-6 py-3 bg-[#6b9b7b] text-white rounded-full font-semibold text-sm hover:bg-[#5a8a6a] transition-all shadow-md">
+          <button className="flex items-center gap-2 px-6 py-3 bg-[#f97316] text-white rounded-full font-semibold text-sm hover:bg-[#ea580c] transition-all shadow-md">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
             </svg>
@@ -52,16 +52,16 @@ export default function Home() {
             <div className="relative z-10 px-12 max-w-2xl space-y-6">
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="text-gray-900">Donde la </span>
-                <span className="text-[#6b9b7b]">creatividad</span>
+                <span className="text-[#f97316]">creatividad</span>
                 <br />
                 <span className="text-gray-900">no tiene </span>
-                <span className="text-[#5d6b98]">fronteras.</span>
+                <span className="text-[#6366f1]">fronteras.</span>
               </h1>
               <p className="text-xl text-gray-700 leading-relaxed">
                 Experiencias educativas que inspiran, emocionan y dejan huellas para siempre.
               </p>
               <div>
-                <button className="px-8 py-4 bg-[#6b9b7b] text-white rounded-full font-semibold text-base hover:bg-[#5a8a6a] transition-all shadow-lg inline-flex items-center gap-2">
+                <button className="px-8 py-4 bg-[#f97316] text-white rounded-full font-semibold text-base hover:bg-[#ea580c] transition-all shadow-lg inline-flex items-center gap-2">
                   Conoce nuestra historia
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -93,35 +93,35 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           {/* Título con iconos decorativos */}
           <div className="text-center mb-16 flex items-center justify-center gap-4">
-            <svg className="w-12 h-12 text-[#c8ddb5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-12 h-12 text-[#fdba74]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800">
-              Participa en alguna de nuestras <span className="text-[#6b9b7b]">experiencias</span>
+              Participa en alguna de nuestras <span className="text-[#f97316]">experiencias</span>
             </h2>
-            <svg className="w-12 h-12 text-[#c8ddb5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-12 h-12 text-[#fdba74]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
           </div>
 
           {/* Grid de experiencias */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {/* Aventura bajo el mar */}
-            <div className="bg-white border-2 border-[#a8d5e2] rounded-2xl p-6 hover:shadow-xl transition-shadow">
-              <div className="text-center mb-4">
-                <h3 className="text-xl font-bold text-[#4a90a4] mb-2">Aventura</h3>
-                <h4 className="text-lg font-semibold text-[#4a90a4]">bajo el mar</h4>
+            <div className="group bg-gradient-to-br from-[#cffafe] to-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-4 border-[#06b6d4]">
+              <div className="text-center mb-3">
+                <h3 className="text-2xl font-bold text-[#06b6d4] mb-1">Aventura</h3>
+                <h4 className="text-xl font-bold text-[#0891b2]">bajo el mar</h4>
               </div>
-              <div className="h-48 bg-white rounded-xl flex items-center justify-center mb-4 p-4">
+              <div className="h-56 bg-white/80 rounded-2xl flex items-center justify-center mb-4 p-4 shadow-inner">
                 <Image
                   src="/cangrejo1.png"
                   alt="Cangrejo aventura bajo el mar"
-                  width={200}
-                  height={200}
-                  className="w-full h-full object-contain"
+                  width={220}
+                  height={220}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
-              <button className="w-full py-3 border-2 border-[#a8d5e2] text-[#4a90a4] rounded-full font-semibold hover:bg-[#a8d5e2]/10 transition-colors flex items-center justify-center gap-2">
+              <button className="w-full py-3.5 bg-gradient-to-r from-[#06b6d4] to-[#22d3ee] text-white rounded-full font-bold text-base hover:shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                 </svg>
@@ -130,21 +130,21 @@ export default function Home() {
             </div>
 
             {/* Aventura jurásica */}
-            <div className="bg-white border-2 border-[#c8ddb5] rounded-2xl p-6 hover:shadow-xl transition-shadow">
-              <div className="text-center mb-4">
-                <h3 className="text-xl font-bold text-[#6b8e5a] mb-2">Aventura</h3>
-                <h4 className="text-lg font-semibold text-[#6b8e5a]">jurásica</h4>
+            <div className="group bg-gradient-to-br from-[#fed7aa] to-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-4 border-[#ea580c]">
+              <div className="text-center mb-3">
+                <h3 className="text-2xl font-bold text-[#ea580c] mb-1">Aventura</h3>
+                <h4 className="text-xl font-bold text-[#ea580c]">jurásica</h4>
               </div>
-              <div className="h-48 bg-white rounded-xl flex items-center justify-center mb-4 p-4">
+              <div className="h-56 bg-white/80 rounded-2xl flex items-center justify-center mb-4 p-4 shadow-inner">
                 <Image
                   src="/cangrejo2.png"
                   alt="Cangrejo aventura jurásica"
-                  width={200}
-                  height={200}
-                  className="w-full h-full object-contain"
+                  width={220}
+                  height={220}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
-              <button className="w-full py-3 border-2 border-[#c8ddb5] text-[#6b8e5a] rounded-full font-semibold hover:bg-[#c8ddb5]/10 transition-colors flex items-center justify-center gap-2">
+              <button className="w-full py-3.5 bg-gradient-to-r from-[#ea580c] to-[#fb923c] text-white rounded-full font-bold text-base hover:shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                 </svg>
@@ -153,21 +153,21 @@ export default function Home() {
             </div>
 
             {/* Aventura del espacio */}
-            <div className="bg-white border-2 border-[#9ba3c0] rounded-2xl p-6 hover:shadow-xl transition-shadow">
-              <div className="text-center mb-4">
-                <h3 className="text-xl font-bold text-[#5d6b98] mb-2">Aventura</h3>
-                <h4 className="text-lg font-semibold text-[#5d6b98]">del espacio</h4>
+            <div className="group bg-gradient-to-br from-[#e0e7ff] to-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-4 border-[#6366f1]">
+              <div className="text-center mb-3">
+                <h3 className="text-2xl font-bold text-[#6366f1] mb-1">Aventura</h3>
+                <h4 className="text-xl font-bold text-[#4f46e5]">del espacio</h4>
               </div>
-              <div className="h-48 bg-white rounded-xl flex items-center justify-center mb-4 p-4">
+              <div className="h-56 bg-white/80 rounded-2xl flex items-center justify-center mb-4 p-4 shadow-inner">
                 <Image
                   src="/cangrejo3.png"
                   alt="Cangrejo aventura del espacio"
-                  width={200}
-                  height={200}
-                  className="w-full h-full object-contain"
+                  width={220}
+                  height={220}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
-              <button className="w-full py-3 border-2 border-[#9ba3c0] text-[#5d6b98] rounded-full font-semibold hover:bg-[#9ba3c0]/10 transition-colors flex items-center justify-center gap-2">
+              <button className="w-full py-3.5 bg-gradient-to-r from-[#6366f1] to-[#818cf8] text-white rounded-full font-bold text-base hover:shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                 </svg>
@@ -176,21 +176,21 @@ export default function Home() {
             </div>
 
             {/* Aventura encantada */}
-            <div className="bg-white border-2 border-[#e8b4c8] rounded-2xl p-6 hover:shadow-xl transition-shadow">
-              <div className="text-center mb-4">
-                <h3 className="text-xl font-bold text-[#c25b7d] mb-2">Aventura</h3>
-                <h4 className="text-lg font-semibold text-[#c25b7d]">encantada</h4>
+            <div className="group bg-gradient-to-br from-[#fce7f3] to-white rounded-3xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-4 border-[#ec4899]">
+              <div className="text-center mb-3">
+                <h3 className="text-2xl font-bold text-[#ec4899] mb-1">Aventura</h3>
+                <h4 className="text-xl font-bold text-[#db2777]">encantada</h4>
               </div>
-              <div className="h-48 bg-white rounded-xl flex items-center justify-center mb-4 p-4">
+              <div className="h-56 bg-white/80 rounded-2xl flex items-center justify-center mb-4 p-4 shadow-inner">
                 <Image
                   src="/cangrejo4.png"
                   alt="Cangrejo aventura encantada"
-                  width={200}
-                  height={200}
-                  className="w-full h-full object-contain"
+                  width={220}
+                  height={220}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
-              <button className="w-full py-3 border-2 border-[#e8b4c8] text-[#c25b7d] rounded-full font-semibold hover:bg-[#e8b4c8]/10 transition-colors flex items-center justify-center gap-2">
+              <button className="w-full py-3.5 bg-gradient-to-r from-[#ec4899] to-[#f472b6] text-white rounded-full font-bold text-base hover:shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                 </svg>
@@ -200,13 +200,13 @@ export default function Home() {
           </div>
 
           {/* Banner promocional */}
-          <div className="bg-gradient-to-r from-[#f4c542] to-[#e07856] rounded-2xl p-8 text-center shadow-xl">
+          <div className="bg-gradient-to-r from-[#fbbf24] to-[#f97316] rounded-2xl p-8 text-center shadow-xl">
             <div className="flex items-center justify-center gap-3 mb-3">
               <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
               </svg>
               <h3 className="text-3xl md:text-4xl font-bold text-white">
-                Junta las 4 experiencias y <span className="text-[#5d6b98]">llévate una sorpresa de Colorín</span>
+                Junta las 4 experiencias y <span className="text-[#6366f1]">llévate una sorpresa de Colorín</span>
               </h3>
               <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
