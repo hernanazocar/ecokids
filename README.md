@@ -2,6 +2,10 @@
 
 Sitio web para talleres infantiles creativos en Concón, V Región.
 
+🌐 **[Ver sitio en vivo](https://ecokids-two.vercel.app)**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/hernanazocar/ecokids)
+
 ## ✨ Características
 
 - 🎨 Diseño colorido y dinámico con animaciones CSS
