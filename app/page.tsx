@@ -136,14 +136,15 @@ export default function Home() {
             {/* Contenido */}
             <div className="relative z-10 px-5 md:px-8 lg:px-12 max-w-2xl space-y-2.5 md:space-y-4 w-full">
               <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight md:leading-[1.1] drop-shadow-sm">
-                <span className="text-gray-900">Donde la </span>
-                <span className="text-[#f97316] drop-shadow-md">creatividad</span>
+                <span className="text-gray-900">Un ratito sin </span>
+                <span className="text-[#f97316] drop-shadow-md">pantallas</span>
+                <span className="text-gray-900">,</span>
                 <br />
-                <span className="text-gray-900">no tiene </span>
-                <span className="text-[#6366f1] drop-shadow-md">fronteras.</span>
+                <span className="text-gray-900">un mundo de </span>
+                <span className="text-[#6366f1] drop-shadow-md">posibilidades</span>
               </h1>
               <p className="text-base md:text-lg lg:text-xl text-gray-800 leading-relaxed font-medium">
-                Experiencias educativas que inspiran, emocionan y dejan huellas para siempre.
+                Experiencias creativas para niños que quieren jugar, explorar y crear sin límites.
               </p>
               <div>
                 <button
@@ -156,38 +157,12 @@ export default function Home() {
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                   </svg>
-                  Reserva tu experiencia
+                  Descubre nuestras aventuras
                 </button>
 
                 {/* Social Proof */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4 text-xs md:text-sm">
-                  {/* Niños felices */}
-                  <div className="flex items-center gap-2">
-                    <div className="flex -space-x-2">
-                      <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 border-2 border-white flex items-center justify-center shadow-md">
-                        <span className="text-lg md:text-xl">😊</span>
-                      </div>
-                      <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 border-2 border-white flex items-center justify-center shadow-md">
-                        <span className="text-lg md:text-xl">🎨</span>
-                      </div>
-                      <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 border-2 border-white flex items-center justify-center shadow-md">
-                        <span className="text-lg md:text-xl">✨</span>
-                      </div>
-                    </div>
-                    <span className="text-gray-900 font-bold text-sm md:text-base">+100 niños felices</span>
-                  </div>
-
-                  {/* Estrellas */}
-                  <div className="flex items-center gap-1.5">
-                    <div className="flex gap-0.5">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-4 h-4 md:w-5 md:h-5 text-yellow-500 drop-shadow-md" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <span className="text-gray-900 font-bold text-sm md:text-base whitespace-nowrap">5.0 opiniones</span>
-                  </div>
+                <div className="text-base md:text-lg text-gray-800 font-semibold">
+                  Niños felices, familias felices ❤️
                 </div>
               </div>
             </div>
