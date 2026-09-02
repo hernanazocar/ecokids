@@ -727,7 +727,7 @@ export default function Home() {
                 className="flex-shrink-0 w-64 h-64 md:w-72 md:h-72 relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl hover:shadow-3xl transition-all cursor-pointer group border-2 md:border-4 border-white hover:border-pink-300 active:scale-95 md:hover:-translate-y-2 md:hover:rotate-1"
               >
                 <Image
-                  src={`/galeria/foto${num}.png`}
+                  src={`/fotos-galeria/foto${num}.png`}
                   alt={`Galería EcoKids ${num}`}
                   width={288}
                   height={288}
