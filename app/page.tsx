@@ -227,10 +227,9 @@ export default function Home() {
               <span className="text-xs md:text-sm font-bold">Experiencias</span>
             </div>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-3 md:mb-4 px-2">
-              <span className="text-gray-900">Participa en alguna de nuestras </span>
-              <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">experiencias</span>
+              <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">Elige tu próxima aventura 🗺️</span>
             </h2>
-            <p className="text-base md:text-xl text-gray-700 max-w-2xl mx-auto font-medium px-4">¡Cada aventura es única y emocionante!</p>
+            <p className="text-base md:text-xl text-gray-700 max-w-3xl mx-auto font-medium px-4">Cada experiencia EcoKids invita a los niños a entrar en un mundo diferente, donde jugar, crear y explorar son parte de la aventura.</p>
           </div>
 
           {/* Grid de experiencias mejorado */}
@@ -238,9 +237,8 @@ export default function Home() {
             {experiencias.map((exp, index) => (
               <div
                 key={exp.id}
-                className={`group relative bg-gradient-to-br ${exp.gradiente} rounded-2xl md:rounded-3xl p-4 md:p-5 shadow-lg md:shadow-xl hover:shadow-2xl hover:-translate-y-1 md:hover:-translate-y-3 transition-all duration-300 border-2 md:border-3 overflow-hidden cursor-pointer active:scale-95`}
+                className={`group relative bg-gradient-to-br ${exp.gradiente} rounded-2xl md:rounded-3xl p-4 md:p-5 shadow-lg md:shadow-xl hover:shadow-2xl transition-all duration-300 border-2 md:border-3 overflow-hidden`}
                 style={{borderColor: exp.color, borderWidth: '2px', animationDelay: `${index * 100}ms`}}
-                onClick={() => setSelectedExperience(exp.id)}
               >
                 {/* Decoración de esquina */}
                 <div className="absolute top-0 right-0 w-16 md:w-20 h-16 md:h-20 opacity-20" style={{background: exp.color, clipPath: 'polygon(100% 0, 0 0, 100% 100%)'}}></div>
@@ -332,7 +330,7 @@ export default function Home() {
                     <h3 className="text-lg font-bold text-orange-600">Hola, soy Flo</h3>
                   </div>
                   <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                    La persona detrás de EcoKids, apasionada por la educación y el arte. Creé este espacio para que cada niño descubra su creatividad sin límites.
+                    Después de tantos años trabajando con niños, quise crear algo propio: experiencias donde los niños no solo hagan una actividad, sino que se conviertan en protagonistas de una aventura.
                   </p>
                   <div className="inline-block px-3 py-1 bg-orange-100 rounded-full">
                     <span className="text-xs font-semibold text-orange-700">✨ Fundadora EcoKids</span>
@@ -359,7 +357,7 @@ export default function Home() {
                     <h3 className="text-lg font-bold text-purple-600">También soy mamá</h3>
                   </div>
                   <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                    Desde que llegaron mis hijos, entendí aún más lo importante que es regalarles tiempo de calidad, creatividad y recuerdos que duren para siempre.
+                    Ser mamá me hizo valorar aún más los espacios de conexión y juego, descubriendo que esa es la mayor muestra de amor.
                   </p>
                   <div className="flex gap-2">
                     <div className="px-2 py-1 bg-purple-100 rounded-lg">
@@ -429,7 +427,7 @@ export default function Home() {
                     <h3 className="text-lg font-bold text-blue-600">Creatividad sin fronteras</h3>
                   </div>
                   <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                    Participé en proyectos educativos con niños en Kenia, una experiencia transformadora que confirmó que el juego y el cariño hablan un idioma universal.
+                    Mi trabajo con niños en Kenia me enseñó que, aunque nuestras realidades sean diferentes, el juego, el arte y la creatividad tienen algo en común: nos conectan.
                   </p>
                   <div className="inline-block px-3 py-1 bg-blue-100 rounded-full">
                     <span className="text-xs font-semibold text-blue-700">🎨 El arte une culturas</span>
@@ -446,7 +444,7 @@ export default function Home() {
                   <h3 className="text-2xl font-bold text-orange-600">Así nació EcoKids</h3>
                 </div>
                 <p className="text-gray-800 font-medium mb-3 leading-relaxed max-w-3xl mx-auto">
-                  Después de tantos años trabajando con niños, soñaba con crear un espacio donde pudieran jugar, crear y compartir experiencias inolvidables. Un lugar donde la creatividad no tiene fronteras.
+                  Un espacio donde la creatividad y el juego son la clave para crear momentos que los niños recuerden. Porque un ratito sin pantallas, es un mundo de posibilidades.
                 </p>
                 <div className="flex gap-2 flex-wrap justify-center">
                   <div className="px-3 py-1 bg-white rounded-full shadow-sm border border-orange-200">
@@ -491,7 +489,7 @@ export default function Home() {
 
           {/* Grid de servicios */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {/* Servicio 1 - Talleres Creativos */}
+            {/* Servicio 1 - Aventuras EcoKids */}
             <div className="group relative bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-pink-300 hover:border-pink-400 hover:-translate-y-2 overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-200/40 to-rose-200/40 rounded-full blur-2xl"></div>
               <div className="relative flex-1 flex flex-col">
@@ -499,32 +497,18 @@ export default function Home() {
                   <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
                     <span className="text-3xl">🎨</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Talleres Creativos</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Aventuras EcoKids</h3>
                   <p className="text-gray-700 mb-4 leading-relaxed text-sm">
-                    Arte, manualidades y actividades que despiertan la imaginación sin límites.
+                    Experiencias temáticas donde los niños juegan, exploran y crean una pieza artística.
                   </p>
-                  <div className="space-y-2 mb-5">
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">🖌️</span>
-                      <span className="font-medium">Arte y pintura</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">✂️</span>
-                      <span className="font-medium">Manualidades</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">👐</span>
-                      <span className="font-medium">Juegos sensoriales</span>
-                    </div>
-                  </div>
                 </div>
-                <button className="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto">
-                  Ver Talleres
-                </button>
+                <a href="#experiencias" className="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-center">
+                  Descubrir aventuras
+                </a>
               </div>
             </div>
 
-            {/* Servicio 2 - Cumpleaños */}
+            {/* Servicio 2 - Cumpleaños EcoKids */}
             <div className="group relative bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-purple-300 hover:border-purple-400 hover:-translate-y-2 overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200/40 to-pink-200/40 rounded-full blur-2xl"></div>
               <div className="relative flex-1 flex flex-col">
@@ -532,102 +516,66 @@ export default function Home() {
                   <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
                     <span className="text-3xl">🎂</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Cumpleaños Especiales</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Cumpleaños EcoKids</h3>
                   <p className="text-gray-700 mb-4 leading-relaxed text-sm">
-                    Celebraciones mágicas con actividades temáticas que harán inolvidable su día.
+                    Celebraciones donde la creatividad es parte de la aventura.
                   </p>
-                  <div className="space-y-2 mb-5">
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">⏰</span>
-                      <span className="font-medium">3 horas de diversión</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">🎉</span>
-                      <span className="font-medium">15+ niños invitados</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">🎨</span>
-                      <span className="font-medium">Temáticas personalizadas</span>
-                    </div>
-                  </div>
                 </div>
-                <button className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto">
-                  Cotizar Ahora
+                <button
+                  onClick={() => {
+                    setReservaTipo('general');
+                    setShowReservaModal(true);
+                  }}
+                  className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto"
+                >
+                  Cotiza con nosotros
                 </button>
               </div>
             </div>
 
-            {/* Servicio 3 - Eventos Corporativos */}
+            {/* Servicio 3 - Experiencias para colegios y jardines */}
             <div className="group relative bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-300 hover:border-blue-400 hover:-translate-y-2 overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/40 to-cyan-200/40 rounded-full blur-2xl"></div>
               <div className="relative flex-1 flex flex-col">
                 <div className="flex-1">
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
-                    <span className="text-3xl">🏢</span>
+                    <span className="text-3xl">🏫</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Eventos Corporativos</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Experiencias para colegios y jardines</h3>
                   <p className="text-gray-700 mb-4 leading-relaxed text-sm">
-                    Actividades especiales para empresas y sus familias.
+                    Actividades diseñadas para grupos educativos.
                   </p>
-                  <div className="space-y-2 mb-5">
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">👨‍👩‍👧‍👦</span>
-                      <span className="font-medium">Family days</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">🎉</span>
-                      <span className="font-medium">Día del niño</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">✨</span>
-                      <span className="font-medium">A medida</span>
-                    </div>
-                  </div>
                 </div>
-                <button className="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto">
-                  Solicitar Info
-                </button>
+                <a href="#formulario-contacto" className="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-center">
+                  Contáctanos
+                </a>
               </div>
             </div>
 
-            {/* Servicio 4 - Experiencias Educativas */}
+            {/* Servicio 4 - Experiencias especiales */}
             <div className="group relative bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-green-300 hover:border-green-400 hover:-translate-y-2 overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-200/40 to-emerald-200/40 rounded-full blur-2xl"></div>
               <div className="relative flex-1 flex flex-col">
                 <div className="flex-1">
                   <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
-                    <span className="text-3xl">🎓</span>
+                    <span className="text-3xl">✨</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Experiencias Educativas</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">Experiencias especiales</h3>
                   <p className="text-gray-700 mb-4 leading-relaxed text-sm">
-                    Talleres escolares complementarios y jornadas especiales.
+                    Eventos familiares, empresas y celebraciones personalizadas.
                   </p>
-                  <div className="space-y-2 mb-5">
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">🏫</span>
-                      <span className="font-medium">Colegios, jardines y centros educativos</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">🎯</span>
-                      <span className="font-medium">Actividades extracurriculares</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-700 bg-white/60 rounded-lg px-3 py-2">
-                      <span className="text-lg">📚</span>
-                      <span className="font-medium">Programas a medida</span>
-                    </div>
-                  </div>
                 </div>
-                <button className="w-full py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto">
-                  Más Información
-                </button>
+                <a href="#formulario-contacto" className="w-full py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-center">
+                  Contáctanos
+                </a>
               </div>
             </div>
           </div>
 
           {/* Banner CTA */}
           <div className="bg-gradient-to-r from-pink-400 via-rose-400 to-orange-400 rounded-2xl p-8 text-white text-center shadow-lg">
-            <h3 className="text-2xl md:text-3xl font-bold mb-3">¿Buscas algo diferente?</h3>
-            <p className="text-lg mb-5 text-white/95">Creamos experiencias personalizadas para cada ocasión</p>
+            <h3 className="text-2xl md:text-3xl font-bold mb-3">¿Tienes una idea? La hacemos realidad ✨</h3>
+            <p className="text-lg mb-5 text-white/95">Cuéntanos qué tienes en mente y creemos juntos una experiencia EcoKids.</p>
             <button
               onClick={() => {
                 document.getElementById('formulario-contacto')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -741,7 +689,7 @@ export default function Home() {
                     </div>
                     <h3 className="text-xl font-black text-gray-900 mb-2">¡Disfruta!</h3>
                     <p className="text-sm text-gray-700 leading-relaxed font-medium">
-                      Llega el día y vive momentos inolvidables 🎉
+                      Nosotros nos encargamos de todo. Tú solo ven a disfrutar.
                     </p>
                   </div>
                 </div>
@@ -767,12 +715,8 @@ export default function Home() {
               <span className="text-sm font-bold">Galería</span>
             </div>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-3 md:mb-4 px-2">
-              <span className="text-gray-900">Momentos </span>
-              <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">mágicos</span>
+              <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">Así se vive una aventura EcoKids</span>
             </h2>
-            <p className="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
-              Capturados con todo el amor
-            </p>
           </div>
 
           {/* Carrusel con efectos */}
@@ -831,16 +775,16 @@ export default function Home() {
               <span className="text-sm font-bold">Testimonios</span>
             </div>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-3 md:mb-4 px-2">
-              <span className="text-gray-900">Familias </span>
-              <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">felices</span>
+              <span className="text-gray-900">Lo que dicen las familias </span>
+              <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">💛</span>
             </h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
-              Miles de papás y mamás confían en nosotros para crear momentos inolvidables
+              Experiencias que generan ECO de felicidad
             </p>
           </div>
 
-          {/* Testimonios Grid 2x2 */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {/* Testimonios Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Testimonio 1 */}
             <div className="relative bg-gradient-to-br from-orange-100 to-pink-100 border-3 border-orange-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
               <div className="flex gap-1 mb-4">
@@ -850,22 +794,9 @@ export default function Home() {
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-800 text-base mb-5 leading-relaxed font-medium flex-1">
+              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
                 "Hermosa experiencia para mi hija. Gracias por regalarles recuerdos tan lindos desde tan pequeñas. Como mamá, valoro profundamente que los niños tengan la oportunidad de explorar, divertirse y compartir con otros niños que aún no conocen."
               </p>
-              <div className="flex items-center gap-3 pt-4 border-t-2 border-orange-200 mt-auto">
-                <Image
-                  src="https://i.pravatar.cc/150?img=5"
-                  alt="Mamá de EcoKids"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full object-cover shadow-md border-2 border-orange-300"
-                />
-                <div>
-                  <div className="font-bold text-gray-900">Mamá de EcoKids</div>
-                  <div className="text-sm text-gray-600">Instagram</div>
-                </div>
-              </div>
             </div>
 
             {/* Testimonio 2 */}
@@ -877,22 +808,9 @@ export default function Home() {
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-800 text-base mb-5 leading-relaxed font-medium flex-1">
+              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
                 "Hermoso. Toda tu trayectoria como educadora se ve reflejada acá. Estoy segura que EcoKids va a ser un éxito. 100% recomendada."
               </p>
-              <div className="flex items-center gap-3 pt-4 border-t-2 border-purple-200 mt-auto">
-                <Image
-                  src="https://i.pravatar.cc/150?img=9"
-                  alt="Arangula"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full object-cover shadow-md border-2 border-purple-300"
-                />
-                <div>
-                  <div className="font-bold text-gray-900">Arangula</div>
-                  <div className="text-sm text-gray-600">Instagram</div>
-                </div>
-              </div>
             </div>
 
             {/* Testimonio 3 */}
@@ -904,25 +822,12 @@ export default function Home() {
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-800 text-base mb-5 leading-relaxed font-medium flex-1">
-                "Un gusto poder ser parte del proyecto. Todo muy lindo, los niños la pasaron genial. Llegaron a la casa a seguir pintando las figuritas que se llevaron."
+              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+                "Un gusto poder ser parte del proyecto todo muy lindo los niños la pasaron genial. Llegaron a la casa a seguir pintando las figuritas que se llevaron 😅🥰❤️"
               </p>
-              <div className="flex items-center gap-3 pt-4 border-t-2 border-blue-200 mt-auto">
-                <Image
-                  src="https://i.pravatar.cc/150?img=10"
-                  alt="Adriana"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full object-cover shadow-md border-2 border-blue-300"
-                />
-                <div>
-                  <div className="font-bold text-gray-900">Adriana</div>
-                  <div className="text-sm text-gray-600">Mamá participante</div>
-                </div>
-              </div>
             </div>
 
-            {/* Testimonio 4 - NUEVO */}
+            {/* Testimonio 4 */}
             <div className="relative bg-gradient-to-br from-green-100 to-emerald-100 border-3 border-green-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -931,69 +836,37 @@ export default function Home() {
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-800 text-base mb-5 leading-relaxed font-medium flex-1">
+              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+                "Hola, Flo. A los niños les encantó, sobre todo a Gabriel. A Gabriel igual le cuesta bastante quedarse quietito y tomar atención, y me llamó mucho la atención que, para lo desordenado que es, a ti te hizo bastante caso 😂....Pero todo bacán. Muchas gracias por todo ❤️."
+              </p>
+            </div>
+
+            {/* Testimonio 5 */}
+            <div className="relative bg-gradient-to-br from-pink-100 to-rose-100 border-3 border-pink-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+                "Hola Floooo muchas gracias a tiii, estuvo muy lindo y las niñas lo gozaron!!! Nos encantó todo!!"
+              </p>
+            </div>
+
+            {/* Testimonio 6 */}
+            <div className="relative bg-gradient-to-br from-yellow-100 to-orange-100 border-3 border-yellow-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
                 "Mi hija no para de hablar de los talleres. La creatividad y el cariño con que trabajan es increíble. ¡Totalmente recomendado para mamás que buscan actividades de calidad!"
               </p>
-              <div className="flex items-center gap-3 pt-4 border-t-2 border-green-200 mt-auto">
-                <Image
-                  src="https://i.pravatar.cc/150?img=47"
-                  alt="Carolina"
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full object-cover shadow-md border-2 border-green-300"
-                />
-                <div>
-                  <div className="font-bold text-gray-900">Carolina</div>
-                  <div className="text-sm text-gray-600">Mamá feliz</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats - Compactos y Divertidos */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {/* Stat 1 - Familias Felices */}
-            <div className="group relative text-center bg-gradient-to-br from-orange-100 to-pink-100 rounded-2xl p-4 border-2 border-orange-300 shadow-md hover:shadow-lg transition-all hover:-translate-y-1">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-orange-400 to-pink-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all">
-                <span className="text-2xl">😊</span>
-              </div>
-              <div className="mt-6">
-                <div className="text-3xl font-black text-orange-600 mb-1">2000+</div>
-                <div className="text-xs text-gray-800 font-bold">Familias Felices</div>
-              </div>
-            </div>
-
-            {/* Stat 2 - Calificación */}
-            <div className="group relative text-center bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl p-4 border-2 border-purple-300 shadow-md hover:shadow-lg transition-all hover:-translate-y-1">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all">
-                <span className="text-2xl">⭐</span>
-              </div>
-              <div className="mt-6">
-                <div className="text-3xl font-black text-purple-600 mb-1">5.0</div>
-                <div className="text-xs text-gray-800 font-bold">Calificación Promedio</div>
-              </div>
-            </div>
-
-            {/* Stat 3 - Recomendación */}
-            <div className="group relative text-center bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl p-4 border-2 border-blue-300 shadow-md hover:shadow-lg transition-all hover:-translate-y-1">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all">
-                <span className="text-2xl">👍</span>
-              </div>
-              <div className="mt-6">
-                <div className="text-3xl font-black text-blue-600 mb-1">98%</div>
-                <div className="text-xs text-gray-800 font-bold">Recomendación</div>
-              </div>
-            </div>
-
-            {/* Stat 4 - Talleres */}
-            <div className="group relative text-center bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl p-4 border-2 border-green-300 shadow-md hover:shadow-lg transition-all hover:-translate-y-1">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all">
-                <span className="text-2xl">🎨</span>
-              </div>
-              <div className="mt-6">
-                <div className="text-3xl font-black text-green-600 mb-1">500+</div>
-                <div className="text-xs text-gray-800 font-bold">Talleres Realizados</div>
-              </div>
             </div>
           </div>
 
@@ -1062,7 +935,7 @@ export default function Home() {
               </div>
               <div className={`overflow-hidden transition-all ${openFaq === 1 ? 'max-h-96' : 'max-h-0'}`}>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  Los talleres regulares tienen una duración de 1.5 a 2 horas de pura creatividad. Las celebraciones de cumpleaños pueden durar hasta 3 horas, incluyendo tiempo para la torta y la celebración.
+                  Las experiencias tienen una duración de 2 horas aproximadamente. Los cumpleaños pueden durar hasta 3 horas, incluyendo tiempo para la celebración.
                 </p>
               </div>
             </div>
@@ -1104,7 +977,7 @@ export default function Home() {
               </div>
               <div className={`overflow-hidden transition-all ${openFaq === 3 ? 'max-h-96' : 'max-h-0'}`}>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  Puedes reservar fácilmente por WhatsApp, Instagram o llenando nuestro formulario de contacto. Te confirmaremos disponibilidad en menos de 24 horas.
+                  Puedes reservar fácilmente por WhatsApp, Instagram o llenando nuestro formulario de contacto. Te contactaremos a la brevedad.
                 </p>
               </div>
             </div>
@@ -1194,11 +1067,10 @@ export default function Home() {
               <span className="text-sm font-bold">Contacto</span>
             </div>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-3 md:mb-4 px-2">
-              <span className="text-gray-900">¿Listo para </span>
-              <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">comenzar?</span>
+              <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">¿Listos para vivir la próxima aventura? 🧡</span>
             </h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
-              Contáctanos y agenda tu próxima experiencia
+              Escríbenos y te ayudamos a encontrar la experiencia perfecta para tu hijo.
             </p>
           </div>
 
@@ -1220,11 +1092,13 @@ export default function Home() {
                   ¡Respuesta inmediata!
                 </p>
                 <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 mb-3 border-2 border-green-300 shadow-md">
-                  <p className="text-green-900 font-bold text-center text-sm">+56 9 XXXX XXXX</p>
+                  <p className="text-green-900 font-bold text-center text-sm">+56 9 2008 9281</p>
                 </div>
-                <button className="w-full py-2.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white rounded-xl font-bold hover:shadow-lg transition-all hover:scale-105 text-sm">
-                  Enviar mensaje 📱
-                </button>
+                <a href="https://wa.me/56920089281" target="_blank" rel="noopener noreferrer" className="w-full block">
+                  <button className="w-full py-2.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white rounded-xl font-bold hover:shadow-lg transition-all hover:scale-105 text-sm">
+                    Quiero reservar →
+                  </button>
+                </a>
               </div>
             </div>
 
@@ -1370,9 +1244,10 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Servicios</h4>
               <ul className="space-y-2 text-white/90">
-                <li><a href="#servicios" className="hover:text-white transition-colors">Talleres Creativos</a></li>
+                <li><a href="#experiencias" className="hover:text-white transition-colors">Aventuras</a></li>
                 <li><a href="#servicios" className="hover:text-white transition-colors">Cumpleaños</a></li>
-                <li><a href="#servicios" className="hover:text-white transition-colors">Bajo el Mar</a></li>
+                <li><a href="#servicios" className="hover:text-white transition-colors">Experiencias educativas</a></li>
+                <li><a href="#servicios" className="hover:text-white transition-colors">Eventos personalizados</a></li>
               </ul>
             </div>
 
