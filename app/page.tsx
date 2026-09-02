@@ -142,8 +142,9 @@ export default function Home() {
               <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium">
                 EcoKids un lugar donde los niños y niñas, exploran, juegan y conectan.
               </p>
-              <p className="text-sm md:text-base text-gray-600 font-medium italic">
-                "Un ratito sin pantallas...."
+              <p className="text-base md:text-lg font-bold">
+                <span className="text-gray-700">Un ratito sin pantallas, un mundo de </span>
+                <span className="text-[#f97316]">posibilidades</span>
               </p>
               <p className="text-sm md:text-base text-gray-600 font-medium flex items-center gap-1 mt-2">
                 📍 Concón, V Región
