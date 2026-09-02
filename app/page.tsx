@@ -197,7 +197,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-3 md:mb-4 px-2">
               <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">Elige tu próxima aventura ✨</span>
             </h2>
-            <p className="text-base md:text-xl text-gray-700 max-w-3xl mx-auto font-medium px-4">Cada experiencia EcoKids invita a los niños a entrar en un mundo diferente, donde jugar, crear y explorar son parte de la aventura.</p>
+            <p className="text-base md:text-xl text-gray-700 max-w-3xl mx-auto font-medium px-4">Colorín invita a los niños a entrar en un mundo diferente conectando con el juego, la creatividad y la alegría de explorar algo nuevo</p>
           </div>
 
           {/* Grid de experiencias mejorado */}
