@@ -979,7 +979,7 @@ export default function Home() {
               </div>
               <div className={`overflow-hidden transition-all ${openFaq === 5 ? 'max-h-96' : 'max-h-0'}`}>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  Los precios varían según el tipo de taller, número de niños y duración. Contáctanos y te enviaremos una cotización personalizada que se ajuste a tus necesidades.
+                  Los precios varían según el tipo de experiencia, número de niños y duración. Contáctanos y te enviaremos una cotización personalizada que se ajuste a tus necesidades.
                 </p>
               </div>
             </div>
