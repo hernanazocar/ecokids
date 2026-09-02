@@ -454,7 +454,7 @@ export default function Home() {
               <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-orange-500 bg-clip-text text-transparent">únicas</span>
             </h2>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
-              Talleres creativos y celebraciones inolvidables diseñadas para inspirar
+              Ecokids te acompaña en tus celebraciones y te invita a vivir momentos inolvidables
             </p>
           </div>
 
