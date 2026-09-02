@@ -795,32 +795,35 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Testimonio 4 */}
-            <div className="relative bg-gradient-to-br from-green-100 to-emerald-100 border-3 border-green-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col lg:col-start-2">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+            {/* Wrapper para centrar los dos últimos testimonios */}
+            <div className="lg:col-span-3 flex flex-col md:flex-row justify-center gap-6">
+              {/* Testimonio 4 */}
+              <div className="relative bg-gradient-to-br from-green-100 to-emerald-100 border-3 border-green-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col lg:max-w-[calc(33.333%-0.75rem)]">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+                  "Hola, Flo. A los niños les encantó, sobre todo a Gabriel. A Gabriel igual le cuesta bastante quedarse quietito y tomar atención, y me llamó mucho la atención que, para lo desordenado que es, a ti te hizo bastante caso 😂....Pero todo bacán. Muchas gracias por todo ❤️."
+                </p>
               </div>
-              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
-                "Hola, Flo. A los niños les encantó, sobre todo a Gabriel. A Gabriel igual le cuesta bastante quedarse quietito y tomar atención, y me llamó mucho la atención que, para lo desordenado que es, a ti te hizo bastante caso 😂....Pero todo bacán. Muchas gracias por todo ❤️."
-              </p>
-            </div>
 
-            {/* Testimonio 5 */}
-            <div className="relative bg-gradient-to-br from-pink-100 to-rose-100 border-3 border-pink-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+              {/* Testimonio 5 */}
+              <div className="relative bg-gradient-to-br from-pink-100 to-rose-100 border-3 border-pink-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col lg:max-w-[calc(33.333%-0.75rem)]">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+                  "Hola Floooo muchas gracias a tiii, estuvo muy lindo y las niñas lo gozaron!!! Nos encantó todo!!"
+                </p>
               </div>
-              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
-                "Hola Floooo muchas gracias a tiii, estuvo muy lindo y las niñas lo gozaron!!! Nos encantó todo!!"
-              </p>
             </div>
           </div>
 
