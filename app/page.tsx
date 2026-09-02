@@ -159,11 +159,6 @@ export default function Home() {
                   </svg>
                   Descubre nuestras aventuras
                 </button>
-
-                {/* Social Proof */}
-                <div className="text-base md:text-lg text-gray-800 font-semibold">
-                  Niños felices, familias felices ❤️
-                </div>
               </div>
             </div>
           </div>
