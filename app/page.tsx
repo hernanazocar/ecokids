@@ -822,20 +822,6 @@ export default function Home() {
                 "Hola Floooo muchas gracias a tiii, estuvo muy lindo y las niñas lo gozaron!!! Nos encantó todo!!"
               </p>
             </div>
-
-            {/* Testimonio 6 */}
-            <div className="relative bg-gradient-to-br from-yellow-100 to-orange-100 border-3 border-yellow-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
-                "Mi hija no para de hablar de los talleres. La creatividad y el cariño con que trabajan es increíble. ¡Totalmente recomendado para mamás que buscan actividades de calidad!"
-              </p>
-            </div>
           </div>
 
         </div>
@@ -1345,8 +1331,8 @@ export default function Home() {
 
       {/* Modal de Reserva */}
       {showReservaModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-0 md:p-4">
-          <div className="bg-white rounded-t-3xl md:rounded-3xl max-w-2xl w-full h-full md:h-auto md:max-h-[90vh] overflow-y-auto shadow-2xl animate-in fade-in zoom-in duration-300">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-0 md:p-4 overflow-y-auto">
+          <div className="bg-white rounded-t-3xl md:rounded-3xl max-w-2xl w-full h-full md:h-auto md:max-h-[90vh] overflow-y-auto shadow-2xl animate-in fade-in zoom-in duration-300 mx-auto">
             {/* Header del modal */}
             <div className="sticky top-0 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white px-4 md:px-8 py-4 md:py-6 rounded-t-3xl flex items-center justify-between">
               <div className="flex items-center gap-2 md:gap-3 flex-1 min-w-0">
@@ -1411,8 +1397,8 @@ export default function Home() {
             })()}
 
             {/* Formulario */}
-            <form className="p-4 md:p-8 space-y-4 md:space-y-5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+            <form className="p-5 md:p-8 space-y-4 md:space-y-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">
                     Nombre del padre/madre *
@@ -1449,7 +1435,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">
                     Nombre del niño/a *
@@ -1476,7 +1462,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">
                     Número de niños *
@@ -1526,7 +1512,7 @@ export default function Home() {
                 ></textarea>
               </div>
 
-              <div className="flex gap-3 pt-4">
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <button
                   type="button"
                   onClick={() => {
