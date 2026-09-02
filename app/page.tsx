@@ -144,6 +144,9 @@ export default function Home() {
               <p className="text-base md:text-lg lg:text-xl text-gray-800 leading-relaxed font-medium">
                 Experiencias creativas para niños que quieren jugar, explorar y crear sin límites.
               </p>
+              <p className="text-sm md:text-base text-gray-600 font-medium flex items-center gap-1">
+                📍 Concón, V Región
+              </p>
               <div>
                 <button
                   onClick={() => {
