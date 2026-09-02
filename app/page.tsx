@@ -796,7 +796,7 @@ export default function Home() {
             </div>
 
             {/* Testimonio 4 */}
-            <div className="relative bg-gradient-to-br from-green-100 to-emerald-100 border-3 border-green-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
+            <div className="relative bg-gradient-to-br from-green-100 to-emerald-100 border-3 border-green-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col lg:col-start-2">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
