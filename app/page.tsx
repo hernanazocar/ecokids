@@ -239,18 +239,18 @@ export default function Home() {
                 </div>
 
                 {/* Botón mejorado */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedExperience(exp.id);
-                  }}
-                  className={`w-full py-2.5 md:py-3 bg-gradient-to-r ${exp.gradienteBoton} text-white rounded-xl md:rounded-2xl font-black text-xs md:text-sm hover:shadow-xl active:scale-95 md:hover:scale-105 transition-all flex items-center justify-center gap-1.5 md:gap-2 shadow-lg`}
+                <div
+                  className={`w-full py-2.5 md:py-3 bg-gradient-to-r ${(exp.id === 1 || exp.id === 2) ? 'from-gray-400 to-gray-500' : 'from-purple-400 to-purple-500'} text-white rounded-xl md:rounded-2xl font-black text-xs md:text-sm shadow-lg flex items-center justify-center gap-1.5 md:gap-2 opacity-80 cursor-default`}
                 >
                   <svg className="w-3.5 h-3.5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                    {(exp.id === 1 || exp.id === 2) ? (
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    ) : (
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                    )}
                   </svg>
-                  <span>Más información</span>
-                </button>
+                  <span>{(exp.id === 1 || exp.id === 2) ? 'Ya vivimos esta aventura' : 'Próximamente'}</span>
+                </div>
               </div>
             ))}
           </div>
