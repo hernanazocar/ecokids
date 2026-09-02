@@ -377,13 +377,13 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 4. Creatividad sin fronteras */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-blue-200 hover:shadow-xl transition-all">
+            {/* 4. Él es Colorín */}
+            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-orange-200 hover:shadow-xl transition-all">
               <div className="flex gap-4">
                 <div className="w-32 h-40 flex-shrink-0">
                   <Image
-                    src="/historia/kenia.png"
-                    alt="Kenia"
+                    src="/colorin.jpeg"
+                    alt="Colorín"
                     width={128}
                     height={160}
                     className="rounded-xl w-full h-full object-cover shadow-md"
@@ -391,14 +391,14 @@ export default function Home() {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">🌍</span>
-                    <h3 className="text-lg font-bold text-blue-600">Creatividad sin fronteras</h3>
+                    <span className="text-2xl">🦀</span>
+                    <h3 className="text-lg font-bold text-orange-600">Él es Colorín</h3>
                   </div>
                   <p className="text-sm text-gray-700 mb-3 leading-relaxed">
-                    Mi trabajo con niños en Kenia me enseñó que, aunque nuestras realidades sean diferentes, el juego, el arte y la creatividad tienen algo en común: nos conectan.
+                    Colorín nació para acompañar a los niños en cada experiencia EcoKids. Es quien los invita a descubrir, imaginar, crear y, sobre todo, a disfrutar del camino.
                   </p>
-                  <div className="inline-block px-3 py-1 bg-blue-100 rounded-full">
-                    <span className="text-xs font-semibold text-blue-700">🎨 El arte une culturas</span>
+                  <div className="inline-block px-3 py-1 bg-orange-100 rounded-full">
+                    <span className="text-xs font-semibold text-orange-700">🎨 Compañero de aventuras</span>
                   </div>
                 </div>
               </div>
