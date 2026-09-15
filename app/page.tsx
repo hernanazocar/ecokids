@@ -1592,7 +1592,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* Chatbot Cangrejín */}
+      {/* Chatbot Colorín */}
       <div className="fixed bottom-6 right-6 z-50">
         {/* Botón del cangrejo con gradiente vibrante */}
         <div className="relative">
@@ -1603,7 +1603,7 @@ export default function Home() {
             <div className="w-full h-full bg-pink-200/70 rounded-full flex items-center justify-center">
               <img
                 src="/botoncangejin.png"
-                alt="Cangrejín"
+                alt="Colorín"
                 className="w-14 h-14 object-contain group-hover:scale-110 group-hover:rotate-6 transition-transform drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
               />
             </div>
@@ -1623,10 +1623,10 @@ export default function Home() {
             <div className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 p-5 flex items-center justify-between flex-shrink-0">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg p-1.5">
-                  <img src="/botoncangejin.png" alt="Cangrejín" className="w-full h-full object-contain" />
+                  <img src="/botoncangejin.png" alt="Colorín" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <h3 className="text-white font-bold text-lg">Cangrejín AI</h3>
+                  <h3 className="text-white font-bold text-lg">Colorín AI</h3>
                   <div className="flex items-center gap-1.5">
                     <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></span>
                     <p className="text-white/90 text-xs font-medium">En línea</p>
@@ -1655,13 +1655,13 @@ export default function Home() {
                   {/* Avatar + mensaje */}
                   <div className="flex gap-3 items-start">
                     <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg ring-2 ring-orange-200 p-1.5">
-                      <img src="/botoncangejin.png" alt="Cangrejín" className="w-full h-full object-contain" />
+                      <img src="/botoncangejin.png" alt="Colorín" className="w-full h-full object-contain" />
                     </div>
                     <div className="flex-1 bg-white rounded-2xl rounded-tl-sm p-4 shadow-lg border border-gray-200/50">
                       <p className="text-sm text-gray-800 leading-relaxed">
                         <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-pink-600">¡Hola! 👋 ¡Qué alegría verte por aquí!</span>
                         <br />
-                        Soy <span className="font-semibold text-orange-600">Cangrejín</span>, tu amigo de EcoKids. ¿En qué puedo ayudarte hoy? 😊
+                        Soy <span className="font-semibold text-orange-600">Colorín</span>, tu amigo de EcoKids. ¿En qué puedo ayudarte hoy? 😊
                       </p>
                     </div>
                   </div>
@@ -1696,7 +1696,7 @@ export default function Home() {
                               setIsTyping(false);
 
                               // Es la primera interacción porque chatMessages está vacío
-                              const saludo = "¡Hola! Soy Cangrejín 🦀 ";
+                              const saludo = "¡Hola! Soy Colorín 🦀 ";
                               let response = "";
 
                               if (lowerMsg.includes('edad')) {
@@ -1738,7 +1738,7 @@ export default function Home() {
                     {msg.role === 'user' ? (
                       <span className="text-lg">👤</span>
                     ) : (
-                      <img src="/botoncangejin.png" alt="Cangrejín" className="w-full h-full object-contain" />
+                      <img src="/botoncangejin.png" alt="Colorín" className="w-full h-full object-contain" />
                     )}
                   </div>
 
@@ -1757,7 +1757,7 @@ export default function Home() {
               {isTyping && (
                 <div className="flex gap-3 items-start animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-md ring-2 ring-orange-200 p-1.5">
-                    <img src="/botoncangejin.png" alt="Cangrejín" className="w-full h-full object-contain" />
+                    <img src="/botoncangejin.png" alt="Colorín" className="w-full h-full object-contain" />
                   </div>
                   <div className="bg-white rounded-2xl rounded-tl-sm p-4 shadow-md border border-gray-200/50">
                     <div className="flex gap-1.5">
@@ -1792,7 +1792,7 @@ export default function Home() {
 
                     // Detectar si es la primera interacción (solo hay 1 mensaje: el del usuario)
                     const esPrimeraInteraccion = chatMessages.length === 1;
-                    const saludo = esPrimeraInteraccion ? "¡Hola! Soy Cangrejín 🦀 " : "";
+                    const saludo = esPrimeraInteraccion ? "¡Hola! Soy Colorín 🦀 " : "";
 
                     let response = saludo + "Disculpa, no entendí muy bien tu mensaje. 😅 ¿Podrías decirme de otra forma en qué puedo ayudarte? Puedo contarte sobre nuestras experiencias, precios, ubicación o cómo reservar. ¿Qué te gustaría saber?";
 
@@ -1821,7 +1821,7 @@ export default function Home() {
                     } else if (lowerMsg.includes('precio') || lowerMsg.includes('cost') || lowerMsg.includes('valor')) {
                       response = saludo + "Los precios varían según la experiencia y cantidad de niños. 💰 Para darte un precio exacto, ¿me cuentas cuántos niños serían y qué tipo de experiencia te interesa? También puedes escribirnos por WhatsApp (+56 9 2008 9281) y te armamos una cotización personalizada al toque.";
                     } else if (lowerMsg.includes('hola') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
-                      response = "¡Hola! 👋 ¡Qué alegría verte por aquí! Soy Cangrejín, tu amigo cangrejo 🦀 y asistente de EcoKids. Estoy aquí para ayudarte. ¿Qué te gustaría saber sobre nuestras experiencias creativas? ¿O prefieres que te cuente qué hacemos?";
+                      response = "¡Hola! 👋 ¡Qué alegría verte por aquí! Soy Colorín, tu amigo cangrejo 🦀 y asistente de EcoKids. Estoy aquí para ayudarte. ¿Qué te gustaría saber sobre nuestras experiencias creativas? ¿O prefieres que te cuente qué hacemos?";
                     } else if (lowerMsg.includes('gracias') || lowerMsg.includes('thanks') || lowerMsg.includes('perfecto') || lowerMsg.includes('excelente')) {
                       response = "¡De nada! 😊 ¡Fue un placer ayudarte! Estoy aquí para lo que necesites. ¿Hay algo más en lo que pueda ayudarte o ya estamos listos?";
                     } else if (lowerMsg.includes('adiós') || lowerMsg.includes('adios') || lowerMsg.includes('chao') || lowerMsg.includes('hasta luego') ||
@@ -1852,7 +1852,7 @@ export default function Home() {
                   </svg>
                 </button>
               </form>
-              <p className="text-xs text-gray-400 text-center mt-2.5 font-medium">Powered by Cangrejín AI 🦀✨</p>
+              <p className="text-xs text-gray-400 text-center mt-2.5 font-medium">Powered by Colorín AI 🦀✨</p>
             </div>
           </div>
         )}
