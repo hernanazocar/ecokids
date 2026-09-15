@@ -716,7 +716,7 @@ export default function Home() {
                 className="flex-shrink-0 w-56 h-56 md:w-64 md:h-64 relative rounded-2xl overflow-hidden shadow-lg md:shadow-xl hover:shadow-2xl transition-all cursor-pointer group border-2 border-white hover:border-pink-300 active:scale-95 md:hover:-translate-y-2 md:hover:rotate-1"
               >
                 <img
-                  src={`/Galeria/${foto}`}
+                  src={`/Galeria/${encodeURIComponent(foto)}`}
                   alt={`Galería EcoKids ${index + 1}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
