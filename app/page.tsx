@@ -1655,9 +1655,7 @@ export default function Home() {
                       <p className="text-sm text-gray-800 leading-relaxed">
                         <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-pink-600">¡Hola! 👋 ¡Qué alegría verte por aquí!</span>
                         <br />
-                        Soy <span className="font-semibold text-orange-600">Cangrejín</span>, tu amigo cangrejo 🦀 y asistente de EcoKids. Estoy aquí para ayudarte a descubrir nuestras increíbles experiencias creativas para niños.
-                        <br /><br />
-                        ¿En qué puedo ayudarte hoy? 😊
+                        Soy <span className="font-semibold text-orange-600">Cangrejín</span>, tu amigo de EcoKids. ¿En qué puedo ayudarte hoy? 😊
                       </p>
                     </div>
                   </div>
@@ -1670,21 +1668,46 @@ export default function Home() {
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        { q: "¿Edades?", full: "¿Qué edades aceptan?", a: "¡Qué bueno que preguntes! 😄 Nuestras experiencias son perfectas para niños de 3 a 12 años. Adaptamos cada actividad según la edad de tu peque. ¿Qué edad tiene tu pequeño aventurero? ¿Te gustaría saber sobre alguna experiencia en particular?" },
-                        { q: "¿Duración?", full: "¿Cuánto dura cada experiencia?", a: "Las experiencias duran aproximadamente 2 horas de pura diversión. 🎨 Si es un cumpleaños, pueden durar hasta 3 horas. ¿Te interesa reservar? ¿Quieres saber qué actividades incluimos?" },
-                        { q: "¿Qué incluye?", full: "¿Qué incluye?", a: "¡Lo mejor de todo! Todos los materiales están 100% incluidos. 🎨✨ Los niños solo traen sus ganas de crear y nosotros ponemos todo lo demás. ¿Te gustaría conocer más sobre alguna experiencia específica?" },
-                        { q: "¿Cómo reservo?", full: "¿Cómo reservo?", a: "¡Me encanta tu entusiasmo! 🎉 Puedes reservar súper fácil por WhatsApp (+56 9 2008 9281), Instagram (@ecokids.experiencias) o llenando nuestro formulario. ¿Para cuándo estás pensando?" },
-                        { q: "¿Ubicación?", full: "¿Dónde están ubicados?", a: "¡Estamos en Concón, V Región! 🏖️ Un lugar hermoso junto al mar. ¿Te queda cerca? ¿Quieres que te cuente cómo llegar?" },
-                        { q: "¿Cumpleaños?", full: "¿Hacen cumpleaños?", a: "¡Sííí! 🎉 Los cumpleaños son nuestra especialidad. Hacemos celebraciones donde la creatividad es la estrella. ¿Para cuándo sería? ¿Cuántos invitados?" }
+                        { q: "¿Edades?", full: "¿Qué edades aceptan?" },
+                        { q: "¿Duración?", full: "¿Cuánto dura cada experiencia?" },
+                        { q: "¿Qué incluye?", full: "¿Qué incluye?" },
+                        { q: "¿Cómo reservo?", full: "¿Cómo reservo?" },
+                        { q: "¿Ubicación?", full: "¿Dónde están ubicados?" },
+                        { q: "¿Cumpleaños?", full: "¿Hacen cumpleaños?" }
                       ].map((item, index) => (
                         <button
                           key={index}
                           onClick={() => {
-                            setChatMessages([{role: 'user', text: item.full}]);
+                            const message = item.full;
+                            const lowerMsg = message.toLowerCase();
+
+                            // Agregar mensaje del usuario
+                            setChatMessages([{role: 'user', text: message}]);
                             setIsTyping(true);
+
+                            // Procesar respuesta
                             setTimeout(() => {
                               setIsTyping(false);
-                              setChatMessages(prev => [...prev, {role: 'bot', text: item.a}]);
+
+                              // Es la primera interacción porque chatMessages está vacío
+                              const saludo = "¡Hola! Soy Cangrejín 🦀 ";
+                              let response = "";
+
+                              if (lowerMsg.includes('edad')) {
+                                response = saludo + "¡Qué bueno que preguntes! 😄 Nuestras experiencias son perfectas para niños de 3 a 12 años. Adaptamos cada actividad según la edad de tu peque. ¿Qué edad tiene tu pequeño aventurero? ¿Te gustaría saber sobre alguna experiencia en particular?";
+                              } else if (lowerMsg.includes('dur') || lowerMsg.includes('tiempo') || lowerMsg.includes('hora')) {
+                                response = saludo + "Las experiencias duran aproximadamente 2 horas de pura diversión. 🎨 Si es un cumpleaños, pueden durar hasta 3 horas. ¿Te interesa reservar? ¿Quieres saber qué actividades incluimos?";
+                              } else if (lowerMsg.includes('incluye') || lowerMsg.includes('material')) {
+                                response = saludo + "¡Lo mejor de todo! Todos los materiales están 100% incluidos. 🎨✨ Los niños solo traen sus ganas de crear y nosotros ponemos todo lo demás. ¿Te gustaría conocer más sobre alguna experiencia específica?";
+                              } else if (lowerMsg.includes('reserv') || lowerMsg.includes('cómo')) {
+                                response = saludo + "¡Me encanta tu entusiasmo! 🎉 Puedes reservar súper fácil por WhatsApp (+56 9 2008 9281), Instagram (@ecokids.experiencias) o llenando nuestro formulario. ¿Para cuándo estás pensando?";
+                              } else if (lowerMsg.includes('ubic') || lowerMsg.includes('dónde') || lowerMsg.includes('donde')) {
+                                response = saludo + "¡Estamos en Concón, V Región! 🏖️ Un lugar hermoso junto al mar. ¿Te queda cerca? ¿Quieres que te cuente cómo llegar?";
+                              } else if (lowerMsg.includes('cumpleaños') || lowerMsg.includes('cumple')) {
+                                response = saludo + "¡Sííí! 🎉 Los cumpleaños son nuestra especialidad. Hacemos celebraciones donde la creatividad es la estrella. ¿Para cuándo sería? ¿Cuántos invitados?";
+                              }
+
+                              setChatMessages(prev => [...prev, {role: 'bot', text: response}]);
                             }, 1200);
                           }}
                           className="px-3 py-1.5 bg-white hover:bg-gradient-to-r hover:from-orange-50 hover:to-pink-50 rounded-full transition-all text-xs text-gray-700 font-medium border border-gray-200 hover:border-orange-300 hover:shadow-md hover:-translate-y-0.5 duration-200"
@@ -1757,32 +1780,37 @@ export default function Home() {
                   setTimeout(() => {
                     setIsTyping(false);
                     const lowerMsg = message.toLowerCase();
-                    let response = "¡Hola! Soy Cangrejín 🦀 Disculpa, no entendí muy bien tu mensaje. 😅 ¿Podrías decirme de otra forma en qué puedo ayudarte? Puedo contarte sobre nuestras experiencias, precios, ubicación o cómo reservar. ¿Qué te gustaría saber?";
+
+                    // Detectar si es la primera interacción (solo hay 1 mensaje: el del usuario)
+                    const esPrimeraInteraccion = chatMessages.length === 1;
+                    const saludo = esPrimeraInteraccion ? "¡Hola! Soy Cangrejín 🦀 " : "";
+
+                    let response = saludo + "Disculpa, no entendí muy bien tu mensaje. 😅 ¿Podrías decirme de otra forma en qué puedo ayudarte? Puedo contarte sobre nuestras experiencias, precios, ubicación o cómo reservar. ¿Qué te gustaría saber?";
 
                     // Detectar días de la semana y fechas
                     if (lowerMsg.includes('lunes') || lowerMsg.includes('martes') || lowerMsg.includes('miercoles') || lowerMsg.includes('miércoles') ||
                         lowerMsg.includes('jueves') || lowerMsg.includes('viernes') || lowerMsg.includes('sabado') || lowerMsg.includes('sábado') ||
                         lowerMsg.includes('domingo') || lowerMsg.includes('este') || lowerMsg.includes('próximo') || lowerMsg.includes('proximo') ||
                         lowerMsg.match(/\d+/)) {
-                      response = "¡Hola! Soy Cangrejín 🦀 ¡Perfecto! 🎉 Me encanta que estés organizando esto. Para confirmar la disponibilidad y coordinar todos los detalles, ¿te parece si hablamos por WhatsApp? Puedes escribirnos al +56 9 2008 9281 y te ayudamos al toque. ¿Cuántos niños serían aproximadamente?";
+                      response = saludo + "¡Perfecto! 🎉 Me encanta que estés organizando esto. Para confirmar la disponibilidad y coordinar todos los detalles, ¿te parece si hablamos por WhatsApp? Puedes escribirnos al +56 9 2008 9281 y te ayudamos al toque. ¿Cuántos niños serían aproximadamente?";
                     } else if (lowerMsg.includes('sí') || lowerMsg.includes('si') || lowerMsg.includes('dale') || lowerMsg.includes('ok') || lowerMsg.includes('bueno')) {
-                      response = "¡Hola! Soy Cangrejín 🦀 ¡Genial! 😄 Me alegra mucho tu interés. Para ayudarte mejor, escríbenos por WhatsApp al +56 9 2008 9281 o Instagram (@ecokids.experiencias) y coordinamos todo. ¿Hay algo más que quieras saber antes?";
+                      response = saludo + "¡Genial! 😄 Me alegra mucho tu interés. Para ayudarte mejor, escríbenos por WhatsApp al +56 9 2008 9281 o Instagram (@ecokids.experiencias) y coordinamos todo. ¿Hay algo más que quieras saber antes?";
                     } else if (lowerMsg.includes('no') || lowerMsg.includes('nada')) {
-                      response = "¡Hola! Soy Cangrejín 🦀 ¡Entendido! 😊 Igual estoy aquí si se te ocurre alguna duda. ¿Hay algo más en lo que pueda ayudarte? También puedes contactarnos cuando quieras por WhatsApp (+56 9 2008 9281).";
+                      response = saludo + "¡Entendido! 😊 Igual estoy aquí si se te ocurre alguna duda. ¿Hay algo más en lo que pueda ayudarte? También puedes contactarnos cuando quieras por WhatsApp (+56 9 2008 9281).";
                     } else if (lowerMsg.includes('edad')) {
-                      response = "¡Hola! Soy Cangrejín 🦀 ¡Qué bueno que preguntes! 😄 Nuestras experiencias son perfectas para niños de 3 a 12 años. Adaptamos cada actividad según la edad de tu peque. ¿Qué edad tiene tu pequeño aventurero? ¿Te gustaría saber sobre alguna experiencia en particular?";
+                      response = saludo + "¡Qué bueno que preguntes! 😄 Nuestras experiencias son perfectas para niños de 3 a 12 años. Adaptamos cada actividad según la edad de tu peque. ¿Qué edad tiene tu pequeño aventurero? ¿Te gustaría saber sobre alguna experiencia en particular?";
                     } else if (lowerMsg.includes('dur') || lowerMsg.includes('tiempo') || lowerMsg.includes('hora')) {
-                      response = "¡Hola! Soy Cangrejín 🦀 Las experiencias duran aproximadamente 2 horas de pura diversión. 🎨 Si es un cumpleaños, pueden durar hasta 3 horas. ¿Te interesa reservar? ¿Quieres saber qué actividades incluimos?";
+                      response = saludo + "Las experiencias duran aproximadamente 2 horas de pura diversión. 🎨 Si es un cumpleaños, pueden durar hasta 3 horas. ¿Te interesa reservar? ¿Quieres saber qué actividades incluimos?";
                     } else if (lowerMsg.includes('incluye') || lowerMsg.includes('material')) {
-                      response = "¡Hola! Soy Cangrejín 🦀 ¡Lo mejor de todo! Todos los materiales están 100% incluidos. 🎨✨ Los niños solo traen sus ganas de crear y nosotros ponemos todo lo demás. ¿Te gustaría conocer más sobre alguna experiencia específica o prefieres agendar una visita?";
+                      response = saludo + "¡Lo mejor de todo! Todos los materiales están 100% incluidos. 🎨✨ Los niños solo traen sus ganas de crear y nosotros ponemos todo lo demás. ¿Te gustaría conocer más sobre alguna experiencia específica o prefieres agendar una visita?";
                     } else if (lowerMsg.includes('reserv') || lowerMsg.includes('agendar')) {
-                      response = "¡Hola! Soy Cangrejín 🦀 ¡Me encanta tu entusiasmo! 🎉 Puedes reservar súper fácil por WhatsApp (+56 9 2008 9281), Instagram (@ecokids.experiencias) o llenando nuestro formulario aquí mismo en la web. ¿Para cuándo estás pensando? ¿Es para un cumple o una experiencia regular?";
+                      response = saludo + "¡Me encanta tu entusiasmo! 🎉 Puedes reservar súper fácil por WhatsApp (+56 9 2008 9281), Instagram (@ecokids.experiencias) o llenando nuestro formulario aquí mismo en la web. ¿Para cuándo estás pensando? ¿Es para un cumple o una experiencia regular?";
                     } else if (lowerMsg.includes('ubic') || lowerMsg.includes('dónde') || lowerMsg.includes('donde')) {
-                      response = "¡Hola! Soy Cangrejín 🦀 ¡Estamos en Concón, V Región! 🏖️ Un lugar hermoso junto al mar. ¿Te queda cerca? ¿Quieres que te cuente cómo llegar o prefieres agendar una visita primero?";
+                      response = saludo + "¡Estamos en Concón, V Región! 🏖️ Un lugar hermoso junto al mar. ¿Te queda cerca? ¿Quieres que te cuente cómo llegar o prefieres agendar una visita primero?";
                     } else if (lowerMsg.includes('cumpleaños') || lowerMsg.includes('cumple')) {
-                      response = "¡Hola! Soy Cangrejín 🦀 ¡Sííí! 🎉 Los cumpleaños son nuestra especialidad. Hacemos celebraciones donde la creatividad es la estrella. ¿Para cuándo sería? ¿Cuántos invitados piensas que vendrían? Te puedo ayudar a cotizar.";
+                      response = saludo + "¡Sííí! 🎉 Los cumpleaños son nuestra especialidad. Hacemos celebraciones donde la creatividad es la estrella. ¿Para cuándo sería? ¿Cuántos invitados piensas que vendrían? Te puedo ayudar a cotizar.";
                     } else if (lowerMsg.includes('precio') || lowerMsg.includes('cost') || lowerMsg.includes('valor')) {
-                      response = "¡Hola! Soy Cangrejín 🦀 Los precios varían según la experiencia y cantidad de niños. 💰 Para darte un precio exacto, ¿me cuentas cuántos niños serían y qué tipo de experiencia te interesa? También puedes escribirnos por WhatsApp (+56 9 2008 9281) y te armamos una cotización personalizada al toque.";
+                      response = saludo + "Los precios varían según la experiencia y cantidad de niños. 💰 Para darte un precio exacto, ¿me cuentas cuántos niños serían y qué tipo de experiencia te interesa? También puedes escribirnos por WhatsApp (+56 9 2008 9281) y te armamos una cotización personalizada al toque.";
                     } else if (lowerMsg.includes('hola') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
                       response = "¡Hola! 👋 ¡Qué alegría verte por aquí! Soy Cangrejín, tu amigo cangrejo 🦀 y asistente de EcoKids. Estoy aquí para ayudarte. ¿Qué te gustaría saber sobre nuestras experiencias creativas? ¿O prefieres que te cuente qué hacemos?";
                     } else if (lowerMsg.includes('gracias') || lowerMsg.includes('thanks') || lowerMsg.includes('perfecto') || lowerMsg.includes('excelente')) {
