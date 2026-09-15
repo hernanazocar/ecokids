@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Home() {
   const [activeService, setActiveService] = useState<number | null>(null);
@@ -15,6 +15,12 @@ export default function Home() {
   const [chatMessages, setChatMessages] = useState<Array<{role: 'user' | 'bot', text: string}>>([]);
   const [userInput, setUserInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll cuando cambian los mensajes
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [chatMessages, isTyping]);
 
   const experiencias = [
     {
@@ -1762,6 +1768,9 @@ export default function Home() {
                   </div>
                 </div>
               )}
+
+              {/* Elemento invisible para auto-scroll */}
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Input moderno tipo AI */}
@@ -1831,7 +1840,7 @@ export default function Home() {
                   onChange={(e) => setUserInput(e.target.value)}
                   placeholder="Escribe tu pregunta..."
                   disabled={isTyping}
-                  className="flex-1 px-3 py-2.5 bg-transparent text-sm focus:outline-none disabled:opacity-50 text-gray-800 placeholder:text-gray-400"
+                  className="flex-1 px-3 py-2.5 bg-transparent text-base focus:outline-none disabled:opacity-50 text-gray-800 placeholder:text-gray-400"
                 />
                 <button
                   type="submit"
