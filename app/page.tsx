@@ -694,16 +694,27 @@ export default function Home() {
 
           {/* Carrusel con efectos */}
           <div className="flex gap-4 md:gap-6 overflow-x-auto pb-4 md:pb-6 scrollbar-hide mb-6 md:mb-8 px-4 md:px-0 -mx-4 md:mx-0">
-            {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+            {[
+              'primera.jpeg',
+              'WhatsApp Image 2026-09-09 at 18.33.10.jpeg',
+              'WhatsApp Image 2026-09-09 at 18.33.10 (1).jpeg',
+              'WhatsApp Image 2026-09-09 at 18.33.10 (2).jpeg',
+              'WhatsApp Image 2026-09-09 at 18.33.11.jpeg',
+              'WhatsApp Image 2026-09-09 at 18.33.12.jpeg',
+              'WhatsApp Image 2026-09-09 at 18.33.12 (1).jpeg',
+              'WhatsApp Image 2026-09-09 at 18.33.12 (2).jpeg',
+              'WhatsApp Image 2026-09-09 at 18.34.49.jpeg',
+              'WhatsApp Image 2026-09-09 at 18.34.59.jpeg',
+              'WhatsApp Image 2026-09-09 at 18.35.48.jpeg',
+              'foto1.png', 'foto2.png', 'foto3.png', 'foto4.png', 'foto5.png', 'foto6.png', 'foto7.png'
+            ].map((foto, index) => (
               <div
-                key={num}
+                key={index}
                 className="flex-shrink-0 w-64 h-64 md:w-72 md:h-72 relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl hover:shadow-3xl transition-all cursor-pointer group border-2 md:border-4 border-white hover:border-pink-300 active:scale-95 md:hover:-translate-y-2 md:hover:rotate-1"
               >
-                <Image
-                  src={`/fotos-galeria/foto${num}.png`}
-                  alt={`Galería EcoKids ${num}`}
-                  width={288}
-                  height={288}
+                <img
+                  src={`/galeria/${foto}`}
+                  alt={`Galería EcoKids ${index + 1}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -1086,27 +1097,28 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Ubicación */}
-            <div className="group relative bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50 rounded-2xl p-6 md:p-7 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-blue-300 hover:border-sky-400 hover:-translate-y-1 overflow-hidden flex flex-col">
+            {/* Email */}
+            <div className="group relative bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 rounded-2xl p-6 md:p-7 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-orange-300 hover:border-amber-400 hover:-translate-y-1 overflow-hidden flex flex-col">
               {/* Decoración de fondo */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-200 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="absolute bottom-0 left-0 w-20 h-20 bg-cyan-200 rounded-full blur-2xl opacity-15 group-hover:opacity-30 transition-opacity"></div>
+              <div className="absolute top-0 right-0 w-24 h-24 bg-orange-200 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="absolute bottom-0 left-0 w-20 h-20 bg-amber-200 rounded-full blur-2xl opacity-15 group-hover:opacity-30 transition-opacity"></div>
 
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-400 via-sky-500 to-cyan-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg mx-auto">
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-400 via-amber-500 to-yellow-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg mx-auto">
                   <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-black text-gray-900 mb-4 text-center">Ubicación 📍</h3>
+                <h3 className="text-lg font-black text-gray-900 mb-4 text-center">Email ✉️</h3>
                 <div className="flex-grow flex flex-col justify-between gap-3">
-                  <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border-2 border-blue-300 shadow-md">
-                    <p className="text-blue-900 font-bold text-center text-sm">Concón, V Región</p>
+                  <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border-2 border-orange-300 shadow-md">
+                    <p className="text-orange-900 font-bold text-center text-xs">Ecokids.experiencias@gmail.com</p>
                   </div>
-                  <div className="bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl p-2.5 border-2 border-sky-300">
-                    <p className="text-xs text-blue-900 text-center font-bold">⏰ Lunes a Sábado<br />10:00 - 18:00 hrs</p>
-                  </div>
+                  <a href="mailto:Ecokids.experiencias@gmail.com" className="w-full block mt-auto">
+                    <button className="w-full py-2.5 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 text-white rounded-xl font-bold hover:shadow-lg transition-all hover:scale-105 text-sm">
+                      Enviar correo →
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -1142,7 +1154,7 @@ export default function Home() {
                     <input
                       type="tel"
                       className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all text-sm text-gray-900 placeholder:text-gray-400"
-                      placeholder="+56 9 1234 5678"
+                      placeholder="+56 9 2008 9281"
                     />
                   </div>
                 </div>
@@ -1209,10 +1221,34 @@ export default function Home() {
 
             <div>
               <h4 className="font-semibold mb-4">Contacto</h4>
-              <ul className="space-y-2 text-white/90 text-sm">
-                <li>Concón, V Región</li>
-                <li>Chile</li>
-                <li className="pt-2">
+              <ul className="space-y-3 text-white/90 text-sm">
+                <li className="flex items-start gap-2">
+                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Concón, V Región, Chile</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                  </svg>
+                  <a href="tel:+56920089281" className="hover:text-white transition-colors">
+                    +56 9 2008 9281
+                  </a>
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                  </svg>
+                  <a href="mailto:Ecokids.experiencias@gmail.com" className="hover:text-white transition-colors break-all">
+                    Ecokids.experiencias@gmail.com
+                  </a>
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
                   <a href="https://instagram.com/ecokids.experiencias" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                     @ecokids.experiencias
                   </a>
@@ -1314,7 +1350,7 @@ export default function Home() {
                     Agendar Experiencia
                   </button>
                   <a
-                    href="https://wa.me/56912345678"
+                    href="https://wa.me/56920089281"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-4 px-6 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2"
@@ -1420,7 +1456,7 @@ export default function Home() {
                     type="tel"
                     required
                     className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all text-gray-900 placeholder:text-gray-400"
-                    placeholder="+56 9 1234 5678"
+                    placeholder="+56 9 2008 9281"
                   />
                 </div>
               </div>
