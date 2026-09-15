@@ -1592,7 +1592,7 @@ export default function Home() {
         <div className="relative">
           <button
             onClick={() => setShowChatbot(!showChatbot)}
-            className="relative w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full shadow-[0_8px_32px_rgba(255,107,53,0.4),0_0_60px_rgba(247,147,30,0.3)] hover:shadow-[0_12px_40px_rgba(255,107,53,0.5),0_0_80px_rgba(247,147,30,0.4)] flex items-center justify-center transition-all hover:scale-110 group p-1.5"
+            className="relative w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full shadow-[0_8px_32px_rgba(255,107,53,0.4),0_0_60px_rgba(247,147,30,0.3)] hover:shadow-[0_12px_40px_rgba(255,107,53,0.5),0_0_80px_rgba(247,147,30,0.4)] flex items-center justify-center transition-all hover:scale-110 group p-1"
           >
             <div className="w-full h-full bg-pink-200/70 rounded-full flex items-center justify-center">
               <img
