@@ -707,22 +707,22 @@ export default function Home() {
           <div className="flex gap-3 md:gap-4 overflow-x-auto pb-4 scrollbar-hide mb-6 md:mb-8 px-4 md:px-0 -mx-4 md:mx-0">
             {[
               'primera.jpeg',
-              'WhatsApp Image 2026-09-09 at 18.33.10.jpeg',
-              'WhatsApp Image 2026-09-09 at 18.33.10 (1).jpeg',
-              'WhatsApp Image 2026-09-09 at 18.33.10 (2).jpeg',
-              'WhatsApp Image 2026-09-09 at 18.33.11.jpeg',
-              'WhatsApp Image 2026-09-09 at 18.33.12.jpeg',
-              'WhatsApp Image 2026-09-09 at 18.33.12 (1).jpeg',
-              'WhatsApp Image 2026-09-09 at 18.34.49.jpeg',
-              'WhatsApp Image 2026-09-09 at 18.34.59.jpeg',
-              'WhatsApp Image 2026-09-09 at 18.35.48.jpeg'
+              'galeria-1.jpeg',
+              'galeria-2.jpeg',
+              'galeria-3.jpeg',
+              'galeria-4.jpeg',
+              'galeria-5.jpeg',
+              'galeria-6.jpeg',
+              'galeria-7.jpeg',
+              'galeria-8.jpeg',
+              'galeria-9.jpeg'
             ].map((foto, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 w-56 h-56 md:w-64 md:h-64 relative rounded-2xl overflow-hidden shadow-lg md:shadow-xl hover:shadow-2xl transition-all cursor-pointer group border-2 border-white hover:border-pink-300 active:scale-95 md:hover:-translate-y-2 md:hover:rotate-1"
               >
                 <img
-                  src={`/Galeria/${encodeURIComponent(foto)}`}
+                  src={`/Galeria/${foto}`}
                   alt={`Galería EcoKids ${index + 1}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
