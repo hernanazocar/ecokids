@@ -1757,7 +1757,7 @@ export default function Home() {
                   setTimeout(() => {
                     setIsTyping(false);
                     const lowerMsg = message.toLowerCase();
-                    let response = "¡Gracias por escribirme! 😊 Para ayudarte mejor, te recomiendo contactarnos directamente por WhatsApp al +56 9 2008 9281. ¿Te gustaría que te cuente sobre nuestras experiencias o prefieres agendar una visita?";
+                    let response = "¡Hola! Soy Cangrejín 🦀 Disculpa, no entendí muy bien tu mensaje. 😅 ¿Podrías decirme de otra forma en qué puedo ayudarte? Puedo contarte sobre nuestras experiencias, precios, ubicación o cómo reservar. ¿Qué te gustaría saber?";
 
                     // Detectar días de la semana y fechas
                     if (lowerMsg.includes('lunes') || lowerMsg.includes('martes') || lowerMsg.includes('miercoles') || lowerMsg.includes('miércoles') ||
@@ -1784,9 +1784,12 @@ export default function Home() {
                     } else if (lowerMsg.includes('precio') || lowerMsg.includes('cost') || lowerMsg.includes('valor')) {
                       response = "Los precios varían según la experiencia y cantidad de niños. 💰 Para darte un precio exacto, ¿me cuentas cuántos niños serían y qué tipo de experiencia te interesa? También puedes escribirnos por WhatsApp (+56 9 2008 9281) y te armamos una cotización personalizada al toque.";
                     } else if (lowerMsg.includes('hola') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
-                      response = "¡Hola! 👋 ¡Qué alegría verte por aquí! Soy Cangrejín y estoy aquí para ayudarte. ¿Qué te gustaría saber sobre nuestras experiencias creativas? ¿O prefieres que te cuente qué hacemos?";
-                    } else if (lowerMsg.includes('gracias') || lowerMsg.includes('thanks')) {
-                      response = "¡De nada! 😊 Estoy aquí para lo que necesites. ¿Hay algo más en lo que pueda ayudarte? ¿Quieres agendar una visita o tienes alguna otra duda?";
+                      response = "¡Hola! 👋 ¡Qué alegría verte por aquí! Soy Cangrejín, tu amigo cangrejo 🦀 y asistente de EcoKids. Estoy aquí para ayudarte. ¿Qué te gustaría saber sobre nuestras experiencias creativas? ¿O prefieres que te cuente qué hacemos?";
+                    } else if (lowerMsg.includes('gracias') || lowerMsg.includes('thanks') || lowerMsg.includes('perfecto') || lowerMsg.includes('excelente')) {
+                      response = "¡De nada! 😊 ¡Fue un placer ayudarte! Estoy aquí para lo que necesites. ¿Hay algo más en lo que pueda ayudarte o ya estamos listos?";
+                    } else if (lowerMsg.includes('adiós') || lowerMsg.includes('adios') || lowerMsg.includes('chao') || lowerMsg.includes('hasta luego') ||
+                               lowerMsg.includes('bye') || lowerMsg.includes('nos vemos') || lowerMsg.includes('eso es todo') || lowerMsg.includes('listo')) {
+                      response = "¡Hasta pronto! 👋 ¡Que tengas un día increíble! Si necesitas algo más, aquí estaré esperándote. También puedes contactarnos por WhatsApp (+56 9 2008 9281) cuando quieras. ¡Nos vemos! 🦀✨";
                     }
 
                     setChatMessages(prev => [...prev, {role: 'bot', text: response}]);
