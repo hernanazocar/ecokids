@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opciones Botón Cangrejín</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      text-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    p {
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      max-width: 1400px;
+      width: 100%;
+    }
+
+    .option {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .option:hover {
+      transform: translateY(-10px);
+    }
+
+    .option-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+    }
+
+    .button-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-button {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .chat-button:hover {
+      transform: scale(1.15);
+    }
+
+    .chat-button .emoji {
+      font-size: 3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .chat-button:hover .emoji {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .chat-button .crab-svg {
+      width: 48px;
+      height: 48px;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .chat-button:hover .crab-svg {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    /* Opción 1: Gradiente Vibrante con Glow */
+    .option-1 .chat-button {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff006e 100%);
+      box-shadow:
+        0 8px 32px rgba(255, 107, 53, 0.4),
+        0 0 60px rgba(247, 147, 30, 0.3),
+        inset 0 -4px 8px rgba(0,0,0,0.2);
+    }
+
+    .option-1 .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6b35, #ff006e);
+      filter: blur(20px);
+      opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    /* Opción 2: Gradiente Futurista Morado-Azul */
+    .option-2 .chat-button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      box-shadow:
+        0 8px 32px rgba(102, 126, 234, 0.4),
+        0 0 60px rgba(118, 75, 162, 0.3),
+        inset 0 -4px 8px rgba(0,0,0,0.2);
+    }
+
+    .option-2 .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #f093fb);
+      filter: blur(20px);
+      opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    /* Opción 3: Gradiente Océano Turquesa */
+    .option-3 .chat-button {
+      background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 50%, #00d2ff 100%);
+      box-shadow:
+        0 8px 32px rgba(0, 210, 255, 0.4),
+        0 0 60px rgba(58, 123, 213, 0.3),
+        inset 0 -4px 8px rgba(0,0,0,0.2);
+    }
+
+    .option-3 .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+      filter: blur(20px);
+      opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    /* Opción 4: Gradiente Tropical Arcoíris */
+    .option-4 .chat-button {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 25%, #ffd200 50%, #4facfe 75%, #00f2fe 100%);
+      box-shadow:
+        0 8px 32px rgba(240, 147, 251, 0.4),
+        0 0 60px rgba(79, 172, 254, 0.3),
+        inset 0 -4px 8px rgba(0,0,0,0.2);
+      background-size: 200% 200%;
+      animation: rainbow 3s ease infinite;
+    }
+
+    .option-4 .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f093fb, #00f2fe);
+      filter: blur(20px);
+      opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    /* Opción 5: Gradiente Rosa-Naranja Sunset */
+    .option-5 .chat-button {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      box-shadow:
+        0 8px 32px rgba(250, 112, 154, 0.4),
+        0 0 60px rgba(254, 225, 64, 0.3),
+        inset 0 -4px 8px rgba(0,0,0,0.2);
+    }
+
+    .option-5 .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fa709a, #fee140);
+      filter: blur(20px);
+      opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    /* Opción 6: Gradiente Coral Vibrante */
+    .option-6 .chat-button {
+      background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 50%, #ff99ac 100%);
+      box-shadow:
+        0 8px 32px rgba(255, 154, 86, 0.5),
+        0 0 60px rgba(255, 106, 136, 0.4),
+        inset 0 -4px 8px rgba(0,0,0,0.2);
+    }
+
+    .option-6 .glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff9a56, #ff99ac);
+      filter: blur(20px);
+      opacity: 0.6;
+      animation: pulse 2s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+      border-radius: 50%;
+      border: 3px solid white;
+      z-index: 3;
+      animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .description {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .code-label {
+      background: #f5f5f5;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #555;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.4;
+      }
+    }
+
+    @keyframes ping {
+      75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    @keyframes rainbow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🦀 Opciones de Botón Cangrejín AI</h1>
+  <p>Elige el diseño que más te guste para el botón flotante</p>
+
+  <div class="container">
+    <!-- Opción 1 -->
+    <div class="option option-1">
+      <h3 class="option-title">Opción 1: Vibrante</h3>
+      <div class="button-container">
+        <div class="glow"></div>
+        <button class="chat-button">
+          <svg class="crab-svg" viewBox="0 0 64 64" fill="none">
+            <!-- Cuerpo -->
+            <ellipse cx="32" cy="32" rx="18" ry="14" fill="white"/>
+            <!-- Ojos -->
+            <circle cx="26" cy="24" r="2.5" fill="white"/>
+            <circle cx="38" cy="24" r="2.5" fill="white"/>
+            <circle cx="26" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <circle cx="38" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <!-- Patas izquierdas -->
+            <path d="M18 28C16 26 14 26 12 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 32C14 32 12 33 10 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 36C14 37 12 39 10 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M18 40C16 42 14 44 12 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Patas derechas -->
+            <path d="M46 28C48 26 50 26 52 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 32C50 32 52 33 54 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 36C50 37 52 39 54 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 40C48 42 50 44 52 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Pinza izquierda -->
+            <ellipse cx="12" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M10 20C8 19 8 21 10 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Pinza derecha -->
+            <ellipse cx="52" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M54 20C56 19 56 21 54 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="badge"></div>
+      </div>
+      <p class="description">Gradiente naranja-rosa vibrante con cangrejo completamente blanco. Energético y llamativo.</p>
+      <code class="code-label">Cangrejo 100% Blanco</code>
+    </div>
+
+    <!-- Opción 2 -->
+    <div class="option option-2">
+      <h3 class="option-title">Opción 2: Futurista</h3>
+      <div class="button-container">
+        <div class="glow"></div>
+        <button class="chat-button">
+          <svg class="crab-svg" viewBox="0 0 64 64" fill="none">
+            <ellipse cx="32" cy="32" rx="18" ry="14" fill="white"/>
+            <circle cx="26" cy="24" r="2.5" fill="white"/>
+            <circle cx="38" cy="24" r="2.5" fill="white"/>
+            <circle cx="26" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <circle cx="38" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <path d="M18 28C16 26 14 26 12 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 32C14 32 12 33 10 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 36C14 37 12 39 10 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M18 40C16 42 14 44 12 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 28C48 26 50 26 52 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 32C50 32 52 33 54 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 36C50 37 52 39 54 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 40C48 42 50 44 52 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="12" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M10 20C8 19 8 21 10 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="52" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M54 20C56 19 56 21 54 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="badge"></div>
+      </div>
+      <p class="description">Gradiente morado-azul futurista con cangrejo completamente blanco. Moderno y profesional.</p>
+      <code class="code-label">Cangrejo 100% Blanco</code>
+    </div>
+
+    <!-- Opción 3 -->
+    <div class="option option-3">
+      <h3 class="option-title">Opción 3: Océano</h3>
+      <div class="button-container">
+        <div class="glow"></div>
+        <button class="chat-button">
+          <svg class="crab-svg" viewBox="0 0 64 64" fill="none">
+            <ellipse cx="32" cy="32" rx="18" ry="14" fill="white"/>
+            <circle cx="26" cy="24" r="2.5" fill="white"/>
+            <circle cx="38" cy="24" r="2.5" fill="white"/>
+            <circle cx="26" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <circle cx="38" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <path d="M18 28C16 26 14 26 12 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 32C14 32 12 33 10 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 36C14 37 12 39 10 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M18 40C16 42 14 44 12 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 28C48 26 50 26 52 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 32C50 32 52 33 54 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 36C50 37 52 39 54 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 40C48 42 50 44 52 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="12" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M10 20C8 19 8 21 10 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="52" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M54 20C56 19 56 21 54 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="badge"></div>
+      </div>
+      <p class="description">Gradiente turquesa-azul océano con cangrejo completamente blanco. Fresco y acuático.</p>
+      <code class="code-label">Cangrejo 100% Blanco</code>
+    </div>
+
+    <!-- Opción 4 -->
+    <div class="option option-4">
+      <h3 class="option-title">Opción 4: Tropical</h3>
+      <div class="button-container">
+        <div class="glow"></div>
+        <button class="chat-button">
+          <svg class="crab-svg" viewBox="0 0 64 64" fill="none">
+            <ellipse cx="32" cy="32" rx="18" ry="14" fill="white"/>
+            <circle cx="26" cy="24" r="2.5" fill="white"/>
+            <circle cx="38" cy="24" r="2.5" fill="white"/>
+            <circle cx="26" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <circle cx="38" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <path d="M18 28C16 26 14 26 12 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 32C14 32 12 33 10 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 36C14 37 12 39 10 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M18 40C16 42 14 44 12 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 28C48 26 50 26 52 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 32C50 32 52 33 54 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 36C50 37 52 39 54 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 40C48 42 50 44 52 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="12" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M10 20C8 19 8 21 10 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="52" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M54 20C56 19 56 21 54 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="badge"></div>
+      </div>
+      <p class="description">Gradiente arcoíris tropical con cangrejo completamente blanco. Divertido y colorido.</p>
+      <code class="code-label">Cangrejo 100% Blanco</code>
+    </div>
+
+    <!-- Opción 5 -->
+    <div class="option option-5">
+      <h3 class="option-title">Opción 5: Sunset</h3>
+      <div class="button-container">
+        <div class="glow"></div>
+        <button class="chat-button">
+          <svg class="crab-svg" viewBox="0 0 64 64" fill="none">
+            <ellipse cx="32" cy="32" rx="18" ry="14" fill="white"/>
+            <circle cx="26" cy="24" r="2.5" fill="white"/>
+            <circle cx="38" cy="24" r="2.5" fill="white"/>
+            <circle cx="26" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <circle cx="38" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <path d="M18 28C16 26 14 26 12 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 32C14 32 12 33 10 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 36C14 37 12 39 10 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M18 40C16 42 14 44 12 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 28C48 26 50 26 52 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 32C50 32 52 33 54 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 36C50 37 52 39 54 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 40C48 42 50 44 52 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="12" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M10 20C8 19 8 21 10 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="52" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M54 20C56 19 56 21 54 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="badge"></div>
+      </div>
+      <p class="description">Gradiente rosa-amarillo sunset con cangrejo completamente blanco. Cálido y acogedor.</p>
+      <code class="code-label">Cangrejo 100% Blanco</code>
+    </div>
+
+    <!-- Opción 6 -->
+    <div class="option option-6">
+      <h3 class="option-title">Opción 6: Coral</h3>
+      <div class="button-container">
+        <div class="glow"></div>
+        <button class="chat-button">
+          <svg class="crab-svg" viewBox="0 0 64 64" fill="none">
+            <ellipse cx="32" cy="32" rx="18" ry="14" fill="white"/>
+            <circle cx="26" cy="24" r="2.5" fill="white"/>
+            <circle cx="38" cy="24" r="2.5" fill="white"/>
+            <circle cx="26" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <circle cx="38" cy="24" r="1" fill="rgba(0,0,0,0.3)"/>
+            <path d="M18 28C16 26 14 26 12 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 32C14 32 12 33 10 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M16 36C14 37 12 39 10 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M18 40C16 42 14 44 12 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 28C48 26 50 26 52 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 32C50 32 52 33 54 35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M48 36C50 37 52 39 54 41" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M46 40C48 42 50 44 52 46" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse cx="12" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M10 20C8 19 8 21 10 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+            <ellipse cx="52" cy="22" rx="4" ry="5" fill="white"/>
+            <path d="M54 20C56 19 56 21 54 22" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="badge"></div>
+      </div>
+      <p class="description">Gradiente coral vibrante con cangrejo completamente blanco. Alegre y juvenil.</p>
+      <code class="code-label">Cangrejo 100% Blanco</code>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>💡 Todos incluyen: Efecto glow, animación pulse, badge animado y hover interactivo</p>
+  </div>
+
+  <script>
+    // Agregar interactividad a los botones
+    document.querySelectorAll('.chat-button').forEach(button => {
+      button.addEventListener('click', function() {
+        this.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 200);
+      });
+    });
+  </script>
+</body>
+</html>

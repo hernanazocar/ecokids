@@ -10,6 +10,11 @@ export default function Home() {
   const [showReservaModal, setShowReservaModal] = useState(false);
   const [reservaTipo, setReservaTipo] = useState<'general' | 'experiencia'>('general');
   const [experienciaSeleccionada, setExperienciaSeleccionada] = useState<number | null>(null);
+  const [showChatbot, setShowChatbot] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState<number | null>(null);
+  const [chatMessages, setChatMessages] = useState<Array<{role: 'user' | 'bot', text: string}>>([]);
+  const [userInput, setUserInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
   const experiencias = [
     {
@@ -123,7 +128,7 @@ export default function Home() {
             <div
               className="absolute inset-0 md:hidden"
               style={{
-                backgroundImage: 'url(/hero.png)',
+                backgroundImage: 'url(/hero2.jpeg)',
                 backgroundSize: 'cover',
                 backgroundPosition: '70% center',
                 backgroundRepeat: 'no-repeat'
@@ -155,9 +160,9 @@ export default function Home() {
                     setReservaTipo('general');
                     setShowReservaModal(true);
                   }}
-                  className="px-7 py-3.5 bg-[#f97316] text-white rounded-full font-bold text-base md:text-lg hover:bg-[#ea580c] transition-all shadow-xl hover:shadow-2xl inline-flex items-center gap-2 mb-5 hover:scale-105"
+                  className="px-6 py-3 bg-[#f97316] text-white rounded-full font-bold text-sm md:text-base hover:bg-[#ea580c] transition-all shadow-xl hover:shadow-2xl inline-flex items-center gap-2 mb-5 hover:scale-105"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
                   </svg>
                   Descubre nuestras aventuras
@@ -170,7 +175,7 @@ export default function Home() {
           <div
             className="hidden md:block md:w-3/5 relative"
             style={{
-              backgroundImage: 'url(/hero.png)',
+              backgroundImage: 'url(/hero2.jpeg)',
               backgroundSize: 'cover',
               backgroundPosition: '30% center',
               backgroundRepeat: 'no-repeat',
@@ -206,29 +211,29 @@ export default function Home() {
           </div>
 
           {/* Grid de experiencias mejorado */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-12 px-4">
             {experiencias.map((exp, index) => (
               <div
                 key={exp.id}
-                className={`group relative bg-gradient-to-br ${exp.gradiente} rounded-2xl md:rounded-3xl p-4 md:p-5 shadow-lg md:shadow-xl hover:shadow-2xl transition-all duration-300 border-2 md:border-3 overflow-hidden`}
+                className={`group relative bg-gradient-to-br ${exp.gradiente} rounded-2xl p-3 md:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-2 overflow-hidden`}
                 style={{borderColor: exp.color, borderWidth: '2px', animationDelay: `${index * 100}ms`}}
               >
                 {/* Decoración de esquina */}
-                <div className="absolute top-0 right-0 w-16 md:w-20 h-16 md:h-20 opacity-20" style={{background: exp.color, clipPath: 'polygon(100% 0, 0 0, 100% 100%)'}}></div>
+                <div className="absolute top-0 right-0 w-12 md:w-16 h-12 md:h-16 opacity-20" style={{background: exp.color, clipPath: 'polygon(100% 0, 0 0, 100% 100%)'}}></div>
 
                 {/* Número de aventura */}
-                <div className="absolute top-2 md:top-3 left-2 md:left-3 w-7 h-7 md:w-8 md:h-8 bg-white/90 rounded-full flex items-center justify-center shadow-md">
-                  <span className="text-xs md:text-sm font-black" style={{color: exp.color}}>{index + 1}</span>
+                <div className="absolute top-2 left-2 w-6 h-6 md:w-7 md:h-7 bg-white/90 rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-xs font-black" style={{color: exp.color}}>{index + 1}</span>
                 </div>
 
-                <div className="text-center mb-2 md:mb-3 mt-5 md:mt-6">
-                  <h3 className="text-xl md:text-2xl font-black mb-0.5 drop-shadow-sm" style={{color: exp.color}}>{exp.titulo1}</h3>
-                  <h4 className="text-base md:text-lg font-bold" style={{color: exp.color}}>{exp.titulo2}</h4>
+                <div className="text-center mb-2 mt-4 md:mt-5">
+                  <h3 className="text-lg md:text-xl font-black mb-0.5 drop-shadow-sm" style={{color: exp.color}}>{exp.titulo1}</h3>
+                  <h4 className="text-sm md:text-base font-bold" style={{color: exp.color}}>{exp.titulo2}</h4>
                 </div>
 
                 {/* Imagen con efecto 3D */}
-                <div className="relative h-40 md:h-48 bg-white rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-4 p-2 md:p-3 shadow-lg group-hover:shadow-xl transition-all">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent rounded-xl md:rounded-2xl"></div>
+                <div className="relative h-32 md:h-40 bg-white rounded-xl flex items-center justify-center mb-2 md:mb-3 p-2 shadow-lg group-hover:shadow-xl transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent rounded-xl"></div>
                   <Image
                     src={exp.imagen}
                     alt={exp.nombre}
@@ -240,9 +245,9 @@ export default function Home() {
 
                 {/* Botón mejorado */}
                 <div
-                  className={`w-full py-2.5 md:py-3 bg-gradient-to-r ${(exp.id === 1 || exp.id === 2) ? 'from-gray-400 to-gray-500' : 'from-purple-400 to-purple-500'} text-white rounded-xl md:rounded-2xl font-black text-xs md:text-sm shadow-lg flex items-center justify-center gap-1.5 md:gap-2 opacity-80 cursor-default`}
+                  className={`w-full py-2 bg-gradient-to-r ${(exp.id === 1 || exp.id === 2) ? 'from-gray-400 to-gray-500' : 'from-purple-400 to-purple-500'} text-white rounded-xl font-black text-xs shadow-lg flex items-center justify-center gap-1.5 opacity-80 cursor-default`}
                 >
-                  <svg className="w-3.5 h-3.5 md:w-4 md:h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-3 h-3 md:w-3.5 md:h-3.5" fill="currentColor" viewBox="0 0 20 20">
                     {(exp.id === 1 || exp.id === 2) ? (
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     ) : (
@@ -283,29 +288,29 @@ export default function Home() {
           </div>
 
           {/* Historia en cards separadas compactas */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4">
 
             {/* 1. Hola, soy Flo */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-orange-200 hover:shadow-xl transition-all">
-              <div className="flex gap-4">
-                <div className="w-32 h-40 flex-shrink-0">
+            <div className="bg-white rounded-2xl p-4 shadow-lg border-2 border-orange-200 hover:shadow-xl transition-all">
+              <div className="flex gap-3">
+                <div className="w-24 h-32 flex-shrink-0">
                   <Image
                     src="/historia/mama.png"
                     alt="Flo"
-                    width={128}
-                    height={160}
+                    width={96}
+                    height={128}
                     className="rounded-xl w-full h-full object-cover shadow-md"
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">🧡</span>
-                    <h3 className="text-lg font-bold text-orange-600">Hola, soy Flo</h3>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="text-lg">🧡</span>
+                    <h3 className="text-base font-bold text-orange-600">Hola, soy Flo</h3>
                   </div>
-                  <p className="text-sm text-gray-700 mb-3 leading-relaxed">
+                  <p className="text-xs text-gray-700 mb-2 leading-relaxed">
                     Después de tantos años trabajando con niños, quise crear algo propio: experiencias donde los niños no solo hagan una actividad, sino que se conviertan en protagonistas de una aventura.
                   </p>
-                  <div className="inline-block px-3 py-1 bg-orange-100 rounded-full">
+                  <div className="inline-block px-2.5 py-0.5 bg-orange-100 rounded-full">
                     <span className="text-xs font-semibold text-orange-700">✨ Fundadora EcoKids</span>
                   </div>
                 </div>
@@ -313,31 +318,31 @@ export default function Home() {
             </div>
 
             {/* 2. También soy mamá */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-purple-200 hover:shadow-xl transition-all">
-              <div className="flex gap-4">
-                <div className="w-32 h-40 flex-shrink-0">
+            <div className="bg-white rounded-2xl p-4 shadow-lg border-2 border-purple-200 hover:shadow-xl transition-all">
+              <div className="flex gap-3">
+                <div className="w-24 h-32 flex-shrink-0">
                   <Image
                     src="/historia/flo.png"
                     alt="Mamá"
-                    width={128}
-                    height={160}
+                    width={96}
+                    height={128}
                     className="rounded-xl w-full h-full object-cover shadow-md"
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">💜</span>
-                    <h3 className="text-lg font-bold text-purple-600">También soy mamá</h3>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="text-lg">💜</span>
+                    <h3 className="text-base font-bold text-purple-600">También soy mamá</h3>
                   </div>
-                  <p className="text-sm text-gray-700 mb-3 leading-relaxed">
+                  <p className="text-xs text-gray-700 mb-2 leading-relaxed">
                     Ser mamá me hizo valorar aún más los espacios de conexión y juego, descubriendo que esa es la mayor muestra de amor.
                   </p>
-                  <div className="flex gap-2">
-                    <div className="px-2 py-1 bg-purple-100 rounded-lg">
+                  <div className="flex gap-1.5">
+                    <div className="px-2 py-0.5 bg-purple-100 rounded-lg">
                       <span className="text-xs font-semibold text-purple-700">👨‍👩‍👧‍👦 Familia</span>
                     </div>
-                    <div className="px-2 py-1 bg-pink-100 rounded-lg">
-                      <span className="text-xs font-semibold text-pink-700">💝 Tiempo de calidad</span>
+                    <div className="px-2 py-0.5 bg-pink-100 rounded-lg">
+                      <span className="text-xs font-semibold text-pink-700">💝 Calidad</span>
                     </div>
                   </div>
                 </div>
@@ -345,35 +350,35 @@ export default function Home() {
             </div>
 
             {/* 3. Más de 15 años */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-green-200 hover:shadow-xl transition-all">
-              <div className="flex gap-4">
-                <div className="w-32 h-40 flex-shrink-0">
+            <div className="bg-white rounded-2xl p-4 shadow-lg border-2 border-green-200 hover:shadow-xl transition-all">
+              <div className="flex gap-3">
+                <div className="w-24 h-32 flex-shrink-0">
                   <Image
                     src="/historia/experiencia.png"
                     alt="Experiencia"
-                    width={128}
-                    height={160}
+                    width={96}
+                    height={128}
                     className="rounded-xl w-full h-full object-cover shadow-md"
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">⭐</span>
-                    <h3 className="text-lg font-bold text-green-600">+15 años de experiencia</h3>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="text-lg">⭐</span>
+                    <h3 className="text-base font-bold text-green-600">+15 años de experiencia</h3>
                   </div>
-                  <p className="text-sm text-gray-700 mb-3 leading-relaxed">
+                  <p className="text-xs text-gray-700 mb-2 leading-relaxed">
                     Trabajo con niños desde hace más de 15 años, con formación profesional que respalda cada experiencia que creamos juntos.
                   </p>
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2 text-xs">
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-1.5 text-xs">
                       <span className="w-1.5 h-1.5 bg-orange-500 rounded-full"></span>
                       <span className="text-gray-600">Educadora de Párvulos</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs">
+                    <div className="flex items-center gap-1.5 text-xs">
                       <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
                       <span className="text-gray-600">Magíster en Arteterapia</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs">
+                    <div className="flex items-center gap-1.5 text-xs">
                       <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
                       <span className="text-gray-600">Magíster en Liderazgo Educativo</span>
                     </div>
@@ -383,26 +388,26 @@ export default function Home() {
             </div>
 
             {/* 4. Él es Colorín */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-orange-200 hover:shadow-xl transition-all">
-              <div className="flex gap-4">
-                <div className="w-32 h-40 flex-shrink-0">
+            <div className="bg-white rounded-2xl p-4 shadow-lg border-2 border-orange-200 hover:shadow-xl transition-all">
+              <div className="flex gap-3">
+                <div className="w-24 h-32 flex-shrink-0">
                   <Image
                     src="/colorin.jpeg"
                     alt="Colorín"
-                    width={128}
-                    height={160}
+                    width={96}
+                    height={128}
                     className="rounded-xl w-full h-full object-cover shadow-md"
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">🦀</span>
-                    <h3 className="text-lg font-bold text-orange-600">Él es Colorín</h3>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="text-lg">🦀</span>
+                    <h3 className="text-base font-bold text-orange-600">Él es Colorín</h3>
                   </div>
-                  <p className="text-sm text-gray-700 mb-3 leading-relaxed">
+                  <p className="text-xs text-gray-700 mb-2 leading-relaxed">
                     Colorín nació para acompañar a los niños en cada experiencia EcoKids. Es quien los invita a descubrir, imaginar, crear y, sobre todo, a disfrutar del camino.
                   </p>
-                  <div className="inline-block px-3 py-1 bg-orange-100 rounded-full">
+                  <div className="inline-block px-2.5 py-0.5 bg-orange-100 rounded-full">
                     <span className="text-xs font-semibold text-orange-700">🎨 Compañero de aventuras</span>
                   </div>
                 </div>
@@ -410,23 +415,23 @@ export default function Home() {
             </div>
 
             {/* 5. Así nació EcoKids - Destacado a ancho completo */}
-            <div className="md:col-span-2 bg-gradient-to-r from-orange-100 to-pink-100 rounded-2xl p-8 shadow-xl border-2 border-orange-300">
-              <div className="text-center space-y-4">
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <span className="text-3xl">✨</span>
-                  <h3 className="text-2xl font-bold text-orange-600">Así nació EcoKids</h3>
+            <div className="md:col-span-2 bg-gradient-to-r from-orange-100 to-pink-100 rounded-2xl p-6 shadow-xl border-2 border-orange-300">
+              <div className="text-center space-y-3">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-2xl">✨</span>
+                  <h3 className="text-xl font-bold text-orange-600">Así nació EcoKids</h3>
                 </div>
-                <p className="text-gray-800 font-medium mb-3 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-sm text-gray-800 font-medium mb-2 leading-relaxed max-w-3xl mx-auto">
                   Un espacio donde la creatividad y el juego son la clave para crear momentos que los niños recuerden. Porque un ratito sin pantallas, es un mundo de posibilidades.
                 </p>
                 <div className="flex gap-2 flex-wrap justify-center">
-                  <div className="px-3 py-1 bg-white rounded-full shadow-sm border border-orange-200">
+                  <div className="px-2.5 py-0.5 bg-white rounded-full shadow-sm border border-orange-200">
                     <span className="text-xs font-semibold text-orange-700">🎨 Creatividad</span>
                   </div>
-                  <div className="px-3 py-1 bg-white rounded-full shadow-sm border border-pink-200">
+                  <div className="px-2.5 py-0.5 bg-white rounded-full shadow-sm border border-pink-200">
                     <span className="text-xs font-semibold text-pink-700">🌱 Aprendizaje</span>
                   </div>
-                  <div className="px-3 py-1 bg-white rounded-full shadow-sm border border-purple-200">
+                  <div className="px-2.5 py-0.5 bg-white rounded-full shadow-sm border border-purple-200">
                     <span className="text-xs font-semibold text-purple-700">💝 Diversión</span>
                   </div>
                 </div>
@@ -461,36 +466,36 @@ export default function Home() {
           </div>
 
           {/* Grid de servicios */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             {/* Servicio 1 - Aventuras EcoKids */}
-            <div className="group relative bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-pink-300 hover:border-pink-400 hover:-translate-y-2 overflow-hidden flex flex-col">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-200/40 to-rose-200/40 rounded-full blur-2xl"></div>
+            <div className="group relative bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-pink-300 hover:border-pink-400 hover:-translate-y-2 overflow-hidden flex flex-col">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-pink-200/40 to-rose-200/40 rounded-full blur-2xl"></div>
               <div className="relative flex-1 flex flex-col">
                 <div className="flex-1">
-                  <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
-                    <span className="text-3xl">🎨</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
+                    <span className="text-2xl">🎨</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Aventuras EcoKids</h3>
-                  <p className="text-gray-700 mb-4 leading-relaxed text-sm">
+                  <h3 className="text-base font-bold text-gray-900 mb-1.5">Aventuras EcoKids</h3>
+                  <p className="text-gray-700 mb-3 leading-relaxed text-xs">
                     Experiencias temáticas donde los niños juegan, exploran y crean una pieza artística.
                   </p>
                 </div>
-                <a href="#experiencias" className="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-center">
+                <a href="#experiencias" className="w-full py-2 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-center text-xs">
                   Descubrir aventuras
                 </a>
               </div>
             </div>
 
             {/* Servicio 2 - Cumpleaños EcoKids */}
-            <div className="group relative bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-purple-300 hover:border-purple-400 hover:-translate-y-2 overflow-hidden flex flex-col">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-200/40 to-pink-200/40 rounded-full blur-2xl"></div>
+            <div className="group relative bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-purple-300 hover:border-purple-400 hover:-translate-y-2 overflow-hidden flex flex-col">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-200/40 to-pink-200/40 rounded-full blur-2xl"></div>
               <div className="relative flex-1 flex flex-col">
                 <div className="flex-1">
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
-                    <span className="text-3xl">🎂</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
+                    <span className="text-2xl">🎂</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Cumpleaños EcoKids</h3>
-                  <p className="text-gray-700 mb-4 leading-relaxed text-sm">
+                  <h3 className="text-base font-bold text-gray-900 mb-1.5">Cumpleaños EcoKids</h3>
+                  <p className="text-gray-700 mb-3 leading-relaxed text-xs">
                     Celebraciones donde la creatividad es parte de la aventura.
                   </p>
                 </div>
@@ -499,7 +504,7 @@ export default function Home() {
                     setReservaTipo('general');
                     setShowReservaModal(true);
                   }}
-                  className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto"
+                  className="w-full py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-xs"
                 >
                   Cotiza con nosotros
                 </button>
@@ -507,38 +512,38 @@ export default function Home() {
             </div>
 
             {/* Servicio 3 - Experiencias para colegios y jardines */}
-            <div className="group relative bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-blue-300 hover:border-blue-400 hover:-translate-y-2 overflow-hidden flex flex-col">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200/40 to-cyan-200/40 rounded-full blur-2xl"></div>
+            <div className="group relative bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-blue-300 hover:border-blue-400 hover:-translate-y-2 overflow-hidden flex flex-col">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-200/40 to-cyan-200/40 rounded-full blur-2xl"></div>
               <div className="relative flex-1 flex flex-col">
                 <div className="flex-1">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
-                    <span className="text-3xl">🏫</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
+                    <span className="text-2xl">🏫</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Experiencias para colegios y jardines</h3>
-                  <p className="text-gray-700 mb-4 leading-relaxed text-sm">
+                  <h3 className="text-base font-bold text-gray-900 mb-1.5">Experiencias para colegios y jardines</h3>
+                  <p className="text-gray-700 mb-3 leading-relaxed text-xs">
                     Actividades diseñadas para grupos educativos.
                   </p>
                 </div>
-                <a href="#formulario-contacto" className="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-center">
-                  Contáctanos
+                <a href="#formulario-contacto" className="w-full py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-center text-xs">
+                  Cotiza con nosotros
                 </a>
               </div>
             </div>
 
             {/* Servicio 4 - Experiencias especiales */}
-            <div className="group relative bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-green-300 hover:border-green-400 hover:-translate-y-2 overflow-hidden flex flex-col">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-200/40 to-emerald-200/40 rounded-full blur-2xl"></div>
+            <div className="group relative bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-green-300 hover:border-green-400 hover:-translate-y-2 overflow-hidden flex flex-col">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-200/40 to-emerald-200/40 rounded-full blur-2xl"></div>
               <div className="relative flex-1 flex flex-col">
                 <div className="flex-1">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
-                    <span className="text-3xl">✨</span>
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
+                    <span className="text-2xl">✨</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Experiencias especiales</h3>
-                  <p className="text-gray-700 mb-4 leading-relaxed text-sm">
+                  <h3 className="text-base font-bold text-gray-900 mb-1.5">Experiencias especiales</h3>
+                  <p className="text-gray-700 mb-3 leading-relaxed text-xs">
                     Eventos familiares, empresas y celebraciones personalizadas.
                   </p>
                 </div>
-                <a href="#formulario-contacto" className="w-full py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-center">
+                <a href="#formulario-contacto" className="w-full py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl font-bold hover:shadow-xl transition-all hover:scale-105 mt-auto text-center text-xs">
                   Contáctanos
                 </a>
               </div>
@@ -546,14 +551,14 @@ export default function Home() {
           </div>
 
           {/* Banner CTA */}
-          <div className="bg-gradient-to-r from-pink-400 via-rose-400 to-orange-400 rounded-2xl p-8 text-white text-center shadow-lg">
-            <h3 className="text-2xl md:text-3xl font-bold mb-3">¿Tienes una idea? La hacemos realidad ✨</h3>
-            <p className="text-lg mb-5 text-white/95">Cuéntanos qué tienes en mente y creemos juntos una experiencia EcoKids.</p>
+          <div className="bg-gradient-to-r from-pink-400 via-rose-400 to-orange-400 rounded-2xl p-6 text-white text-center shadow-lg">
+            <h3 className="text-xl md:text-2xl font-bold mb-2">¿Tienes una idea? La hacemos realidad ✨</h3>
+            <p className="text-base mb-4 text-white/95">Cuéntanos qué tienes en mente y creemos juntos una experiencia EcoKids.</p>
             <button
               onClick={() => {
                 document.getElementById('formulario-contacto')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }}
-              className="px-6 py-3 bg-white text-pink-600 rounded-xl font-bold hover:shadow-xl hover:scale-105 transition-all"
+              className="px-5 py-2.5 bg-white text-pink-600 rounded-xl font-bold hover:shadow-xl hover:scale-105 transition-all"
             >
               Contáctanos
             </button>
@@ -592,25 +597,25 @@ export default function Home() {
             {/* Línea conectora decorativa - solo en desktop */}
             <div className="hidden md:block absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-purple-300 via-pink-300 to-orange-300 opacity-30" style={{width: '85%', marginLeft: '7.5%'}}></div>
 
-            <div className="grid md:grid-cols-3 gap-8 relative">
+            <div className="grid md:grid-cols-3 gap-6 relative">
               {/* Paso 1 - EXPLORA */}
               <div className="relative group">
-                <div className="bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 border-3 border-purple-300 hover:border-purple-500 hover:-translate-y-2">
+                <div className="bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-3 border-purple-300 hover:border-purple-500 hover:-translate-y-2">
                   {/* Número grande decorativo */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all">
-                    <span className="text-2xl font-black text-white">1</span>
+                  <div className="absolute -top-3 -left-3 w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all">
+                    <span className="text-xl font-black text-white">1</span>
                   </div>
 
                   {/* Icono animado */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
-                    <span className="text-3xl">🔍</span>
+                  <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
+                    <span className="text-2xl">🔍</span>
                   </div>
 
                   <div className="text-center">
-                    <div className="inline-block px-3 py-1 bg-purple-200 rounded-full text-xs font-bold text-purple-800 mb-3 border-2 border-purple-300">
+                    <div className="inline-block px-2.5 py-0.5 bg-purple-200 rounded-full text-xs font-bold text-purple-800 mb-2 border-2 border-purple-300">
                       PASO 1
                     </div>
-                    <h3 className="text-xl font-black text-gray-900 mb-2">¡Explora!</h3>
+                    <h3 className="text-lg font-black text-gray-900 mb-2">¡Explora!</h3>
                     <p className="text-sm text-gray-700 leading-relaxed font-medium">
                       Descubre talleres increíbles y experiencias mágicas 🌟
                     </p>
@@ -620,22 +625,22 @@ export default function Home() {
 
               {/* Paso 2 - RESERVA */}
               <div className="relative group">
-                <div className="bg-gradient-to-br from-pink-100 to-pink-50 rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 border-3 border-pink-300 hover:border-pink-500 hover:-translate-y-2">
+                <div className="bg-gradient-to-br from-pink-100 to-pink-50 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-3 border-pink-300 hover:border-pink-500 hover:-translate-y-2">
                   {/* Número grande decorativo */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all">
-                    <span className="text-2xl font-black text-white">2</span>
+                  <div className="absolute -top-3 -left-3 w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all">
+                    <span className="text-xl font-black text-white">2</span>
                   </div>
 
                   {/* Icono animado */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
-                    <span className="text-3xl">📅</span>
+                  <div className="w-14 h-14 bg-gradient-to-br from-pink-400 to-pink-600 rounded-2xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
+                    <span className="text-2xl">📅</span>
                   </div>
 
                   <div className="text-center">
-                    <div className="inline-block px-3 py-1 bg-pink-200 rounded-full text-xs font-bold text-pink-800 mb-3 border-2 border-pink-300">
+                    <div className="inline-block px-2.5 py-0.5 bg-pink-200 rounded-full text-xs font-bold text-pink-800 mb-2 border-2 border-pink-300">
                       PASO 2
                     </div>
-                    <h3 className="text-xl font-black text-gray-900 mb-2">¡Reserva!</h3>
+                    <h3 className="text-lg font-black text-gray-900 mb-2">¡Reserva!</h3>
                     <p className="text-sm text-gray-700 leading-relaxed font-medium">
                       Escríbenos por WhatsApp o Instagram y agenda 💬
                     </p>
@@ -645,22 +650,22 @@ export default function Home() {
 
               {/* Paso 3 - DISFRUTA */}
               <div className="relative group">
-                <div className="bg-gradient-to-br from-orange-100 to-orange-50 rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 border-3 border-orange-300 hover:border-orange-500 hover:-translate-y-2">
+                <div className="bg-gradient-to-br from-orange-100 to-orange-50 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-3 border-orange-300 hover:border-orange-500 hover:-translate-y-2">
                   {/* Número grande decorativo */}
-                  <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all">
-                    <span className="text-2xl font-black text-white">3</span>
+                  <div className="absolute -top-3 -left-3 w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-12 transition-all">
+                    <span className="text-xl font-black text-white">3</span>
                   </div>
 
                   {/* Icono animado */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
-                    <span className="text-3xl">🎨</span>
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center mb-3 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg">
+                    <span className="text-2xl">🎨</span>
                   </div>
 
                   <div className="text-center">
-                    <div className="inline-block px-3 py-1 bg-orange-200 rounded-full text-xs font-bold text-orange-800 mb-3 border-2 border-orange-300">
+                    <div className="inline-block px-2.5 py-0.5 bg-orange-200 rounded-full text-xs font-bold text-orange-800 mb-2 border-2 border-orange-300">
                       PASO 3
                     </div>
-                    <h3 className="text-xl font-black text-gray-900 mb-2">¡Disfruta!</h3>
+                    <h3 className="text-lg font-black text-gray-900 mb-2">¡Disfruta!</h3>
                     <p className="text-sm text-gray-700 leading-relaxed font-medium">
                       Nosotros nos encargamos de todo. Tú solo ven a disfrutar.
                     </p>
@@ -693,7 +698,7 @@ export default function Home() {
           </div>
 
           {/* Carrusel con efectos */}
-          <div className="flex gap-4 md:gap-6 overflow-x-auto pb-4 md:pb-6 scrollbar-hide mb-6 md:mb-8 px-4 md:px-0 -mx-4 md:mx-0">
+          <div className="flex gap-3 md:gap-4 overflow-x-auto pb-4 scrollbar-hide mb-6 md:mb-8 px-4 md:px-0 -mx-4 md:mx-0">
             {[
               'primera.jpeg',
               'WhatsApp Image 2026-09-09 at 18.33.10.jpeg',
@@ -702,15 +707,13 @@ export default function Home() {
               'WhatsApp Image 2026-09-09 at 18.33.11.jpeg',
               'WhatsApp Image 2026-09-09 at 18.33.12.jpeg',
               'WhatsApp Image 2026-09-09 at 18.33.12 (1).jpeg',
-              'WhatsApp Image 2026-09-09 at 18.33.12 (2).jpeg',
               'WhatsApp Image 2026-09-09 at 18.34.49.jpeg',
               'WhatsApp Image 2026-09-09 at 18.34.59.jpeg',
-              'WhatsApp Image 2026-09-09 at 18.35.48.jpeg',
-              'foto1.png', 'foto2.png', 'foto3.png', 'foto4.png', 'foto5.png', 'foto6.png', 'foto7.png'
+              'WhatsApp Image 2026-09-09 at 18.35.48.jpeg'
             ].map((foto, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-64 h-64 md:w-72 md:h-72 relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl hover:shadow-3xl transition-all cursor-pointer group border-2 md:border-4 border-white hover:border-pink-300 active:scale-95 md:hover:-translate-y-2 md:hover:rotate-1"
+                className="flex-shrink-0 w-56 h-56 md:w-64 md:h-64 relative rounded-2xl overflow-hidden shadow-lg md:shadow-xl hover:shadow-2xl transition-all cursor-pointer group border-2 border-white hover:border-pink-300 active:scale-95 md:hover:-translate-y-2 md:hover:rotate-1"
               >
                 <img
                   src={`/Galeria/${foto}`}
@@ -728,13 +731,13 @@ export default function Home() {
               href="https://instagram.com/ecokids.experiencias"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold text-base md:text-lg shadow-xl hover:shadow-2xl transition-all active:scale-95 md:hover:scale-105"
+              className="inline-flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold text-sm md:text-base shadow-xl hover:shadow-2xl transition-all active:scale-95 md:hover:scale-105"
             >
-              <svg className="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
               <span>Ver todas en Instagram</span>
-              <span className="text-lg md:text-xl">✨</span>
+              <span className="text-base md:text-lg">✨</span>
             </a>
           </div>
 
@@ -765,77 +768,82 @@ export default function Home() {
           </div>
 
           {/* Testimonios Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Testimonio 1 */}
-            <div className="relative bg-gradient-to-br from-orange-100 to-pink-100 border-3 border-orange-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
-              <div className="flex gap-1 mb-4">
+            <div className="relative bg-gradient-to-br from-orange-100 to-pink-100 border-2 border-orange-300 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all flex flex-col">
+              <div className="flex gap-1 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg key={i} className="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+              <p className="text-gray-800 text-sm leading-relaxed font-medium flex-1 mb-2">
                 "Hermosa experiencia para mi hija. Gracias por regalarles recuerdos tan lindos desde tan pequeñas. Como mamá, valoro profundamente que los niños tengan la oportunidad de explorar, divertirse y compartir con otros niños que aún no conocen."
               </p>
+              <p className="text-orange-700 text-xs font-bold mt-auto">— Sofía, Mamá Ema</p>
             </div>
 
             {/* Testimonio 2 */}
-            <div className="relative bg-gradient-to-br from-purple-100 to-pink-100 border-3 border-purple-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
-              <div className="flex gap-1 mb-4">
+            <div className="relative bg-gradient-to-br from-purple-100 to-pink-100 border-2 border-purple-300 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all flex flex-col">
+              <div className="flex gap-1 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg key={i} className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+              <p className="text-gray-800 text-sm leading-relaxed font-medium flex-1 mb-2">
                 "Hermoso. Toda tu trayectoria como educadora se ve reflejada acá. Estoy segura que EcoKids va a ser un éxito. 100% recomendada."
               </p>
+              <p className="text-purple-700 text-xs font-bold mt-auto">— Ana, Mamá de Belén</p>
             </div>
 
             {/* Testimonio 3 */}
-            <div className="relative bg-gradient-to-br from-blue-100 to-cyan-100 border-3 border-blue-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col">
-              <div className="flex gap-1 mb-4">
+            <div className="relative bg-gradient-to-br from-blue-100 to-cyan-100 border-2 border-blue-300 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all flex flex-col">
+              <div className="flex gap-1 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                  <svg key={i} className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+              <p className="text-gray-800 text-sm leading-relaxed font-medium flex-1 mb-2">
                 "Un gusto poder ser parte del proyecto todo muy lindo los niños la pasaron genial. Llegaron a la casa a seguir pintando las figuritas que se llevaron 😅🥰❤️"
               </p>
+              <p className="text-blue-700 text-xs font-bold mt-auto">— Adriana, Mamá José Ignacio</p>
             </div>
 
             {/* Wrapper para centrar los dos últimos testimonios */}
-            <div className="lg:col-span-3 flex flex-col md:flex-row justify-center gap-6">
+            <div className="lg:col-span-3 flex flex-col md:flex-row justify-center gap-4">
               {/* Testimonio 4 */}
-              <div className="relative bg-gradient-to-br from-green-100 to-emerald-100 border-3 border-green-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col lg:max-w-[calc(33.333%-0.75rem)]">
-                <div className="flex gap-1 mb-4">
+              <div className="relative bg-gradient-to-br from-green-100 to-emerald-100 border-2 border-green-300 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all flex flex-col lg:max-w-[calc(33.333%-0.75rem)]">
+                <div className="flex gap-1 mb-2">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <svg key={i} className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+                <p className="text-gray-800 text-sm leading-relaxed font-medium flex-1 mb-2">
                   "Hola, Flo. A los niños les encantó, sobre todo a Gabriel. A Gabriel igual le cuesta bastante quedarse quietito y tomar atención, y me llamó mucho la atención que, para lo desordenado que es, a ti te hizo bastante caso 😂....Pero todo bacán. Muchas gracias por todo ❤️."
                 </p>
+                <p className="text-green-700 text-xs font-bold mt-auto">— Renata, Mamá Gabriel y Elo</p>
               </div>
 
               {/* Testimonio 5 */}
-              <div className="relative bg-gradient-to-br from-pink-100 to-rose-100 border-3 border-pink-300 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all flex flex-col lg:max-w-[calc(33.333%-0.75rem)]">
-                <div className="flex gap-1 mb-4">
+              <div className="relative bg-gradient-to-br from-pink-100 to-rose-100 border-2 border-pink-300 rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all flex flex-col lg:max-w-[calc(33.333%-0.75rem)]">
+                <div className="flex gap-1 mb-2">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
+                    <svg key={i} className="w-4 h-4 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-800 text-base leading-relaxed font-medium flex-1">
+                <p className="text-gray-800 text-sm leading-relaxed font-medium flex-1 mb-2">
                   "Hola Floooo muchas gracias a tiii, estuvo muy lindo y las niñas lo gozaron!!! Nos encantó todo!!"
                 </p>
+                <p className="text-pink-700 text-xs font-bold mt-auto">— Begoña, Mamá de Maite y Renata</p>
               </div>
             </div>
           </div>
@@ -867,17 +875,17 @@ export default function Home() {
           </div>
 
           {/* Grid de FAQs - 6 preguntas compactas */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mb-12">
             {/* FAQ 1 */}
             <div
               onClick={() => setOpenFaq(openFaq === 0 ? null : 0)}
-              className="group relative bg-gradient-to-br from-orange-100 to-pink-100 border-3 border-orange-300 rounded-2xl p-4 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
+              className="group relative bg-gradient-to-br from-orange-100 to-pink-100 border-3 border-orange-300 rounded-2xl p-3 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
             >
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
-                  <span className="text-2xl">👶</span>
+                <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
+                  <span className="text-xl">👶</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 flex-1">¿Qué edades?</h3>
+                <h3 className="text-base font-bold text-gray-900 flex-1">¿Qué edades?</h3>
                 <svg className={`w-5 h-5 text-orange-600 transition-transform flex-shrink-0 ${openFaq === 0 ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -892,13 +900,13 @@ export default function Home() {
             {/* FAQ 2 */}
             <div
               onClick={() => setOpenFaq(openFaq === 1 ? null : 1)}
-              className="group relative bg-gradient-to-br from-blue-100 to-cyan-100 border-3 border-blue-300 rounded-2xl p-4 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
+              className="group relative bg-gradient-to-br from-blue-100 to-cyan-100 border-3 border-blue-300 rounded-2xl p-3 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
             >
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
-                  <span className="text-2xl">⏰</span>
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
+                  <span className="text-xl">⏰</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 flex-1">¿Cuánto dura?</h3>
+                <h3 className="text-base font-bold text-gray-900 flex-1">¿Cuánto dura?</h3>
                 <svg className={`w-5 h-5 text-blue-600 transition-transform flex-shrink-0 ${openFaq === 1 ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -913,13 +921,13 @@ export default function Home() {
             {/* FAQ 3 */}
             <div
               onClick={() => setOpenFaq(openFaq === 2 ? null : 2)}
-              className="group relative bg-gradient-to-br from-purple-100 to-pink-100 border-3 border-purple-300 rounded-2xl p-4 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
+              className="group relative bg-gradient-to-br from-purple-100 to-pink-100 border-3 border-purple-300 rounded-2xl p-3 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
             >
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
-                  <span className="text-2xl">🎨</span>
+                <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
+                  <span className="text-xl">🎨</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 flex-1">¿Qué incluye?</h3>
+                <h3 className="text-base font-bold text-gray-900 flex-1">¿Qué incluye?</h3>
                 <svg className={`w-5 h-5 text-purple-600 transition-transform flex-shrink-0 ${openFaq === 2 ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -934,13 +942,13 @@ export default function Home() {
             {/* FAQ 4 */}
             <div
               onClick={() => setOpenFaq(openFaq === 3 ? null : 3)}
-              className="group relative bg-gradient-to-br from-green-100 to-emerald-100 border-3 border-green-300 rounded-2xl p-4 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
+              className="group relative bg-gradient-to-br from-green-100 to-emerald-100 border-3 border-green-300 rounded-2xl p-3 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
             >
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
-                  <span className="text-2xl">📱</span>
+                <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
+                  <span className="text-xl">📱</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 flex-1">¿Cómo reservo?</h3>
+                <h3 className="text-base font-bold text-gray-900 flex-1">¿Cómo reservo?</h3>
                 <svg className={`w-5 h-5 text-green-600 transition-transform flex-shrink-0 ${openFaq === 3 ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -955,13 +963,13 @@ export default function Home() {
             {/* FAQ 5 */}
             <div
               onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
-              className="group relative bg-gradient-to-br from-yellow-100 to-orange-100 border-3 border-yellow-300 rounded-2xl p-4 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
+              className="group relative bg-gradient-to-br from-yellow-100 to-orange-100 border-3 border-yellow-300 rounded-2xl p-3 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
             >
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
-                  <span className="text-2xl">🏠</span>
+                <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
+                  <span className="text-xl">🏠</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 flex-1">¿A domicilio?</h3>
+                <h3 className="text-base font-bold text-gray-900 flex-1">¿A domicilio?</h3>
                 <svg className={`w-5 h-5 text-yellow-600 transition-transform flex-shrink-0 ${openFaq === 4 ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -976,13 +984,13 @@ export default function Home() {
             {/* FAQ 6 - NUEVA */}
             <div
               onClick={() => setOpenFaq(openFaq === 5 ? null : 5)}
-              className="group relative bg-gradient-to-br from-pink-100 to-rose-100 border-3 border-pink-300 rounded-2xl p-4 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
+              className="group relative bg-gradient-to-br from-pink-100 to-rose-100 border-3 border-pink-300 rounded-2xl p-3 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1"
             >
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
-                  <span className="text-2xl">💰</span>
+                <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform">
+                  <span className="text-xl">💰</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 flex-1">¿Cuánto cuesta?</h3>
+                <h3 className="text-base font-bold text-gray-900 flex-1">¿Cuánto cuesta?</h3>
                 <svg className={`w-5 h-5 text-pink-600 transition-transform flex-shrink-0 ${openFaq === 5 ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -996,9 +1004,9 @@ export default function Home() {
           </div>
 
           {/* CTA final */}
-          <div className="text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-3xl p-10 text-white shadow-2xl">
-            <h3 className="text-3xl font-bold mb-4">¿Aún tienes preguntas?</h3>
-            <p className="text-lg mb-6 text-white/95">Estamos aquí para ayudarte. Contáctanos y resolveremos todas tus dudas</p>
+          <div className="text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-2xl p-6 text-white shadow-lg">
+            <h3 className="text-xl md:text-2xl font-bold mb-2">¿Aún tienes preguntas?</h3>
+            <p className="text-sm md:text-base mb-4 text-white/95">Estamos aquí para ayudarte. Contáctanos y resolveremos todas tus dudas</p>
             <button
               onClick={() => {
                 const formulario = document.getElementById('formulario-contacto');
@@ -1012,7 +1020,7 @@ export default function Home() {
                   });
                 }
               }}
-              className="px-8 py-4 bg-white text-purple-600 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
+              className="px-6 py-2.5 bg-white text-purple-600 rounded-xl font-bold text-sm md:text-base shadow-xl hover:shadow-2xl hover:scale-105 transition-all"
             >
               Contactar Ahora
             </button>
@@ -1044,26 +1052,26 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12 max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-8 md:mb-12 max-w-6xl mx-auto px-4">
             {/* WhatsApp */}
-            <div className="group relative bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 rounded-2xl p-6 md:p-7 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-green-300 hover:border-green-400 hover:-translate-y-1 overflow-hidden flex flex-col">
+            <div className="group relative bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 rounded-2xl p-3 md:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-green-300 hover:border-green-400 hover:-translate-y-1 overflow-hidden flex flex-col">
               {/* Decoración de fondo */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-green-200 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="absolute bottom-0 left-0 w-20 h-20 bg-emerald-200 rounded-full blur-2xl opacity-15 group-hover:opacity-30 transition-opacity"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-green-200 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="absolute bottom-0 left-0 w-16 h-16 bg-emerald-200 rounded-full blur-2xl opacity-15 group-hover:opacity-30 transition-opacity"></div>
 
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg mx-auto">
-                  <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg mx-auto">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
                 </div>
-                <h3 className="text-lg font-black text-gray-900 mb-4 text-center">WhatsApp 💬</h3>
-                <div className="flex-grow flex flex-col justify-between gap-3">
-                  <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border-2 border-green-300 shadow-md">
+                <h3 className="text-base font-black text-gray-900 mb-3 text-center">WhatsApp 💬</h3>
+                <div className="flex-grow flex flex-col justify-between gap-2">
+                  <div className="bg-white/80 backdrop-blur rounded-xl p-2 border-2 border-green-300 shadow-md">
                     <p className="text-green-900 font-bold text-center text-sm">+56 9 2008 9281</p>
                   </div>
                   <a href="https://wa.me/56920089281" target="_blank" rel="noopener noreferrer" className="w-full block mt-auto">
-                    <button className="w-full py-2.5 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white rounded-xl font-bold hover:shadow-lg transition-all hover:scale-105 text-sm">
+                    <button className="w-full py-2 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white rounded-xl font-bold hover:shadow-lg transition-all hover:scale-105 text-sm">
                       Quiero reservar →
                     </button>
                   </a>
@@ -1072,24 +1080,24 @@ export default function Home() {
             </div>
 
             {/* Instagram */}
-            <div className="group relative bg-gradient-to-br from-purple-50 via-pink-50 to-fuchsia-50 rounded-2xl p-6 md:p-7 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-purple-300 hover:border-pink-400 hover:-translate-y-1 overflow-hidden flex flex-col">
+            <div className="group relative bg-gradient-to-br from-purple-50 via-pink-50 to-fuchsia-50 rounded-2xl p-3 md:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-purple-300 hover:border-pink-400 hover:-translate-y-1 overflow-hidden flex flex-col">
               {/* Decoración de fondo */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-purple-200 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="absolute bottom-0 left-0 w-20 h-20 bg-pink-200 rounded-full blur-2xl opacity-15 group-hover:opacity-30 transition-opacity"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-purple-200 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="absolute bottom-0 left-0 w-16 h-16 bg-pink-200 rounded-full blur-2xl opacity-15 group-hover:opacity-30 transition-opacity"></div>
 
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-400 via-pink-500 to-fuchsia-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg mx-auto">
-                  <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 via-pink-500 to-fuchsia-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg mx-auto">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                   </svg>
                 </div>
-                <h3 className="text-lg font-black text-gray-900 mb-4 text-center">Instagram 📸</h3>
-                <div className="flex-grow flex flex-col justify-between gap-3">
-                  <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border-2 border-purple-300 shadow-md">
+                <h3 className="text-base font-black text-gray-900 mb-3 text-center">Instagram 📸</h3>
+                <div className="flex-grow flex flex-col justify-between gap-2">
+                  <div className="bg-white/80 backdrop-blur rounded-xl p-2 border-2 border-purple-300 shadow-md">
                     <p className="text-purple-900 font-bold text-center text-sm">@ecokids.experiencias</p>
                   </div>
                   <a href="https://instagram.com/ecokids.experiencias" target="_blank" rel="noopener noreferrer" className="w-full block mt-auto">
-                    <button className="w-full py-2.5 bg-gradient-to-r from-purple-500 via-pink-500 to-fuchsia-500 text-white rounded-xl font-bold hover:shadow-lg transition-all hover:scale-105 text-sm">
+                    <button className="w-full py-2 bg-gradient-to-r from-purple-500 via-pink-500 to-fuchsia-500 text-white rounded-xl font-bold hover:shadow-lg transition-all hover:scale-105 text-sm">
                       Visitar perfil ✨
                     </button>
                   </a>
@@ -1098,24 +1106,24 @@ export default function Home() {
             </div>
 
             {/* Email */}
-            <div className="group relative bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 rounded-2xl p-6 md:p-7 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-orange-300 hover:border-amber-400 hover:-translate-y-1 overflow-hidden flex flex-col">
+            <div className="group relative bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 rounded-2xl p-3 md:p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-orange-300 hover:border-amber-400 hover:-translate-y-1 overflow-hidden flex flex-col">
               {/* Decoración de fondo */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-orange-200 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-              <div className="absolute bottom-0 left-0 w-20 h-20 bg-amber-200 rounded-full blur-2xl opacity-15 group-hover:opacity-30 transition-opacity"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-orange-200 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+              <div className="absolute bottom-0 left-0 w-16 h-16 bg-amber-200 rounded-full blur-2xl opacity-15 group-hover:opacity-30 transition-opacity"></div>
 
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-400 via-amber-500 to-yellow-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg mx-auto">
-                  <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-400 via-amber-500 to-yellow-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-all shadow-lg mx-auto">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-black text-gray-900 mb-4 text-center">Email ✉️</h3>
-                <div className="flex-grow flex flex-col justify-between gap-3">
-                  <div className="bg-white/80 backdrop-blur rounded-xl p-2.5 border-2 border-orange-300 shadow-md">
+                <h3 className="text-base font-black text-gray-900 mb-3 text-center">Email ✉️</h3>
+                <div className="flex-grow flex flex-col justify-between gap-2">
+                  <div className="bg-white/80 backdrop-blur rounded-xl p-2 border-2 border-orange-300 shadow-md">
                     <p className="text-orange-900 font-bold text-center text-xs">Ecokids.experiencias@gmail.com</p>
                   </div>
                   <a href="mailto:Ecokids.experiencias@gmail.com" className="w-full block mt-auto">
-                    <button className="w-full py-2.5 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 text-white rounded-xl font-bold hover:shadow-lg transition-all hover:scale-105 text-sm">
+                    <button className="w-full py-2 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 text-white rounded-xl font-bold hover:shadow-lg transition-all hover:scale-105 text-sm">
                       Enviar correo →
                     </button>
                   </a>
@@ -1126,60 +1134,60 @@ export default function Home() {
 
           {/* Formulario centrado abajo */}
           <div id="formulario-contacto" className="mt-8 md:mt-12 max-w-6xl mx-auto px-4">
-            <div className="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-2xl border-2 border-gray-100">
-              <div className="text-center mb-5">
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-200 rounded-full px-4 py-1.5 mb-3">
-                  <span className="text-xl">✉️</span>
+            <div className="bg-white rounded-2xl p-4 md:p-5 shadow-xl border-2 border-gray-100">
+              <div className="text-center mb-4">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 via-pink-100 to-purple-100 border-2 border-orange-200 rounded-full px-3 py-1 mb-2">
+                  <span className="text-lg">✉️</span>
                   <span className="text-xs font-bold text-gray-800">Formulario de contacto</span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-1">
                   <span className="text-gray-900">O </span>
                   <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 bg-clip-text text-transparent">escríbenos directamente</span>
                 </h3>
-                <p className="text-sm text-gray-600">Te responderemos lo antes posible 🎨</p>
+                <p className="text-xs text-gray-600">Te responderemos lo antes posible 🎨</p>
               </div>
 
-              <form className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
+              <form className="space-y-3">
+                <div className="grid md:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5">Nombre</label>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Nombre</label>
                     <input
                       type="text"
-                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all text-sm text-gray-900 placeholder:text-gray-400"
+                      className="w-full px-3 py-2 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all text-sm text-gray-900 placeholder:text-gray-400"
                       placeholder="Tu nombre completo"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5">Teléfono</label>
+                    <label className="block text-xs font-bold text-gray-700 mb-1">Teléfono</label>
                     <input
                       type="tel"
-                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all text-sm text-gray-900 placeholder:text-gray-400"
+                      className="w-full px-3 py-2 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all text-sm text-gray-900 placeholder:text-gray-400"
                       placeholder="+56 9 2008 9281"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5">Email</label>
+                  <label className="block text-xs font-bold text-gray-700 mb-1">Email</label>
                   <input
                     type="email"
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all text-sm text-gray-900 placeholder:text-gray-400"
+                    className="w-full px-3 py-2 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all text-sm text-gray-900 placeholder:text-gray-400"
                     placeholder="tucorreo@ejemplo.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5">Mensaje</label>
+                  <label className="block text-xs font-bold text-gray-700 mb-1">Mensaje</label>
                   <textarea
                     rows={3}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none resize-none transition-all text-sm text-gray-900 placeholder:text-gray-400"
+                    className="w-full px-3 py-2 rounded-xl border-2 border-gray-200 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none resize-none transition-all text-sm text-gray-900 placeholder:text-gray-400"
                     placeholder="Cuéntanos qué taller te interesa, cuántos niños participarán, fechas disponibles..."
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white rounded-xl font-bold text-base shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white rounded-xl font-bold text-sm md:text-base shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
                 >
                   <span>Enviar Mensaje</span>
-                  <span className="text-xl">🚀</span>
+                  <span className="text-lg">🚀</span>
                 </button>
               </form>
             </div>
@@ -1577,6 +1585,236 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Chatbot Cangrejín */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {/* Botón del cangrejo con gradiente vibrante */}
+        <div className="relative">
+          <button
+            onClick={() => setShowChatbot(!showChatbot)}
+            className="relative w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full shadow-[0_8px_32px_rgba(255,107,53,0.4),0_0_60px_rgba(247,147,30,0.3)] hover:shadow-[0_12px_40px_rgba(255,107,53,0.5),0_0_80px_rgba(247,147,30,0.4)] flex items-center justify-center transition-all hover:scale-110 group p-1.5"
+          >
+            <div className="w-full h-full bg-pink-200/70 rounded-full flex items-center justify-center">
+              <img
+                src="/botoncangejin.png"
+                alt="Cangrejín"
+                className="w-14 h-14 object-contain group-hover:scale-110 group-hover:rotate-6 transition-transform drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
+              />
+            </div>
+            {!showChatbot && (
+              <>
+                <span className="absolute top-0 left-0 w-6 h-6 bg-gradient-to-br from-green-400 to-green-500 rounded-full animate-ping"></span>
+                <span className="absolute top-0 left-0 w-6 h-6 bg-gradient-to-br from-green-400 to-green-500 rounded-full border-2 border-white"></span>
+              </>
+            )}
+          </button>
+        </div>
+
+        {/* Panel del chat */}
+        {showChatbot && (
+          <div className="absolute bottom-20 right-0 w-96 bg-white rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col border border-gray-100" style={{height: '600px'}}>
+            {/* Header moderno */}
+            <div className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 p-5 flex items-center justify-between flex-shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg p-1.5">
+                  <img src="/botoncangejin.png" alt="Cangrejín" className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <h3 className="text-white font-bold text-lg">Cangrejín AI</h3>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></span>
+                    <p className="text-white/90 text-xs font-medium">En línea</p>
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setShowChatbot(false);
+                  setChatMessages([]);
+                  setUserInput('');
+                }}
+                className="text-white hover:bg-white/20 rounded-full p-2 transition-all hover:rotate-90 duration-300"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Área de mensajes moderna */}
+            <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-gradient-to-b from-gray-50 to-white">
+              {/* Mensaje de bienvenida moderno */}
+              {chatMessages.length === 0 && (
+                <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                  {/* Avatar + mensaje */}
+                  <div className="flex gap-3 items-start">
+                    <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg ring-2 ring-orange-200 p-1.5">
+                      <img src="/botoncangejin.png" alt="Cangrejín" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex-1 bg-white rounded-2xl rounded-tl-sm p-4 shadow-lg border border-gray-200/50">
+                      <p className="text-sm text-gray-800 leading-relaxed">
+                        <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-pink-600">¡Hola! 👋</span>
+                        <br />
+                        Soy <span className="font-semibold text-orange-600">Cangrejín AI</span>, tu asistente inteligente de EcoKids. ¿En qué puedo ayudarte hoy?
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Preguntas sugeridas modernas */}
+                  <div className="space-y-3 mt-6">
+                    <p className="text-xs text-gray-500 font-bold px-1 flex items-center gap-2">
+                      <span className="w-1 h-4 bg-gradient-to-b from-orange-500 to-pink-500 rounded-full"></span>
+                      Preguntas frecuentes
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { q: "¿Edades?", full: "¿Qué edades aceptan?", a: "¡Qué bueno que preguntes! 😄 Nuestras experiencias son perfectas para niños de 3 a 12 años. Adaptamos cada actividad según la edad de tu peque. ¿Qué edad tiene tu pequeño aventurero? ¿Te gustaría saber sobre alguna experiencia en particular?" },
+                        { q: "¿Duración?", full: "¿Cuánto dura cada experiencia?", a: "Las experiencias duran aproximadamente 2 horas de pura diversión. 🎨 Si es un cumpleaños, pueden durar hasta 3 horas. ¿Te interesa reservar? ¿Quieres saber qué actividades incluimos?" },
+                        { q: "¿Qué incluye?", full: "¿Qué incluye?", a: "¡Lo mejor de todo! Todos los materiales están 100% incluidos. 🎨✨ Los niños solo traen sus ganas de crear y nosotros ponemos todo lo demás. ¿Te gustaría conocer más sobre alguna experiencia específica?" },
+                        { q: "¿Cómo reservo?", full: "¿Cómo reservo?", a: "¡Me encanta tu entusiasmo! 🎉 Puedes reservar súper fácil por WhatsApp (+56 9 2008 9281), Instagram (@ecokids.experiencias) o llenando nuestro formulario. ¿Para cuándo estás pensando?" },
+                        { q: "¿Ubicación?", full: "¿Dónde están ubicados?", a: "¡Estamos en Concón, V Región! 🏖️ Un lugar hermoso junto al mar. ¿Te queda cerca? ¿Quieres que te cuente cómo llegar?" },
+                        { q: "¿Cumpleaños?", full: "¿Hacen cumpleaños?", a: "¡Sííí! 🎉 Los cumpleaños son nuestra especialidad. Hacemos celebraciones donde la creatividad es la estrella. ¿Para cuándo sería? ¿Cuántos invitados?" }
+                      ].map((item, index) => (
+                        <button
+                          key={index}
+                          onClick={() => {
+                            setChatMessages([{role: 'user', text: item.full}]);
+                            setIsTyping(true);
+                            setTimeout(() => {
+                              setIsTyping(false);
+                              setChatMessages(prev => [...prev, {role: 'bot', text: item.a}]);
+                            }, 1200);
+                          }}
+                          className="px-3 py-1.5 bg-white hover:bg-gradient-to-r hover:from-orange-50 hover:to-pink-50 rounded-full transition-all text-xs text-gray-700 font-medium border border-gray-200 hover:border-orange-300 hover:shadow-md hover:-translate-y-0.5 duration-200"
+                        >
+                          {item.q}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Mensajes del chat con avatares */}
+              {chatMessages.map((msg, index) => (
+                <div key={index} className={`flex gap-3 items-start animate-in fade-in slide-in-from-bottom-2 duration-300 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                  {/* Avatar */}
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 shadow-md ${
+                    msg.role === 'user'
+                      ? 'bg-gradient-to-br from-orange-500 to-pink-500'
+                      : 'bg-gradient-to-br from-orange-400 to-pink-500 ring-2 ring-orange-200 p-1.5'
+                  }`}>
+                    {msg.role === 'user' ? (
+                      <span className="text-lg">👤</span>
+                    ) : (
+                      <img src="/botoncangejin.png" alt="Cangrejín" className="w-full h-full object-contain" />
+                    )}
+                  </div>
+
+                  {/* Burbuja de mensaje */}
+                  <div className={`max-w-[75%] rounded-2xl p-4 shadow-md ${
+                    msg.role === 'user'
+                      ? 'bg-gradient-to-br from-orange-500 to-pink-500 text-white rounded-tr-sm'
+                      : 'bg-white text-gray-800 rounded-tl-sm border border-gray-200/50'
+                  }`}>
+                    <p className="text-sm leading-relaxed">{msg.text}</p>
+                  </div>
+                </div>
+              ))}
+
+              {/* Indicador de escribiendo mejorado */}
+              {isTyping && (
+                <div className="flex gap-3 items-start animate-in fade-in slide-in-from-bottom-2 duration-300">
+                  <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-md ring-2 ring-orange-200 p-1.5">
+                    <img src="/botoncangejin.png" alt="Cangrejín" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="bg-white rounded-2xl rounded-tl-sm p-4 shadow-md border border-gray-200/50">
+                    <div className="flex gap-1.5">
+                      <span className="w-2.5 h-2.5 bg-gradient-to-r from-orange-400 to-pink-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}}></span>
+                      <span className="w-2.5 h-2.5 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
+                      <span className="w-2.5 h-2.5 bg-gradient-to-r from-purple-400 to-orange-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Input moderno tipo AI */}
+            <div className="p-4 bg-white border-t border-gray-100 flex-shrink-0">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (!userInput.trim() || isTyping) return;
+
+                  const message = userInput.trim();
+                  setChatMessages(prev => [...prev, {role: 'user', text: message}]);
+                  setUserInput('');
+                  setIsTyping(true);
+
+                  // Respuestas automáticas
+                  setTimeout(() => {
+                    setIsTyping(false);
+                    const lowerMsg = message.toLowerCase();
+                    let response = "¡Gracias por escribirme! 😊 Para ayudarte mejor, te recomiendo contactarnos directamente por WhatsApp al +56 9 2008 9281. ¿Te gustaría que te cuente sobre nuestras experiencias o prefieres agendar una visita?";
+
+                    // Detectar días de la semana y fechas
+                    if (lowerMsg.includes('lunes') || lowerMsg.includes('martes') || lowerMsg.includes('miercoles') || lowerMsg.includes('miércoles') ||
+                        lowerMsg.includes('jueves') || lowerMsg.includes('viernes') || lowerMsg.includes('sabado') || lowerMsg.includes('sábado') ||
+                        lowerMsg.includes('domingo') || lowerMsg.includes('este') || lowerMsg.includes('próximo') || lowerMsg.includes('proximo') ||
+                        lowerMsg.match(/\d+/)) {
+                      response = "¡Perfecto! 🎉 Me encanta que estés organizando esto. Para confirmar la disponibilidad y coordinar todos los detalles, ¿te parece si hablamos por WhatsApp? Puedes escribirnos al +56 9 2008 9281 y te ayudamos al toque. ¿Cuántos niños serían aproximadamente?";
+                    } else if (lowerMsg.includes('sí') || lowerMsg.includes('si') || lowerMsg.includes('dale') || lowerMsg.includes('ok') || lowerMsg.includes('bueno')) {
+                      response = "¡Genial! 😄 Me alegra mucho tu interés. Para ayudarte mejor, escríbenos por WhatsApp al +56 9 2008 9281 o Instagram (@ecokids.experiencias) y coordinamos todo. ¿Hay algo más que quieras saber antes?";
+                    } else if (lowerMsg.includes('no') || lowerMsg.includes('nada')) {
+                      response = "¡Entendido! 😊 Igual estoy aquí si se te ocurre alguna duda. ¿Hay algo más en lo que pueda ayudarte? También puedes contactarnos cuando quieras por WhatsApp (+56 9 2008 9281).";
+                    } else if (lowerMsg.includes('edad')) {
+                      response = "¡Qué bueno que preguntes! 😄 Nuestras experiencias son perfectas para niños de 3 a 12 años. Adaptamos cada actividad según la edad de tu peque. ¿Qué edad tiene tu pequeño aventurero? ¿Te gustaría saber sobre alguna experiencia en particular?";
+                    } else if (lowerMsg.includes('dur') || lowerMsg.includes('tiempo') || lowerMsg.includes('hora')) {
+                      response = "Las experiencias duran aproximadamente 2 horas de pura diversión. 🎨 Si es un cumpleaños, pueden durar hasta 3 horas. ¿Te interesa reservar? ¿Quieres saber qué actividades incluimos?";
+                    } else if (lowerMsg.includes('incluye') || lowerMsg.includes('material')) {
+                      response = "¡Lo mejor de todo! Todos los materiales están 100% incluidos. 🎨✨ Los niños solo traen sus ganas de crear y nosotros ponemos todo lo demás. ¿Te gustaría conocer más sobre alguna experiencia específica o prefieres agendar una visita?";
+                    } else if (lowerMsg.includes('reserv') || lowerMsg.includes('agendar')) {
+                      response = "¡Me encanta tu entusiasmo! 🎉 Puedes reservar súper fácil por WhatsApp (+56 9 2008 9281), Instagram (@ecokids.experiencias) o llenando nuestro formulario aquí mismo en la web. ¿Para cuándo estás pensando? ¿Es para un cumple o una experiencia regular?";
+                    } else if (lowerMsg.includes('ubic') || lowerMsg.includes('dónde') || lowerMsg.includes('donde')) {
+                      response = "¡Estamos en Concón, V Región! 🏖️ Un lugar hermoso junto al mar. ¿Te queda cerca? ¿Quieres que te cuente cómo llegar o prefieres agendar una visita primero?";
+                    } else if (lowerMsg.includes('cumpleaños') || lowerMsg.includes('cumple')) {
+                      response = "¡Sííí! 🎉 Los cumpleaños son nuestra especialidad. Hacemos celebraciones donde la creatividad es la estrella. ¿Para cuándo sería? ¿Cuántos invitados piensas que vendrían? Te puedo ayudar a cotizar.";
+                    } else if (lowerMsg.includes('precio') || lowerMsg.includes('cost') || lowerMsg.includes('valor')) {
+                      response = "Los precios varían según la experiencia y cantidad de niños. 💰 Para darte un precio exacto, ¿me cuentas cuántos niños serían y qué tipo de experiencia te interesa? También puedes escribirnos por WhatsApp (+56 9 2008 9281) y te armamos una cotización personalizada al toque.";
+                    } else if (lowerMsg.includes('hola') || lowerMsg.includes('hi') || lowerMsg.includes('hey')) {
+                      response = "¡Hola! 👋 ¡Qué alegría verte por aquí! Soy Cangrejín y estoy aquí para ayudarte. ¿Qué te gustaría saber sobre nuestras experiencias creativas? ¿O prefieres que te cuente qué hacemos?";
+                    } else if (lowerMsg.includes('gracias') || lowerMsg.includes('thanks')) {
+                      response = "¡De nada! 😊 Estoy aquí para lo que necesites. ¿Hay algo más en lo que pueda ayudarte? ¿Quieres agendar una visita o tienes alguna otra duda?";
+                    }
+
+                    setChatMessages(prev => [...prev, {role: 'bot', text: response}]);
+                  }, 1200);
+                }}
+                className="flex gap-2 items-center bg-gray-50 rounded-2xl p-2 border-2 border-gray-200 focus-within:border-orange-300 focus-within:bg-white focus-within:shadow-lg transition-all"
+              >
+                <input
+                  type="text"
+                  value={userInput}
+                  onChange={(e) => setUserInput(e.target.value)}
+                  placeholder="Escribe tu pregunta..."
+                  disabled={isTyping}
+                  className="flex-1 px-3 py-2.5 bg-transparent text-sm focus:outline-none disabled:opacity-50 text-gray-800 placeholder:text-gray-400"
+                />
+                <button
+                  type="submit"
+                  disabled={!userInput.trim() || isTyping}
+                  className="p-2.5 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-500 text-white rounded-xl font-medium hover:shadow-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:scale-105 active:scale-95"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </button>
+              </form>
+              <p className="text-xs text-gray-400 text-center mt-2.5 font-medium">Powered by Cangrejín AI 🦀✨</p>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
