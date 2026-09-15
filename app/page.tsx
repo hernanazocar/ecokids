@@ -1612,7 +1612,7 @@ export default function Home() {
 
         {/* Panel del chat */}
         {showChatbot && (
-          <div className="absolute bottom-20 right-0 md:right-0 left-4 md:left-auto md:w-96 bg-white rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col border border-gray-100" style={{height: '600px'}}>
+          <div className="fixed md:absolute bottom-2 md:bottom-20 left-2 right-2 md:left-auto md:right-0 md:w-96 h-[calc(100vh-1rem)] md:h-[600px] bg-white rounded-3xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col border border-gray-100">
             {/* Header moderno */}
             <div className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 p-5 flex items-center justify-between flex-shrink-0">
               <div className="flex items-center gap-3">
