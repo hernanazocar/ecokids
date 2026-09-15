@@ -1653,9 +1653,11 @@ export default function Home() {
                     </div>
                     <div className="flex-1 bg-white rounded-2xl rounded-tl-sm p-4 shadow-lg border border-gray-200/50">
                       <p className="text-sm text-gray-800 leading-relaxed">
-                        <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-pink-600">¡Hola! 👋</span>
+                        <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-pink-600">¡Hola! 👋 ¡Qué alegría verte por aquí!</span>
                         <br />
-                        Soy <span className="font-semibold text-orange-600">Cangrejín AI</span>, tu asistente inteligente de EcoKids. ¿En qué puedo ayudarte hoy?
+                        Soy <span className="font-semibold text-orange-600">Cangrejín</span>, tu amigo cangrejo 🦀 y asistente de EcoKids. Estoy aquí para ayudarte a descubrir nuestras increíbles experiencias creativas para niños.
+                        <br /><br />
+                        ¿En qué puedo ayudarte hoy? 😊
                       </p>
                     </div>
                   </div>
