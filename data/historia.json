@@ -1,0 +1,85 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "titulo": "Hola, soy Flo",
+      "icono": "🧡",
+      "color": "orange",
+      "imagen": "/historia/mama.png",
+      "descripcion": "Después de tantos años trabajando con niños, quise crear algo propio: experiencias donde los niños no solo hagan una actividad, sino que se conviertan en protagonistas de una aventura.",
+      "badges": [
+        {
+          "texto": "✨ Fundadora EcoKids",
+          "color": "orange"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "titulo": "También soy mamá",
+      "icono": "💜",
+      "color": "purple",
+      "imagen": "/historia/flo.png",
+      "descripcion": "Ser mamá me hizo valorar aún más los espacios de conexión y juego, descubriendo que esa es la mayor muestra de amor.",
+      "badges": [
+        {
+          "texto": "👨‍👩‍👧‍👦 Familia",
+          "color": "purple"
+        },
+        {
+          "texto": "💝 Calidad",
+          "color": "pink"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "titulo": "+15 años de experiencia",
+      "icono": "⭐",
+      "color": "green",
+      "imagen": "/historia/experiencia.png",
+      "descripcion": "Trabajo con niños desde hace más de 15 años, con formación profesional que respalda cada experiencia que creamos juntos.",
+      "credenciales": [
+        "Educadora de Párvulos",
+        "Magíster en Arteterapia",
+        "Magíster en Liderazgo Educativo"
+      ]
+    },
+    {
+      "id": 4,
+      "titulo": "Él es Colorín",
+      "icono": "🦀",
+      "color": "orange",
+      "imagen": "/colorin.jpeg",
+      "descripcion": "Colorín nació para acompañar a los niños en cada experiencia EcoKids. Es quien los invita a descubrir, imaginar, crear y, sobre todo, a disfrutar del camino.",
+      "badges": [
+        {
+          "texto": "🎨 Compañero de aventuras",
+          "color": "orange"
+        }
+      ]
+    }
+  ],
+  "cierre": {
+    "titulo": "Así nació EcoKids",
+    "icono": "✨",
+    "descripcion": "Un espacio donde la creatividad y el juego son la clave para crear momentos que los niños recuerden. Porque un ratito sin pantallas, es un mundo de posibilidades.",
+    "valores": [
+      {
+        "icono": "🎨",
+        "texto": "Creatividad",
+        "color": "orange"
+      },
+      {
+        "icono": "🌱",
+        "texto": "Aprendizaje",
+        "color": "pink"
+      },
+      {
+        "icono": "💝",
+        "texto": "Diversión",
+        "color": "purple"
+      }
+    ]
+  }
+}

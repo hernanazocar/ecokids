@@ -1,0 +1,60 @@
+{
+  "imagenes": [
+    {
+      "id": 1,
+      "archivo": "/galeria/primera.jpeg",
+      "alt": "Galería EcoKids 1",
+      "destacada": true
+    },
+    {
+      "id": 2,
+      "archivo": "/galeria/galeria-1.jpeg",
+      "alt": "Galería EcoKids 2"
+    },
+    {
+      "id": 3,
+      "archivo": "/galeria/galeria-2.jpeg",
+      "alt": "Galería EcoKids 3"
+    },
+    {
+      "id": 4,
+      "archivo": "/galeria/galeria-3.jpeg",
+      "alt": "Galería EcoKids 4"
+    },
+    {
+      "id": 5,
+      "archivo": "/galeria/galeria-4.jpeg",
+      "alt": "Galería EcoKids 5"
+    },
+    {
+      "id": 6,
+      "archivo": "/galeria/galeria-5.jpeg",
+      "alt": "Galería EcoKids 6"
+    },
+    {
+      "id": 7,
+      "archivo": "/galeria/galeria-6.jpeg",
+      "alt": "Galería EcoKids 7"
+    },
+    {
+      "id": 8,
+      "archivo": "/galeria/galeria-7.jpeg",
+      "alt": "Galería EcoKids 8"
+    },
+    {
+      "id": 9,
+      "archivo": "/galeria/galeria-8.jpeg",
+      "alt": "Galería EcoKids 9"
+    },
+    {
+      "id": 10,
+      "archivo": "/galeria/galeria-9.jpeg",
+      "alt": "Galería EcoKids 10"
+    }
+  ],
+  "instagram": {
+    "usuario": "ecokids.experiencias",
+    "url": "https://instagram.com/ecokids.experiencias",
+    "botonTexto": "Ver todas en Instagram"
+  }
+}

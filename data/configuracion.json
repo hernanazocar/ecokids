@@ -1,0 +1,128 @@
+{
+  "sitio": {
+    "nombre": "EcoKids",
+    "nombreCompleto": "EcoKids - Experiencias Creativas",
+    "tagline": "Un ratito sin pantallas, un mundo de posibilidades",
+    "descripcion": "Sitio web para talleres infantiles creativos en Concón, V Región",
+    "logo": "/logo.png",
+    "favicon": "/favicon.ico"
+  },
+  "contacto": {
+    "ubicacion": {
+      "ciudad": "Concón",
+      "region": "V Región",
+      "pais": "Chile",
+      "direccion": ""
+    },
+    "telefono": "+56 9 2008 9281",
+    "whatsapp": "56920089281",
+    "email": "",
+    "horario": "Lunes a Viernes: 9:00 - 18:00"
+  },
+  "redesSociales": {
+    "instagram": {
+      "usuario": "@ecokids.experiencias",
+      "url": "https://instagram.com/ecokids.experiencias"
+    },
+    "facebook": {
+      "usuario": "",
+      "url": ""
+    },
+    "tiktok": {
+      "usuario": "",
+      "url": ""
+    },
+    "youtube": {
+      "usuario": "",
+      "url": ""
+    },
+    "linkedin": {
+      "usuario": "",
+      "url": ""
+    },
+    "twitter": {
+      "usuario": "",
+      "url": ""
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 EcoKids. Todos los derechos reservados.",
+    "textoLegal": "Talleres infantiles creativos en Concón, V Región.",
+    "enlaces": [
+      {
+        "texto": "Inicio",
+        "url": "/"
+      },
+      {
+        "texto": "Talleres",
+        "url": "/talleres"
+      },
+      {
+        "texto": "Contacto",
+        "url": "/contacto"
+      }
+    ]
+  },
+  "seo": {
+    "tituloBase": "EcoKids - Experiencias Creativas",
+    "descripcionBase": "Talleres infantiles creativos y experiencias únicas para niños en Concón. Un espacio donde la creatividad y el juego son la clave.",
+    "keywords": "talleres infantiles, experiencias creativas, cumpleaños niños, actividades niños, Concón, V Región, ecokids",
+    "imagenCompartida": "/hero2.jpeg"
+  },
+  "admin": {
+    "usuarios": [
+      {
+        "id": 1,
+        "nombre": "Administrador",
+        "email": "admin@ecokids.cl",
+        "password": "admin123"
+      }
+    ]
+  },
+  "comoFunciona": {
+    "pasos": [
+      {
+        "numero": 1,
+        "titulo": "¡Explora!",
+        "icono": "🔍",
+        "descripcion": "Descubre talleres increíbles y experiencias mágicas 🌟",
+        "color": {
+          "gradiente": "from-purple-100 to-purple-50",
+          "borde": "border-purple-300",
+          "numero": "from-purple-500 to-purple-600",
+          "iconoBg": "from-purple-400 to-purple-600",
+          "badge": "bg-purple-200",
+          "badgeTexto": "text-purple-800"
+        }
+      },
+      {
+        "numero": 2,
+        "titulo": "¡Reserva!",
+        "icono": "📅",
+        "descripcion": "Escríbenos por WhatsApp o Instagram y agenda 💬",
+        "color": {
+          "gradiente": "from-pink-100 to-pink-50",
+          "borde": "border-pink-300",
+          "numero": "from-pink-500 to-pink-600",
+          "iconoBg": "from-pink-400 to-pink-600",
+          "badge": "bg-pink-200",
+          "badgeTexto": "text-pink-800"
+        }
+      },
+      {
+        "numero": 3,
+        "titulo": "¡Disfruta!",
+        "icono": "🎨",
+        "descripcion": "Nosotros nos encargamos de todo. Tú solo ven a disfrutar.",
+        "color": {
+          "gradiente": "from-orange-100 to-orange-50",
+          "borde": "border-orange-300",
+          "numero": "from-orange-500 to-orange-600",
+          "iconoBg": "from-orange-400 to-orange-600",
+          "badge": "bg-orange-200",
+          "badgeTexto": "text-orange-800"
+        }
+      }
+    ]
+  }
+}

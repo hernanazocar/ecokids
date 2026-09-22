@@ -1,0 +1,53 @@
+{
+  "configuracion": {
+    "activado": true,
+    "nombre": "Colorín",
+    "avatar": "🦀",
+    "descripcion": "Tu amigo cangrejo y asistente de EcoKids",
+    "mensajeBienvenida": "¡Hola! 👋 ¡Qué alegría verte por aquí! Soy Colorín, tu amigo cangrejo 🦀 y asistente de EcoKids. Estoy aquí para ayudarte. ¿Qué te gustaría saber sobre nuestras experiencias creativas?"
+  },
+  "preguntasRapidas": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué experiencias ofrecen?",
+      "categoria": "general"
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuánto cuesta?",
+      "categoria": "precios"
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Cómo reservo?",
+      "categoria": "reservas"
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Dónde están ubicados?",
+      "categoria": "ubicacion"
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Hacen cumpleaños?",
+      "categoria": "cumpleanos"
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Qué edades aceptan?",
+      "categoria": "edades"
+    }
+  ],
+  "respuestas": {
+    "experiencias": "Tenemos talleres creativos súper entretenidos: Aventuras Marinas 🌊, Arte y Reciclaje ♻️, Ciencia Divertida 🔬, y Cocina Creativa 👨‍🍳. ¡Todas llenas de diversión y aprendizaje! ¿Cuál te llama más la atención?",
+    "precios": "Los precios varían según la experiencia y cantidad de niños. 💰 Para darte un precio exacto, ¿me cuentas cuántos niños serían y qué tipo de experiencia te interesa?",
+    "reservas": "¡Me encanta tu entusiasmo! 🎉 Puedes reservar súper fácil por WhatsApp, Instagram o llenando nuestro formulario. ¿Para cuándo estás pensando?",
+    "ubicacion": "¡Estamos en Concón, V Región! 🏖️ Un lugar hermoso junto al mar. ¿Te queda cerca?",
+    "cumpleanos": "¡Sííí! 🎉 Los cumpleaños son nuestra especialidad. Hacemos celebraciones donde la creatividad es la estrella. ¿Para cuándo sería? ¿Cuántos invitados?",
+    "edades": "¡Qué bueno que preguntes! 😄 Nuestras experiencias son perfectas para niños de 3 a 12 años. Adaptamos cada actividad según la edad. ¿Qué edad tiene tu pequeño aventurero?",
+    "duracion": "Las experiencias duran aproximadamente 2 horas de pura diversión. 🎨 Si es un cumpleaños, pueden durar hasta 3 horas.",
+    "materiales": "¡Lo mejor de todo! Todos los materiales están 100% incluidos. 🎨✨ Los niños solo traen sus ganas de crear y nosotros ponemos todo lo demás.",
+    "despedida": "¡Hasta pronto! 👋 ¡Que tengas un día increíble! Si necesitas algo más, aquí estaré esperándote. ¡Nos vemos! 🦀✨",
+    "agradecimiento": "¡De nada! 😊 ¡Fue un placer ayudarte! Estoy aquí para lo que necesites."
+  }
+}

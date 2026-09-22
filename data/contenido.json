@@ -1,0 +1,50 @@
+{
+  "home": {
+    "hero": {
+      "titulo1": "Experiencias ",
+      "titulo2": "creativas",
+      "descripcion": "EcoKids un lugar donde los niños y niñas, exploran, juegan y conectan.",
+      "tagline1": "Un ratito sin pantallas, un mundo de ",
+      "tagline2": "posibilidades",
+      "ubicacion": "Concón, V Región",
+      "imagenFondo": "/hero2.jpeg",
+      "botonTexto": "Descubre nuestras aventuras"
+    },
+    "secciones": {
+      "experiencias": {
+        "badge": "Experiencias",
+        "titulo": "Elige tu próxima aventura ✨",
+        "descripcion": "Colorín invita a los niños a entrar en un mundo diferente conectando con el juego, la creatividad y la alegría de explorar algo nuevo"
+      },
+      "sobreNosotros": {
+        "badge": "Quiénes somos",
+        "titulo": "Conoce nuestra historia",
+        "descripcion": "La pasión de Flo por crear experiencias inolvidables para niños"
+      },
+      "servicios": {
+        "badge": "Nuestros Servicios",
+        "titulo": "Experiencias únicas",
+        "descripcion": "Ecokids te acomp añapa en tus celebraciones y te invita a vivir momentos inolvidables"
+      },
+      "comoFunciona": {
+        "badge": "Cómo funciona",
+        "titulo": "Reserva en 3 pasos",
+        "descripcion": "¡Rápido, fácil y listo para la diversión!"
+      },
+      "galeria": {
+        "badge": "Galería",
+        "titulo": "Así se vive una aventura EcoKids"
+      },
+      "testimonios": {
+        "badge": "Testimonios",
+        "titulo": "Lo que dicen las familias 💛",
+        "descripcion": "Experiencias que generan ECO de felicidad"
+      },
+      "faq": {
+        "badge": "Preguntas Frecuentes",
+        "titulo": "¿Tienes dudas?",
+        "descripcion": "Aquí encontrarás respuestas a las preguntas más comunes"
+      }
+    }
+  }
+}

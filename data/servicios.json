@@ -1,0 +1,68 @@
+{
+  "servicios": [
+    {
+      "id": 1,
+      "nombre": "Aventuras EcoKids",
+      "icono": "🎨",
+      "descripcion": "Experiencias temáticas donde los niños juegan, exploran y crean una pieza artística.",
+      "color": {
+        "gradiente": "from-pink-50 to-rose-50",
+        "borde": "border-pink-300",
+        "iconoBg": "from-pink-400 to-rose-500",
+        "botonBg": "from-pink-500 to-rose-500"
+      },
+      "botonTexto": "Descubrir aventuras",
+      "botonLink": "#experiencias",
+      "botonTipo": "interno"
+    },
+    {
+      "id": 2,
+      "nombre": "Cumpleaños EcoKids",
+      "icono": "🎂",
+      "descripcion": "Celebraciones donde la creatividad es parte de la aventura.",
+      "color": {
+        "gradiente": "from-purple-50 to-pink-50",
+        "borde": "border-purple-300",
+        "iconoBg": "from-purple-400 to-pink-500",
+        "botonBg": "from-purple-500 to-pink-500"
+      },
+      "botonTexto": "Cotiza con nosotros",
+      "botonTipo": "modal"
+    },
+    {
+      "id": 3,
+      "nombre": "Experiencias para colegios y jardines",
+      "icono": "🏫",
+      "descripcion": "Actividades diseñadas para grupos educativos.",
+      "color": {
+        "gradiente": "from-blue-50 to-cyan-50",
+        "borde": "border-blue-300",
+        "iconoBg": "from-blue-400 to-cyan-500",
+        "botonBg": "from-blue-500 to-cyan-500"
+      },
+      "botonTexto": "Cotiza con nosotros",
+      "botonLink": "#formulario-contacto",
+      "botonTipo": "interno"
+    },
+    {
+      "id": 4,
+      "nombre": "Experiencias especiales",
+      "icono": "✨",
+      "descripcion": "Eventos familiares, empresas y celebraciones personalizadas.",
+      "color": {
+        "gradiente": "from-green-50 to-emerald-50",
+        "borde": "border-green-300",
+        "iconoBg": "from-green-400 to-emerald-500",
+        "botonBg": "from-green-500 to-emerald-500"
+      },
+      "botonTexto": "Contáctanos",
+      "botonLink": "#formulario-contacto",
+      "botonTipo": "interno"
+    }
+  ],
+  "cta": {
+    "titulo": "¿Tienes una idea? La hacemos realidad ✨",
+    "descripcion": "Cuéntanos qué tienes en mente y creemos juntos una experiencia EcoKids.",
+    "botonTexto": "Contáctanos"
+  }
+}

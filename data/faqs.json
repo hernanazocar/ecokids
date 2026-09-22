@@ -1,0 +1,81 @@
+{
+  "faqs": [
+    {
+      "id": 1,
+      "pregunta": "¿Qué edades?",
+      "icono": "👶",
+      "respuesta": "Nuestras experiencias están diseñadas para niños de 3 a 12 años. Adaptamos todas las actividades según la edad de cada grupo para garantizar que todos disfruten y aprendan de manera segura y divertida.",
+      "color": {
+        "gradiente": "from-orange-100 to-pink-100",
+        "borde": "border-orange-300",
+        "iconoBg": "from-orange-400 to-pink-500",
+        "texto": "text-orange-600"
+      }
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuánto dura?",
+      "icono": "⏰",
+      "respuesta": "Las experiencias tienen una duración de 2 horas aproximadamente. Los cumpleaños pueden durar hasta 3 horas, incluyendo tiempo para la celebración.",
+      "color": {
+        "gradiente": "from-blue-100 to-cyan-100",
+        "borde": "border-blue-300",
+        "iconoBg": "from-blue-400 to-cyan-500",
+        "texto": "text-blue-600"
+      }
+    },
+    {
+      "id": 3,
+      "pregunta": "¿Qué incluye?",
+      "icono": "🎨",
+      "respuesta": "Todos los materiales están incluidos en nuestras aventuras, así cada niño pueda vivir la experiencia al máximo.",
+      "color": {
+        "gradiente": "from-purple-100 to-pink-100",
+        "borde": "border-purple-300",
+        "iconoBg": "from-purple-400 to-pink-500",
+        "texto": "text-purple-600"
+      }
+    },
+    {
+      "id": 4,
+      "pregunta": "¿Cómo reservo?",
+      "icono": "📱",
+      "respuesta": "Puedes reservar fácilmente por WhatsApp, Instagram o llenando nuestro formulario de contacto. Te contactaremos a la brevedad.",
+      "color": {
+        "gradiente": "from-green-100 to-emerald-100",
+        "borde": "border-green-300",
+        "iconoBg": "from-green-400 to-emerald-500",
+        "texto": "text-green-600"
+      }
+    },
+    {
+      "id": 5,
+      "pregunta": "¿A domicilio?",
+      "icono": "🏠",
+      "respuesta": "¡Sí! Para cumpleaños y eventos especiales podemos llevar toda la diversión a tu hogar. Consulta por este servicio y te enviaremos una cotización personalizada.",
+      "color": {
+        "gradiente": "from-yellow-100 to-orange-100",
+        "borde": "border-yellow-300",
+        "iconoBg": "from-yellow-400 to-orange-500",
+        "texto": "text-yellow-600"
+      }
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Cuánto cuesta?",
+      "icono": "💰",
+      "respuesta": "Los precios varían según el tipo de experiencia, número de niños y duración. Contáctanos y te enviaremos una cotización personalizada que se ajuste a tus necesidades.",
+      "color": {
+        "gradiente": "from-pink-100 to-rose-100",
+        "borde": "border-pink-300",
+        "iconoBg": "from-pink-400 to-rose-500",
+        "texto": "text-pink-600"
+      }
+    }
+  ],
+  "cta": {
+    "titulo": "¿Aún tienes preguntas?",
+    "descripcion": "Estamos aquí para ayudarte. Contáctanos y resolveremos todas tus dudas",
+    "botonTexto": "Contactar Ahora"
+  }
+}

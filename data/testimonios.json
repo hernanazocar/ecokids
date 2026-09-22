@@ -1,0 +1,64 @@
+{
+  "testimonios": [
+    {
+      "id": 1,
+      "texto": "Hermosa experiencia para mi hija. Gracias por regalarles recuerdos tan lindos desde tan pequeñas. Como mamá, valoro profundamente que los niños tengan la oportunidad de explorar, divertirse y compartir con otros niños que aún no conocen.",
+      "autor": "Sofía, Mamá Ema",
+      "estrellas": 5,
+      "color": {
+        "gradiente": "from-orange-100 to-pink-100",
+        "borde": "border-orange-300",
+        "estrella": "text-orange-500",
+        "texto": "text-orange-700"
+      }
+    },
+    {
+      "id": 2,
+      "texto": "Hermoso. Toda tu trayectoria como educadora se ve reflejada acá. Estoy segura que EcoKids va a ser un éxito. 100% recomendada.",
+      "autor": "Ana, Mamá de Belén",
+      "estrellas": 5,
+      "color": {
+        "gradiente": "from-purple-100 to-pink-100",
+        "borde": "border-purple-300",
+        "estrella": "text-purple-500",
+        "texto": "text-purple-700"
+      }
+    },
+    {
+      "id": 3,
+      "texto": "Un gusto poder ser parte del proyecto todo muy lindo los niños la pasaron genial. Llegaron a la casa a seguir pintando las figuritas que se llevaron 😅🥰❤️",
+      "autor": "Adriana, Mamá José Ignacio",
+      "estrellas": 5,
+      "color": {
+        "gradiente": "from-blue-100 to-cyan-100",
+        "borde": "border-blue-300",
+        "estrella": "text-blue-500",
+        "texto": "text-blue-700"
+      }
+    },
+    {
+      "id": 4,
+      "texto": "Hola, Flo. A los niños les encantó, sobre todo a Gabriel. A Gabriel igual le cuesta bastante quedarse quietito y tomar atención, y me llamó mucho la atención que, para lo desordenado que es, a ti te hizo bastante caso 😂....Pero todo bacán. Muchas gracias por todo ❤️.",
+      "autor": "Renata, Mamá Gabriel y Elo",
+      "estrellas": 5,
+      "color": {
+        "gradiente": "from-green-100 to-emerald-100",
+        "borde": "border-green-300",
+        "estrella": "text-green-500",
+        "texto": "text-green-700"
+      }
+    },
+    {
+      "id": 5,
+      "texto": "Hola Floooo muchas gracias a tiii, estuvo muy lindo y las niñas lo gozaron!!! Nos encantó todo!!",
+      "autor": "Begoña, Mamá de Maite y Renata",
+      "estrellas": 5,
+      "color": {
+        "gradiente": "from-pink-100 to-rose-100",
+        "borde": "border-pink-300",
+        "estrella": "text-pink-500",
+        "texto": "text-pink-700"
+      }
+    }
+  ]
+}

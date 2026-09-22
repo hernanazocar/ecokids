@@ -118,3 +118,23 @@ body {
     transform: scaleX(-0.8);
   }
 }
+
+/* Estilos para inputs del admin - texto visible */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  color: #111827 !important;
+  font-weight: 500 !important;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="url"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+  color: #9ca3af !important;
+}

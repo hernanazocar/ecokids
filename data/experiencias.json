@@ -1,0 +1,92 @@
+{
+  "experiencias": [
+    {
+      "id": 1,
+      "nombre": "Aventura bajo el mar",
+      "titulo1": "Aventura",
+      "titulo2": "bajo el mar",
+      "color": "#06b6d4",
+      "gradiente": "from-[#cffafe] to-white",
+      "gradienteBoton": "from-[#06b6d4] to-[#22d3ee]",
+      "imagen": "/cangrejo1.png",
+      "descripcion": "Sumérgete en una increíble aventura submarina donde los niños explorarán el fascinante mundo marino. Actividades creativas, juegos temáticos y manualidades inspiradas en el océano.",
+      "incluye": [
+        "Manualidades temáticas del mar",
+        "Juegos acuáticos creativos",
+        "Cuentos y canciones marinas",
+        "Materiales incluidos"
+      ],
+      "duracion": "2 horas",
+      "edades": "3-8 años",
+      "precio": "$7.000",
+      "estado": "finalizada",
+      "estadoTexto": "Ya vivimos esta aventura"
+    },
+    {
+      "id": 2,
+      "nombre": "Aventura jurásica",
+      "titulo1": "Aventura",
+      "titulo2": "jurásica",
+      "color": "#ea580c",
+      "gradiente": "from-[#fed7aa] to-white",
+      "gradienteBoton": "from-[#ea580c] to-[#fb923c]",
+      "imagen": "/cangrejo2.png",
+      "descripcion": "¡Viaja al pasado y descubre el mundo de los dinosaurios! Una experiencia llena de diversión, creatividad y aprendizaje sobre estos increíbles animales prehistóricos.",
+      "incluye": [
+        "Excavación de fósiles",
+        "Creación de dinosaurios",
+        "Juegos temáticos jurásicos",
+        "Kit de paleontólogo"
+      ],
+      "duracion": "2 horas",
+      "edades": "4-10 años",
+      "precio": "$8.000",
+      "estado": "finalizada",
+      "estadoTexto": "Ya vivimos esta aventura"
+    },
+    {
+      "id": 3,
+      "nombre": "Aventura del espacio",
+      "titulo1": "Aventura",
+      "titulo2": "del espacio",
+      "color": "#6366f1",
+      "gradiente": "from-[#e0e7ff] to-white",
+      "gradienteBoton": "from-[#6366f1] to-[#818cf8]",
+      "imagen": "/cangrejo3.png",
+      "descripcion": "Despega hacia las estrellas en esta aventura espacial. Los niños explorarán planetas, estrellas y galaxias mientras crean sus propias naves espaciales y arte cósmico.",
+      "incluye": [
+        "Creación de cohetes",
+        "Pintura de planetas",
+        "Experimentos espaciales",
+        "Casco de astronauta"
+      ],
+      "duracion": "2 horas",
+      "edades": "5-10 años",
+      "precio": "$8.000",
+      "estado": "proximamente",
+      "estadoTexto": "Próximamente"
+    },
+    {
+      "id": 4,
+      "nombre": "Aventura encantada",
+      "titulo1": "Aventura",
+      "titulo2": "encantada",
+      "color": "#ec4899",
+      "gradiente": "from-[#fce7f3] to-white",
+      "gradienteBoton": "from-[#ec4899] to-[#f472b6]",
+      "imagen": "/cangrejo4.png",
+      "descripcion": "Un mundo mágico lleno de hadas, princesas y criaturas fantásticas. Creatividad, fantasía y diversión en una experiencia que despertará la imaginación de los niños.",
+      "incluye": [
+        "Creación de varitas mágicas",
+        "Coronas y accesorios",
+        "Cuentos de fantasía",
+        "Maquillaje artístico"
+      ],
+      "duracion": "2 horas",
+      "edades": "3-8 años",
+      "precio": "$8.000",
+      "estado": "proximamente",
+      "estadoTexto": "Próximamente"
+    }
+  ]
+}
