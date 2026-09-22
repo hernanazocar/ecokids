@@ -1355,7 +1355,7 @@ export default function Home() {
                 <div className="mb-8">
                   <h4 className="text-2xl font-bold text-gray-900 mb-4">¿Qué incluye?</h4>
                   <div className="grid md:grid-cols-2 gap-3">
-                    {exp.incluye.map((item, idx) => (
+                    {exp.incluye.map((item: any, idx: number) => (
                       <div key={idx} className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl">
                         <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style={{backgroundColor: exp.color}}>
                           <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
