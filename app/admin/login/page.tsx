@@ -13,7 +13,7 @@ export default function AdminLogin() {
     e.preventDefault();
 
     // Autenticación simple (en producción usar algo más seguro)
-    if (password === "ecokids2024") {
+    if (password === "Kidscolor2026") {
       localStorage.setItem("adminAuth", "true");
       router.push("/admin/dashboard");
     } else {
