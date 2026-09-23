@@ -5,10 +5,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Home, Sparkles, MessageSquare, TrendingUp, Plus, Eye, Edit, Settings } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import MobileDashboard from "@/components/admin/mobile/MobileDashboard";
 
 export default function AdminDashboard() {
   const router = useRouter();
   const [isAuth, setIsAuth] = useState(false);
+  const { isMobile, isClient } = useIsMobile();
 
   useEffect(() => {
     const auth = localStorage.getItem("adminAuth");
@@ -18,6 +21,13 @@ export default function AdminDashboard() {
       setIsAuth(true);
     }
   }, [router]);
+
+  if (!isAuth) return null;
+
+  // Versión móvil
+  if (isClient && isMobile) {
+    return <MobileDashboard />;
+  }
 
   const stats = [
     { icon: Sparkles, label: "Experiencias Activas", value: "4", color: "from-orange-500 to-pink-500" },
@@ -33,8 +43,7 @@ export default function AdminDashboard() {
     { icon: Eye, label: "Ver Sitio", href: "/", color: "green", external: true }
   ];
 
-  if (!isAuth) return null;
-
+  // Versión desktop
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}

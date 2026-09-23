@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Save, Trash2, Plus, Image as ImageIcon, Type } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import MobileGallery from "@/components/admin/mobile/MobileGallery";
 
 export default function GaleriaAdmin() {
   const router = useRouter();
@@ -10,6 +12,7 @@ export default function GaleriaAdmin() {
   const [galeria, setGaleria] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const { isMobile, isClient } = useIsMobile();
 
   useEffect(() => {
     const auth = localStorage.getItem("adminAuth");
@@ -20,6 +23,18 @@ export default function GaleriaAdmin() {
       cargarGaleria();
     }
   }, [router]);
+
+  if (!isAuth || loading || !galeria) {
+    if (isClient && isMobile && isAuth) {
+      return <MobileGallery />;
+    }
+    return null;
+  }
+
+  // Versión móvil
+  if (isClient && isMobile) {
+    return <MobileGallery />;
+  }
 
   const cargarGaleria = async () => {
     try {
@@ -75,8 +90,7 @@ export default function GaleriaAdmin() {
     }
   };
 
-  if (!isAuth || loading || !galeria) return null;
-
+  // Versión desktop
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-amber-50/30 to-orange-50/30">
       {/* Header Premium con Glassmorphism */}
