@@ -3,11 +3,14 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Save, Trash2, Plus, HelpCircle, Type, AlignLeft } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import MobileFAQs from "@/components/admin/mobile/MobileFAQs";
 
 export default function FAQsAdmin() {
   const router = useRouter();
   const [isAuth, setIsAuth] = useState(false);
   const [faqs, setFaqs] = useState<any[]>([]);
+  const { isMobile, isClient } = useIsMobile();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -73,6 +76,8 @@ export default function FAQsAdmin() {
   };
 
   if (!isAuth || loading) return null;
+
+  if (isClient && isMobile) return <MobileFAQs />;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-purple-50/30">

@@ -3,11 +3,14 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Save, Trash2, Plus, Sparkles, ShoppingBag, Palette, Type, AlignLeft } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import MobileServicios from "@/components/admin/mobile/MobileServicios";
 
 export default function ServiciosAdmin() {
   const router = useRouter();
   const [isAuth, setIsAuth] = useState(false);
   const [servicios, setServicios] = useState<any>(null);
+  const { isMobile, isClient } = useIsMobile();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -85,7 +88,12 @@ export default function ServiciosAdmin() {
     setServicios({ ...servicios, servicios: [...servicios.servicios, nuevo] });
   };
 
-  if (!isAuth || loading || !servicios) return null;
+  if (!isAuth || loading || !servicios) {
+    if (isClient && isMobile && isAuth) return <MobileServicios />;
+    return null;
+  }
+
+  if (isClient && isMobile) return <MobileServicios />;
 
   const gradientes = [
     { value: "from-orange-500 to-pink-500", label: "Naranja → Rosa" },

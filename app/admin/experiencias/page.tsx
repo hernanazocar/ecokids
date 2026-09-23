@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Save, Plus, Trash2, Image as ImageIcon, Type, Clock, Users, DollarSign, CheckCircle, Sparkles } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import MobileExperiencias from "@/components/admin/mobile/MobileExperiencias";
 
 interface Experiencia {
   id: number;
@@ -26,6 +28,7 @@ export default function ExperienciasAdmin() {
   const [experiencias, setExperiencias] = useState<Experiencia[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const { isMobile, isClient } = useIsMobile();
 
   useEffect(() => {
     const auth = localStorage.getItem("adminAuth");
@@ -120,6 +123,12 @@ export default function ExperienciasAdmin() {
 
   if (!isAuth || loading) return null;
 
+  // Versión móvil
+  if (isClient && isMobile) {
+    return <MobileExperiencias />;
+  }
+
+  // Versión desktop
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-orange-50/30 to-pink-50/30">
       {/* Header Premium con Glassmorphism */}

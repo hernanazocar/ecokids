@@ -3,11 +3,14 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Save, Settings, Globe, Mail, Phone, MapPin, Clock, Camera, Share2, MessageCircle, Hash, Briefcase, Video, Link2, Trash2, Plus, Type, AlignLeft } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import MobileConfiguracion from "@/components/admin/mobile/MobileConfiguracion";
 
 export default function ConfiguracionAdmin() {
   const router = useRouter();
   const [isAuth, setIsAuth] = useState(false);
   const [config, setConfig] = useState<any>(null);
+  const { isMobile, isClient } = useIsMobile();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -92,7 +95,12 @@ export default function ConfiguracionAdmin() {
     }
   };
 
-  if (!isAuth || loading || !config) return null;
+  if (!isAuth || loading || !config) {
+    if (isClient && isMobile && isAuth) return <MobileConfiguracion />;
+    return null;
+  }
+
+  if (isClient && isMobile) return <MobileConfiguracion />;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-cyan-50/30 to-teal-50/30">
