@@ -1702,16 +1702,17 @@ export default function Home() {
                             const message = item.full;
                             const lowerMsg = message.toLowerCase();
 
-                            // Agregar mensaje del usuario
-                            setChatMessages([{role: 'user', text: message}]);
+                            // Agregar mensaje del usuario (mantener historial)
+                            setChatMessages(prev => [...prev, {role: 'user', text: message}]);
                             setIsTyping(true);
 
                             // Procesar respuesta
                             setTimeout(() => {
                               setIsTyping(false);
 
-                              // Es la primera interacción porque chatMessages está vacío
-                              const saludo = "¡Hola! Soy Colorín 🦀 ";
+                              // Detectar si es la primera interacción (antes de agregar este mensaje)
+                              const esPrimeraInteraccion = chatMessages.length === 0;
+                              const saludo = esPrimeraInteraccion ? "¡Hola! Soy Colorín 🦀 " : "";
                               let response = "";
 
                               if (lowerMsg.includes('edad')) {
@@ -1805,18 +1806,23 @@ export default function Home() {
                     setIsTyping(false);
                     const lowerMsg = message.toLowerCase();
 
-                    // Detectar si es la primera interacción (solo hay 1 mensaje: el del usuario)
-                    const esPrimeraInteraccion = chatMessages.length === 1;
+                    // Detectar si es la primera interacción (ANTES de agregar el mensaje actual)
+                    // Si chatMessages.length es 0, significa que este es el primer mensaje
+                    const esPrimeraInteraccion = chatMessages.length === 0;
                     const saludo = esPrimeraInteraccion ? "¡Hola! Soy Colorín 🦀 " : "";
 
                     let response = saludo + "Disculpa, no entendí muy bien tu mensaje. 😅 ¿Podrías decirme de otra forma en qué puedo ayudarte? Puedo contarte sobre nuestras experiencias, precios, ubicación o cómo reservar. ¿Qué te gustaría saber?";
 
+                    // Detectar números (respuesta a "cuántos niños")
+                    const numeroMatch = lowerMsg.match(/\b(\d+|un|uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\b/);
+                    if (numeroMatch && !esPrimeraInteraccion) {
+                      response = `¡Perfecto! Para ${lowerMsg.includes('niño') || lowerMsg.includes('niña') ? lowerMsg : numeroMatch[0] + ' niños'} tenemos experiencias increíbles. 🎨 Para darte un precio exacto y coordinar todo, ¿te parece si nos escribes por WhatsApp al ${configuracion?.contacto?.telefono || '+56 9 2008 9281'}? Así te armamos una cotización personalizada al toque. ¿Te gustaría saber algo más antes?`;
+                    }
                     // Detectar días de la semana y fechas
-                    if (lowerMsg.includes('lunes') || lowerMsg.includes('martes') || lowerMsg.includes('miercoles') || lowerMsg.includes('miércoles') ||
+                    else if (lowerMsg.includes('lunes') || lowerMsg.includes('martes') || lowerMsg.includes('miercoles') || lowerMsg.includes('miércoles') ||
                         lowerMsg.includes('jueves') || lowerMsg.includes('viernes') || lowerMsg.includes('sabado') || lowerMsg.includes('sábado') ||
-                        lowerMsg.includes('domingo') || lowerMsg.includes('este') || lowerMsg.includes('próximo') || lowerMsg.includes('proximo') ||
-                        lowerMsg.match(/\d+/)) {
-                      response = saludo + `¡Perfecto! 🎉 Me encanta que estés organizando esto. Para confirmar la disponibilidad y coordinar todos los detalles, ¿te parece si hablamos por WhatsApp? Puedes escribirnos al ${configuracion?.contacto?.telefono || '+56 9 2008 9281'} y te ayudamos al toque. ¿Cuántos niños serían aproximadamente?`;
+                        lowerMsg.includes('domingo') || lowerMsg.includes('este') || lowerMsg.includes('próximo') || lowerMsg.includes('proximo')) {
+                      response = `¡Genial que ya tengas fecha en mente! 🎉 Para confirmar la disponibilidad y coordinar todos los detalles, ¿te parece si hablamos por WhatsApp? Puedes escribirnos al ${configuracion?.contacto?.telefono || '+56 9 2008 9281'} y te ayudamos al toque. ¿Cuántos niños serían aproximadamente?`;
                     } else if (lowerMsg.includes('sí') || lowerMsg.includes('si') || lowerMsg.includes('dale') || lowerMsg.includes('ok') || lowerMsg.includes('bueno')) {
                       response = saludo + `¡Genial! 😄 Me alegra mucho tu interés. Para ayudarte mejor, escríbenos por WhatsApp al ${configuracion?.contacto?.telefono || '+56 9 2008 9281'} o Instagram (${configuracion?.redesSociales?.instagram?.usuario || '@ecokids.experiencias'}) y coordinamos todo. ¿Hay algo más que quieras saber antes?`;
                     } else if (lowerMsg.includes('no') || lowerMsg.includes('nada')) {
