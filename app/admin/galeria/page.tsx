@@ -81,44 +81,44 @@ export default function GaleriaAdmin() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-amber-50/30 to-orange-50/30">
       {/* Header Premium con Glassmorphism */}
       <div className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-gray-200/50 shadow-lg shadow-amber-500/5">
-        <div className="max-w-[1600px] mx-auto px-8 py-5">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl blur-xl opacity-30"></div>
-                <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-lg">
-                  <ImageIcon className="w-6 h-6 text-white" strokeWidth={2.5} />
+                <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shadow-lg">
+                  <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" strokeWidth={2.5} />
                 </div>
               </div>
               <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent">
+                <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent">
                   Galería de Fotos
                 </h1>
-                <p className="text-sm text-gray-500 mt-0.5">Gestiona las imágenes de la galería</p>
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">Gestiona las imágenes de la galería</p>
               </div>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
               <button
                 onClick={agregarImagen}
-                className="group relative overflow-hidden px-6 py-3.5 rounded-xl font-semibold text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                className="group relative overflow-hidden px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl font-semibold text-white shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 sm:hover:scale-105"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-green-500"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative flex items-center gap-2">
+                <div className="relative flex items-center justify-center gap-2">
                   <Plus className="w-4 h-4" strokeWidth={2.5} />
-                  <span>Agregar Imagen</span>
+                  <span className="text-sm sm:text-base">Agregar Imagen</span>
                 </div>
               </button>
               <button
                 onClick={guardar}
                 disabled={saving}
-                className="group relative overflow-hidden px-8 py-3.5 rounded-xl font-semibold text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
+                className="group relative overflow-hidden px-4 sm:px-8 py-3 sm:py-3.5 rounded-xl font-semibold text-white shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 sm:hover:scale-105 disabled:opacity-50 disabled:hover:scale-100"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-600 to-pink-500"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative flex items-center gap-2">
+                <div className="relative flex items-center justify-center gap-2">
                   <Save className="w-4 h-4" strokeWidth={2.5} />
-                  <span>{saving ? "Guardando..." : "Guardar Cambios"}</span>
+                  <span className="text-sm sm:text-base">{saving ? "Guardando..." : "Guardar Cambios"}</span>
                 </div>
               </button>
             </div>
@@ -126,8 +126,8 @@ export default function GaleriaAdmin() {
         </div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-8 py-6">
-        <div className="grid md:grid-cols-3 gap-4">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {galeria.imagenes.map((img: any, index: number) => (
             <div
               key={img.id}

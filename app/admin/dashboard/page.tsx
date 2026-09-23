@@ -39,15 +39,15 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40 shadow-sm">
-        <div className="px-8 py-5">
+        <div className="px-4 sm:px-6 lg:px-8 py-4 lg:py-5">
           <div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Dashboard</h1>
-            <p className="text-sm text-gray-600 mt-1">Bienvenido al panel de administración EcoKids</p>
+            <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">Dashboard</h1>
+            <p className="text-xs sm:text-sm text-gray-600 mt-1">Bienvenido al panel de administración EcoKids</p>
           </div>
         </div>
       </header>
 
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
           {stats.map((stat, index) => {
