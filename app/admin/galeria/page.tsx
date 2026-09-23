@@ -145,7 +145,15 @@ export default function GaleriaAdmin() {
               <div className="p-4 pb-0">
                 <div className="rounded-xl overflow-hidden bg-white border-2 border-gray-200 relative aspect-square shadow-inner">
                   {img.archivo ? (
-                    <img src={img.archivo} alt={img.alt} className="w-full h-full object-cover" />
+                    <img
+                      src={img.archivo}
+                      alt={img.alt}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        console.error('Error cargando imagen:', img.archivo);
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
                   ) : (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
                       <ImageIcon className="w-12 h-12 text-gray-300 mb-2" strokeWidth={1.5} />
