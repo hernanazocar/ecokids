@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Save, Trash2, Plus, BookOpen, Image as ImageIcon, Sparkles, Palette, Type, AlignLeft } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import MobileHistoria from "@/components/admin/mobile/MobileHistoria";
 
 export default function HistoriaAdmin() {
   const router = useRouter();
@@ -10,6 +12,7 @@ export default function HistoriaAdmin() {
   const [historia, setHistoria] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const { isMobile, isClient } = useIsMobile();
 
   useEffect(() => {
     const auth = localStorage.getItem("adminAuth");
@@ -76,7 +79,12 @@ export default function HistoriaAdmin() {
     setHistoria({ ...historia, cards: [...historia.cards, nuevaCard] });
   };
 
-  if (!isAuth || loading || !historia) return null;
+  if (!isAuth || loading || !historia) {
+    if (isClient && isMobile && isAuth) return <MobileHistoria />;
+    return null;
+  }
+
+  if (isClient && isMobile) return <MobileHistoria />;
 
   const colores = [
     { value: "orange", label: "Naranja", gradient: "from-orange-500 to-orange-600" },

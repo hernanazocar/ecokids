@@ -16,7 +16,7 @@ const bottomNavItems = [
   { icon: LayoutDashboard, label: "Inicio", href: "/admin/dashboard" },
   { icon: Sparkles, label: "Experiencias", href: "/admin/experiencias" },
   { icon: ImageIcon, label: "Galería", href: "/admin/galeria" },
-  { icon: Settings, label: "Más", href: "/admin/configuracion" }
+  { icon: Settings, label: "Más", href: "/admin/menu" }
 ];
 
 export default function MobileLayout({ children }: { children: React.ReactNode }) {

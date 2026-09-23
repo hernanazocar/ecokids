@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Save, Bot, MessageSquare, Trash2, Plus, Type, AlignLeft, Sparkles, ToggleLeft, ToggleRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import MobileAsistenteAI from "@/components/admin/mobile/MobileAsistenteAI";
 
 export default function AsistenteAIAdmin() {
   const router = useRouter();
@@ -10,6 +12,7 @@ export default function AsistenteAIAdmin() {
   const [asistente, setAsistente] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const { isMobile, isClient } = useIsMobile();
 
   useEffect(() => {
     const auth = localStorage.getItem("adminAuth");
@@ -95,7 +98,12 @@ export default function AsistenteAIAdmin() {
     }
   };
 
-  if (!isAuth || loading || !asistente) return null;
+  if (!isAuth || loading || !asistente) {
+    if (isClient && isMobile && isAuth) return <MobileAsistenteAI />;
+    return null;
+  }
+
+  if (isClient && isMobile) return <MobileAsistenteAI />;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/30">
