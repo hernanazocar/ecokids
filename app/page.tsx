@@ -225,6 +225,14 @@ export default function Home() {
                 <div className="text-center mb-2 mt-4 md:mt-5">
                   <h3 className="text-lg md:text-xl font-black mb-0.5 drop-shadow-sm" style={{color: exp.color}}>{exp.titulo1}</h3>
                   <h4 className="text-sm md:text-base font-bold" style={{color: exp.color}}>{exp.titulo2}</h4>
+                  {exp.estado === 'activa' && exp.fecha && (
+                    <div className="inline-flex items-center gap-1 mt-1.5 px-2.5 py-1 rounded-full bg-white shadow-md border" style={{borderColor: exp.color}}>
+                      <svg className="w-3 h-3" fill="none" stroke={exp.color} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <span className="text-[10px] md:text-xs font-black" style={{color: exp.color}}>{exp.fecha}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Imagen con efecto 3D */}
@@ -239,19 +247,33 @@ export default function Home() {
                   />
                 </div>
 
-                {/* Botón mejorado */}
-                <div
-                  className={`w-full py-2 bg-gradient-to-r ${(exp.id === 1 || exp.id === 2) ? 'from-gray-400 to-gray-500' : 'from-purple-400 to-purple-500'} text-white rounded-xl font-black text-xs shadow-lg flex items-center justify-center gap-1.5 opacity-80 cursor-default`}
-                >
-                  <svg className="w-3 h-3 md:w-3.5 md:h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                    {(exp.id === 1 || exp.id === 2) ? (
+                {/* Botón mejorado - usa el estado real del JSON, no un id hardcodeado */}
+                {exp.estado === 'activa' ? (
+                  <a
+                    href={`https://wa.me/${configuracion?.contacto?.whatsapp || '56920089281'}?text=${encodeURIComponent(`¡Hola! Quiero reservar la experiencia "${exp.nombre}"${exp.fecha ? ` del ${exp.fecha}` : ''} 🎉`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full py-2 bg-gradient-to-r ${exp.gradienteBoton || 'from-purple-400 to-purple-500'} text-white rounded-xl font-black text-xs shadow-lg flex items-center justify-center gap-1.5 hover:scale-105 hover:shadow-xl transition-all duration-300 animate-pulse`}
+                  >
+                    <svg className="w-3 h-3 md:w-3.5 md:h-3.5" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    ) : (
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                    )}
-                  </svg>
-                  <span>{(exp.id === 1 || exp.id === 2) ? 'Ya vivimos esta aventura' : 'Próximamente'}</span>
-                </div>
+                    </svg>
+                    <span>{exp.estadoTexto || '¡Resérvala ya!'}</span>
+                  </a>
+                ) : (
+                  <div
+                    className={`w-full py-2 bg-gradient-to-r ${exp.estado === 'finalizada' ? 'from-gray-400 to-gray-500' : 'from-purple-400 to-purple-500'} text-white rounded-xl font-black text-xs shadow-lg flex items-center justify-center gap-1.5 opacity-80 cursor-default`}
+                  >
+                    <svg className="w-3 h-3 md:w-3.5 md:h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                      {exp.estado === 'finalizada' ? (
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      ) : (
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                      )}
+                    </svg>
+                    <span>{exp.estadoTexto || 'Próximamente'}</span>
+                  </div>
+                )}
               </div>
             ))}
           </div>

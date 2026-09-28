@@ -46,9 +46,9 @@
     },
     {
       "id": 3,
-      "nombre": "Aventura del espacio",
+      "nombre": "Aventura espacial",
       "titulo1": "Aventura",
-      "titulo2": "del espacio",
+      "titulo2": "espacial",
       "color": "#6366f1",
       "gradiente": "from-[#e0e7ff] to-white",
       "gradienteBoton": "from-[#6366f1] to-[#818cf8]",
@@ -63,8 +63,9 @@
       "duracion": "2 horas",
       "edades": "5-10 años",
       "precio": "$8.000",
-      "estado": "proximamente",
-      "estadoTexto": "Próximamente"
+      "fecha": "Sábado 10 de octubre",
+      "estado": "activa",
+      "estadoTexto": "¡Resérvala ya! Sábado 10 de octubre"
     },
     {
       "id": 4,
