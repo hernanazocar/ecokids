@@ -46,9 +46,9 @@
     },
     {
       "id": 3,
-      "nombre": "Aventura especial",
+      "nombre": "Aventura espacial",
       "titulo1": "Aventura",
-      "titulo2": "especial",
+      "titulo2": "espacial",
       "color": "#6366f1",
       "gradiente": "from-[#e0e7ff] to-white",
       "gradienteBoton": "from-[#6366f1] to-[#818cf8]",
