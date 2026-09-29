@@ -137,8 +137,8 @@ export default function Home() {
             {/* Contenido */}
             <div className="relative z-10 px-5 md:px-8 lg:px-12 max-w-2xl space-y-2.5 md:space-y-4 w-full">
               <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight md:leading-[1.1] drop-shadow-sm">
-                <span className="text-gray-900">Experiencias </span>
-                <span className="text-[#f97316] drop-shadow-md">creativas</span>
+                <span className="text-gray-900">Aventuras al </span>
+                <span className="text-[#f97316] drop-shadow-md">aire libre</span>
               </h1>
               <p className="text-base md:text-lg text-gray-700 leading-relaxed font-medium">
                 EcoKids un lugar donde los niños y niñas, exploran, juegan y conectan.
